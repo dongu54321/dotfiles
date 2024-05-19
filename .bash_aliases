@@ -301,7 +301,12 @@ function agh-cp-conf () {
 	# scp ~/podman/AdGuardHome.yaml n9-qemu:/root/AdguardHome
 	ssh n9-qemu rc-service AdGuardHome start
 }
-
+function dotfile () {
+  cd ~/dotfiles || exit
+  git add --all
+  git commit -a -m "$(date)"
+  git push
+}
 
 function help-me-me() {
 	echo 'ex <file>	: 	Extract file'
