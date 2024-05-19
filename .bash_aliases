@@ -17,10 +17,11 @@ alias offline='firejail --net=none --noprofile'
 alias _gpu='watch -d -n 0.5 nvidia-smi'
 alias _ffupdate='/home/vugia/arkenfox-userjs/updater.sh -u -s -b'
 alias _yt-local-up='cd /media/WD_Black_1TB/Download/Portable-Programs/youtube-local && git pull'
-alias _space='du -h -d 1 . | grep \G | sort -nr | head -40'
-alias _space2='du -d 1 . | sort -nr | head -30'
-alias disk-space-G='du -h -d 1 . | grep \G | sort -nr | head -30'
-alias disk-space-M='du -h -d 1 . | grep \M | sort -nr | head -30'
+alias zshup='git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-autosuggestions pull;git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-completions pull;git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting pull'
+
+# alias _space='du -h -d 1 . | grep \G | sort -nr | head -40'
+# alias _space2='du -d 1 . | sort -nr | head -30'
+
 alias bashrc_reload='source ~/.bashrc'
 alias zshrc_reload='source ~/.zshrc'
 alias tmuxx='tmux new-session \; split-window -h \; split-window -v \; attach'
@@ -58,12 +59,12 @@ alias pod-com-dry='podman-compose --dry-run up'
 alias pod-com-dry-pod='podman-compose --dry-run --in-pod up'
 alias pod-com-up='podman-compose down; podman-compose up -d'
 alias _compose-up='podman-compose down; podman-compose up -d'
-#alias pod-com='podman-compose'
+alias pocom='podman-compose'
 alias polog='podman logs -f --tail 20'
 alias popsname="podman ps --format '{{.Names}}'"
 alias popsport="podman ps --format '{{.Names}} :  {{.Ports}}"
 alias pops='podman ps --format "{{.Names}}   :  {{.Status}}  : {{.State}} : {{.RunningFor}} {{.Command}}"'
-alias pod-gen-sys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 10 --separator "" --files'
+alias pogensys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 10 --separator "" --files'
 alias caddyreload='podman exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile'
 ##################################################
 #         aliases games
@@ -119,10 +120,11 @@ alias ll='ls -lh'
 alias ls='ls --color=auto'
 alias lsa='ls -lah'
 alias md='mkdir -p'
+alias c='clear'
 #alias rim='firejail --net=none --noprofile bottles-cli run -p RimWorld -b 'Game' -- %u'
 # alias rimpy='firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' -- %u'
 
-alias alie='micro ~/.bash_aliases'
+alias alie='vscodium ~/.bash_aliases'
 alias code='vscodium'
 
 export EDITOR=micro
@@ -302,11 +304,19 @@ function agh-cp-conf () {
 	ssh n9-qemu rc-service AdGuardHome start
 }
 function dotfile () {
-  cd ~/dotfiles || exit
-  git add --all
-  git commit -a -m "$(date)"
-  git push
+	cd ~/dotfiles || exit
+	git add --all
+	git commit -a -m "$(date '+%Y-%m-%d %H:%M')"
+	git push
 }
+
+function zshbaseinstall () {
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins/zsh-completions
+}
+
 
 function help-me-me() {
 	echo 'ex <file>	: 	Extract file'
@@ -338,6 +348,8 @@ app-install <hostname> <app>    ex: app-install dragon000 caddy
 search-replace-all <search text> <replacetext>
 
 _workspace: workspace set
+dotfile : push dotfiles to github
+zshbaseinstall : install zsh base plugin themes
 '
 }
 alias screenoff='xset -display :0.0 dpms force off; read ans; xset -display :0.0 dpms force on'

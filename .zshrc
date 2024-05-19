@@ -128,4 +128,3 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
-alias zshup='git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-autosuggestions pull;git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-completions pull;git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting pull'
