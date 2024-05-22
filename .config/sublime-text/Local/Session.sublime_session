@@ -1,6 +1,9 @@
 {
 	"file_history":
 	[
+		"/home/vugia/Downloads/undefined.html",
+		"/home/vugia/python_app/helium/autoipv6.sh",
+		"/home/vugia/python_app/helium/autoipv6port.py",
 		"/home/vugia/.bash"
 	],
 	"folder_history":
@@ -9,7 +12,7 @@
 	"last_version": 4169,
 	"last_window_id": 1,
 	"log_indexing": false,
-	"next_update_check": 1716202044,
+	"next_update_check": 1716374844,
 	"settings":
 	{
 		"new_window_full_screen": false,
@@ -59,7 +62,12 @@
 			},
 			"file_history":
 			[
+				"/home/vugia/Downloads/docker-compose.yml",
+				"/home/vugia/python_app/helium/workupload.py",
 				"/home/vugia/.bash_aliases",
+				"/home/vugia/Downloads/undefined.html",
+				"/home/vugia/python_app/helium/autoipv6.sh",
+				"/home/vugia/python_app/helium/autoipv6port.py",
 				"/home/vugia/.bash"
 			],
 			"find":
@@ -167,7 +175,35 @@
 					"file": "/home/vugia/.bash_aliases",
 					"settings":
 					{
-						"buffer_size": 16576,
+						"buffer_size": 17828,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					},
+					"undo_stack":
+					[
+						[
+							3,
+							2,
+							"left_delete",
+							null,
+							"AgAAAAweAAAAAAAADB4AAAAAAAAfAAAAZXhwb3J0IERaUl9DQkM9ZzRlbDU4d2MwenZmOW5hMQseAAAAAAAACx4AAAAAAAABAAAACg",
+							"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAACseAAAAAAAADB4AAAAAAAAAAAAAAADwvw"
+						]
+					]
+				},
+				{
+					"file": "/home/vugia/python_app/helium/workupload.py",
+					"settings":
+					{
+						"buffer_size": 502,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/vugia/Downloads/docker-compose.yml",
+					"settings":
+					{
+						"buffer_size": 427,
 						"line_ending": "Unix"
 					},
 					"undo_stack":
@@ -207,6 +243,9 @@
 			},
 			"file_history":
 			[
+				"/home/vugia/Downloads/undefined.html",
+				"/home/vugia/python_app/helium/autoipv6.sh",
+				"/home/vugia/python_app/helium/autoipv6port.py",
 				"/home/vugia/.bash"
 			],
 			"find":
@@ -249,19 +288,18 @@
 						{
 							"buffer": 0,
 							"file": "/home/vugia/.bash_aliases",
-							"selected": true,
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 16576,
+								"buffer_size": 17828,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										7282,
-										7290
+										7691,
+										7691
 									]
 								],
 								"settings":
@@ -271,7 +309,70 @@
 									"translate_tabs_to_spaces": false
 								},
 								"translation.x": 0.0,
-								"translation.y": 1827.0,
+								"translation.y": 2697.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"stack_multiselect": false,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/home/vugia/python_app/helium/workupload.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 502,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										114,
+										91
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"stack_multiselect": false,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/home/vugia/Downloads/docker-compose.yml",
+							"selected": true,
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 427,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										165,
+										168
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/YAML/YAML.sublime-syntax",
+									"tab_size": 2,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
 							"stack_index": 0,

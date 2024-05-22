@@ -18,13 +18,10 @@ alias _gpu='watch -d -n 0.5 nvidia-smi'
 alias _ffupdate='/home/vugia/arkenfox-userjs/updater.sh -u -s -b'
 alias _yt-local-up='cd /media/WD_Black_1TB/Download/Portable-Programs/youtube-local && git pull'
 alias zshup='git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-autosuggestions pull;git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-completions pull;git -C /home/vugia/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting pull'
-
+#alias dotpull='git -C ~/dotfiles reset --hard;git -C ~/dotfiles pull'
+alias dotfetch='git -C ~/dotfiles fetch; git -C ~/dotfiles reset --hard origin/main'
 # alias _space='du -h -d 1 . | grep \G | sort -nr | head -40'
 # alias _space2='du -d 1 . | sort -nr | head -30'
-
-alias bashrc_reload='source ~/.bashrc'
-alias zshrc_reload='source ~/.zshrc'
-alias tmuxx='tmux new-session \; split-window -h \; split-window -v \; attach'
 alias bluedevices='bluetoothctl -- devices'
 alias bluecon='bluetoothctl -- connect'
 alias bluedis='bluetoothctl -- disconnect'
@@ -48,16 +45,13 @@ alias pacupdate='sudo pacman -Sy'
 alias pacupgrade='sudo pacman -Syu'
 ##################################################
 #         ssh aliases
-alias _sshmomo='ssh admin@momo.nohost.me -i /home/vugia/.ssh/momonohost'
-alias _momodell='ssh momo@192.168.1.82'
-alias _vugiadell='ssh vugia@192.168.1.82'
 ##################################################
 ###         podman aliases
 alias _pod='/home/vugia/podman/_run.sh'
 alias docker='podman'
-alias pod-com-dry='podman-compose --dry-run up'
-alias pod-com-dry-pod='podman-compose --dry-run --in-pod up'
-alias pod-com-up='podman-compose down; podman-compose up -d'
+alias pocomdry='podman-compose --dry-run up'
+alias pocomdrypod='podman-compose --dry-run --in-pod up'
+alias pocomup='podman-compose down; podman-compose up -d'
 alias _compose-up='podman-compose down; podman-compose up -d'
 alias pocom='podman-compose'
 alias polog='podman logs -f --tail 20'
@@ -123,9 +117,11 @@ alias md='mkdir -p'
 alias c='clear'
 #alias rim='firejail --net=none --noprofile bottles-cli run -p RimWorld -b 'Game' -- %u'
 # alias rimpy='firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' -- %u'
-
-alias alie='vscodium ~/.bash_aliases'
+alias alie='vscodium ~/.zshrc ~/.bash_aliases'
 alias code='vscodium'
+alias bashrc_reload='source ~/.bashrc'
+alias zshrc_reload='source ~/.zshrc'
+alias tmuxx='tmux new-session \; split-window -h \; split-window -v \; attach'
 
 export EDITOR=micro
 export PATH=$HOME/.local/bin/:$PATH
@@ -133,11 +129,10 @@ export PATH=/home/vugia/scripts/bin/:$PATH
 export PATH=$HOME/Applications/:$PATH
 # export HISTIGNORE='*6789*'
 # export HISTORY_IGNORE="(*6789*|cd|pwd|exit)"
-export HISTORY_IGNORE="(*6789*|exit)"
+export HISTORY_IGNORE="(*6789*|exit|hash)"
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 export EDITOR=micro
 export MC_SKIN=nicedark
-export DZR_CBC=g4el58wc0zvf9na1
 
 ####################################################################
 ###             Functions            ###
@@ -163,9 +158,6 @@ ex ()
     echo "$1 is not a valid file"
     fi
 }
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
 function ufwdel(){
 	# ufwdel 14 12 11 10 2
 	for i in $1 $2 $3 $4;do yes|ufw delete "$i";done
@@ -275,7 +267,7 @@ function _cache-tag() {
 	echo Signature: 8a477f597d28d172789f06886806bc55 >$1/CACHEDIR.TAG
 }
 function flac-con-all(){
-	# find . -name "*.wav" -exec soundconverter -b -f flac {} \;  
+	# find . -name "*.wav" -exec soundconverter -b -f flac {} \;
     workdir=$PWD
     for d in $workdir/**/
     do
@@ -310,21 +302,53 @@ function dotfile () {
 	git push
 }
 
-function zshbaseinstall () {
+function ohzshbaseinstall () {
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins/zsh-completions
 }
 
+function rustdeskd () {
+	cd $HOME || exit
+	if [ ! -f  $HOME/rustdesk.AppImage ]; then
+		LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
+		release_url=$(curl -Ls -o /dev/null -w "%{url_effective}" $LATEST_RELEASE_URL)
+		version=${release_url##*/}
+		download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.AppImage
+		download_file=./rustdesk.AppImage
+		echo "Downloading $download_url"
+		wget -q --show-progress $download_url -O $download_file
+		chmod +x rustdesk.AppImage
+		nohup ./rustdesk.AppImage &>/dev/null &
+	else
+		nohup ./rustdesk.AppImage &>/dev/null &
+	fi
+}
 
+function rustdeskup () {
+	cd $HOME || exit
+	LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
+	release_url=$(curl -Ls -o /dev/null -w "%{url_effective}" $LATEST_RELEASE_URL)
+	version=${release_url##*/}
+	download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.AppImage
+	download_file=./rustdesk.AppImage
+	echo "Downloading $download_url"
+	wget -q --show-progress $download_url -O $download_file
+	chmod +x rustdesk.AppImage
+	nohup ./rustdesk.AppImage &>/dev/null &
+}
+
+
+##########################################################################
+#        END HERE
 function help-me-me() {
 	echo 'ex <file>	: 	Extract file'
 	echo '_cache-tag <folder>  : tag cache to folder 4 tar --exclude-caches-all'
-	echo 'mp3 <url> : 	youtube-dl mp3'
-	echo 'mp3p <playlist url> :	 youtube-dl mp3 playlist'
-	echo 'dlv <url> :	youtube-dl video'
-	echo 'dlvp <playlist url> :	youtube-dl video playlist'
+	echo 'mp3 <url> : 	youtube-dlp mp3'
+	echo 'mp3p <playlist url> :	 youtube-dlp mp3 playlist'
+	echo 'dlv <url> :	youtube-dlp video'
+	echo 'dlvp <playlist url> :	youtube-dlp video playlist'
 	echo '_ff   : convert all mp4 files to smaller files size'
 	echo 'ufwdel 14 12 11 10 4  :  delete ufw firewall multiple rules big to small number'
 	echo 'podmansystemd <container>		: generate podman systemd service file'
@@ -344,12 +368,13 @@ _history 	:	clear history
 
 nebula_add_host <hostname> <nebulaip> <group> <lanip> ex: nebula_add_host dragon000 172.16.0.100 dragon 192.168.1.45
 app-install <hostname> <app>    ex: app-install dragon000 caddy
-
+rustdeskup : download lastest and run rustdesk appimage
 search-replace-all <search text> <replacetext>
 
 _workspace: workspace set
 dotfile : push dotfiles to github
-zshbaseinstall : install zsh base plugin themes
+ohshbaseinstall : install zsh base plugin themes
+dotfetch: update dotfiles on clone repo
 '
 }
 alias screenoff='xset -display :0.0 dpms force off; read ans; xset -display :0.0 dpms force on'
