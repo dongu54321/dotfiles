@@ -39,7 +39,7 @@ zinit light Aloxaf/fzf-tab
 
 # Add in snippets
 #zinit snippet OMZP::git
-zinit snippet OMZP::podman
+# zinit snippet OMZP::podman
 zinit snippet OMZP::z
 zinit snippet OMZP::aliases
 zinit snippet OMZP::common-aliases
@@ -92,5 +92,5 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 # Shell integrations
-#eval "$(fzf --zsh)"
+eval "$(fzf --zsh)"
 #eval "$(zoxide init --cmd cd zsh)"

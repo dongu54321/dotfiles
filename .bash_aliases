@@ -2,6 +2,10 @@
 # if [ -f ~/.bash_aliases ]; then
 #     source ~/.bash_aliases
 # fi
+alias alig='alias | grep'
+alias helpme='help-me-me | grep'
+
+alias help-me='help-me-me'
 alias _workspace='wmctrl -r firefox -t 0;wmctrl -r tilix -t 1;wmctrl -r codium -t 2;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
@@ -60,6 +64,25 @@ alias popsport="podman ps --format '{{.Names}} :  {{.Ports}}"
 alias pops='podman ps --format "{{.Names}}   :  {{.Status}}  : {{.State}} : {{.RunningFor}} {{.Command}}"'
 alias pogensys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 10 --separator "" --files'
 alias caddyreload='podman exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile'
+alias popo='podman port'
+alias popu='podman pull'
+alias por='podman run'
+alias pord='podman run -d'
+alias porit='podman run --interactive --tty'
+alias porm='podman rm'
+alias pormf='podman rm --force'
+alias pore='podman restart'
+alias posta='podman start'
+alias postalw='podman --log-level=info start --all --filter restart-policy=always'
+alias postoa='podman stop $(podman ps --quiet)'
+alias posto='podman stop'
+alias potop='podman top'
+alias povoli='podman volume inspect'
+alias povols='podman volume ls'
+alias povolprune='podman volume prune'
+alias pox='podman exec'
+alias poxit='podman exec --interactive --tty'
+
 ##################################################
 #         aliases games
 alias game='bash -i /media/Nvme_Data/Games/game.sh'
@@ -96,12 +119,13 @@ alias _daemon='systemctl --user daemon-reload'
 alias _restart='systemctl --user restart'
 alias _start='systemctl --user start'
 alias _stop='systemctl --user stop'
+alias _status='systemctl --user status'
 alias _ennow='systemctl --user enable --now'
 alias _disnow='systemctl --user disable --now'
 alias _journal='journalctl --user -xeu'
 alias _history='history -c && echo clear > ~/.bash_history'
-alias _functl='typeset -F | grep '
-alias help-me='help-me-me'
+#alias _functl='typeset -F | grep '
+
 
 alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
@@ -339,43 +363,61 @@ function rustdeskup () {
 	nohup ./rustdesk.AppImage &>/dev/null &
 }
 
+function caddyproxy () {
+	local APP=$1
+	local ADDRESS=$2
+
+	if [ ! -f " $HOME/momopod/app/caddy/etc-caddy/$APP.caddyfile" ]; then
+		echo "$APP.momoin.duckdns.org {
+	encode zstd
+	#import duckdns
+	reverse_proxy $ADDRESS
+}
+
+$APP.momoin.duckdns.org:80 {
+	redir $APP.momoin.duckdns.org:443
+}
+" >> $HOME/momopod/app/caddy/etc-caddy/$APP.caddyfile
+	fi
+}
+
 
 ##########################################################################
 #        END HERE
 function help-me-me() {
-	echo 'ex <file>	: 	Extract file'
-	echo '_cache-tag <folder>  : tag cache to folder 4 tar --exclude-caches-all'
-	echo 'mp3 <url> : 	youtube-dlp mp3'
-	echo 'mp3p <playlist url> :	 youtube-dlp mp3 playlist'
-	echo 'dlv <url> :	youtube-dlp video'
-	echo 'dlvp <playlist url> :	youtube-dlp video playlist'
-	echo '_ff   : convert all mp4 files to smaller files size'
-	echo 'ufwdel 14 12 11 10 4  :  delete ufw firewall multiple rules big to small number'
-	echo 'podmansystemd <container>		: generate podman systemd service file'
-	echo 'rimdown <mod-id> :	rimworld download mod
+	echo ' HELP MYSELF FUNCTION
+ex <file>       :       Extract file
+_cache-tag <folder>  : tag cache to folder 4 tar --exclude-caches-all
+mp3 <url> :     youtube-dlp mp3
+mp3p <playlist url> :    youtube-dlp mp3 playlist
+dlv <url> :     youtube-dlp video
+dlvp <playlist url> :   youtube-dlp video playlist
+_ff   : convert all mp4 files to smaller files size
+ufwdel 14 12 11 10 4  :  delete ufw firewall multiple rules big to small number
+podmansystemd <container>               : generate podman systemd service file
+rimdown <mod-id> :      rimworld download mod
 rimdownnew: download all new mods from clip.txx
-rimupdate-shutdown:  update mods and shutdown'
-	echo 'steamdown <app-id> <mod-id> :		download steam workshop'
-	echo 'tarscp_from_remote {remote_host} {remote_dir_path} {local_dir_path}'
-	echo 'tarscp_to_remote {local_dir_path} {remote_host} {remote_dir_path}'
-	echo 'tarscp_from_remote_xz {remote_host} {remote_dir_path} {local_dir_path}'
-	echo 'tarscp_to_remote_xz {local_dir_path} {remote_host} {remote_dir_path}'
-	echo '_acl <user> <path/to/folder> :	give acl rwx to user for folder'
-	echo 'flac-con-all :	on Artist folder to convert all wav to flac'
-	echo '
-alias | grep <sth>  :		print alias for sth
-_history 	:	clear history
-
+rimupdate-shutdown:  update mods and shutdown
+steamdown <app-id> <mod-id> :           download steam workshop
+tarscp_from_remote {remote_host} {remote_dir_path} {local_dir_path}
+tarscp_to_remote {local_dir_path} {remote_host} {remote_dir_path}
+tarscp_from_remote_xz {remote_host} {remote_dir_path} {local_dir_path}
+tarscp_to_remote_xz {local_dir_path} {remote_host} {remote_dir_path}
+_acl <user> <path/to/folder> :  give acl rwx to user for folder
+flac-con-all :  n Artist folder to convert all wav to flac
+alias | grep <sth>  : print alias for sth
+_history        :       clear history
 nebula_add_host <hostname> <nebulaip> <group> <lanip> ex: nebula_add_host dragon000 172.16.0.100 dragon 192.168.1.45
 app-install <hostname> <app>    ex: app-install dragon000 caddy
 rustdeskup : download lastest and run rustdesk appimage
 search-replace-all <search text> <replacetext>
-
 _workspace: workspace set
 dotfile : push dotfiles to github
 ohshbaseinstall : install zsh base plugin themes
 dotfetch: update dotfiles on clone repo
+caddyproxy <App-name> <localhost:port>  ex: caddyproxy baby 127.0.0.1:1900
 '
 }
+
 alias screenoff='xset -display :0.0 dpms force off; read ans; xset -display :0.0 dpms force on'
 export "MICRO_TRUECOLOR=1"
