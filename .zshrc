@@ -1,7 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# https://www.youtube.com/watch?v=ud7YxC33Z3w
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -10,7 +6,7 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
+# tmux tmp
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   mkdir -p $HOME/.tmux/plugins/tpm
   git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
@@ -50,7 +46,7 @@ zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit;compinit
-
+[[ ! -f "${fpath[1]}/_podman" ]] || podman completion -f "${fpath[1]}/_podman" zsh
 zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -78,7 +74,7 @@ setopt interactivecomments
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
+#zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 

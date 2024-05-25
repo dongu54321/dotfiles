@@ -34,6 +34,8 @@ alias bluescanoff='bluetoothctl -- scan off'
 alias funcl_con='bluetoothctl -- connect 00:00:00:AA:15:26'
 alias funcl_dis='bluetoothctl -- disconnect 00:00:00:AA:15:26'
 alias bluehelp='bluetoothctl -- help'
+
+alias phone-remote='scrcpy --video-codec=h265 --max-size=2000 --max-fps=75 --turn-screen-off --power-off-on-close --no-audio -K &>/dev/null &'
 #################################################
 ###       PACMAN
 alias pacinstall='sudo pacman -S'
@@ -62,27 +64,30 @@ alias polog='podman logs -f --tail 20'
 alias popsname="podman ps --format '{{.Names}}'"
 alias popsport="podman ps --format '{{.Names}} :  {{.Ports}}"
 alias pops='podman ps --format "{{.Names}}   :  {{.Status}}  : {{.State}} : {{.RunningFor}} {{.Command}}"'
-alias pogensys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 10 --separator "" --files'
+alias pogensys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 5 --separator "" --files'
 alias caddyreload='podman exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile'
 alias popo='podman port'
 alias popu='podman pull'
 alias por='podman run'
 alias pord='podman run -d'
+alias pordt='podman run -dt'
 alias porit='podman run --interactive --tty'
 alias porm='podman rm'
 alias pormf='podman rm --force'
 alias pore='podman restart'
 alias posta='podman start'
-alias postalw='podman --log-level=info start --all --filter restart-policy=always'
-alias postoa='podman stop $(podman ps --quiet)'
+alias postalways='podman --log-level=info start --all --filter restart-policy=always'
 alias posto='podman stop'
+alias postoa='podman stop $(podman ps --quiet)'
 alias potop='podman top'
 alias povoli='podman volume inspect'
 alias povols='podman volume ls'
 alias povolprune='podman volume prune'
 alias pox='podman exec'
 alias poxit='podman exec --interactive --tty'
-
+alias posear='podman search'
+alias posec='podman secret'
+alias postat='podman stats'
 ##################################################
 #         aliases games
 alias game='bash -i /media/Nvme_Data/Games/game.sh'
@@ -190,7 +195,7 @@ function ufwdel(){
 function podmansystemd() {
 	cd ~/.config/systemd/user/ || exit
 	podman generate systemd --new --container-prefix "" \
-        --name --no-header --restart-sec 10 --separator "" --files
+        --name --no-header --restart-sec 5 --separator "" --files "$1"
     #podman generate systemd --name --new "$1" > ~/.config/systemd/user/container-"$1".service
 	systemctl --user daemon-reload
 	podman rm -f "$1"
