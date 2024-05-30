@@ -89,4 +89,4 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 #eval "$(zoxide init --cmd cd zsh)"
-export HISTORY_IGNORE="(*6789*|exit|secret|hash)"
+export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authelia*|authereg)"
