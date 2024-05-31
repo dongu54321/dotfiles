@@ -88,5 +88,5 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 # Shell integrations
 eval "$(fzf --zsh)"
-#eval "$(zoxide init --cmd cd zsh)"
-export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authelia*|*authereg*)"
+eval "$(zoxide init --cmd cd zsh)"
+export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authereg*)"
