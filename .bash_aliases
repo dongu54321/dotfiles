@@ -88,7 +88,7 @@ alias poxit='podman exec --interactive --tty'
 alias posear='podman search'
 alias posec='podman secret'
 alias postat='podman stats'
-alias authelia='podman run --rm -v ~/podman/app/authelia/config:/config -v ~/podman/app/authelia/secrets:/secrets docker.io/authelia/authelia authelia'
+alias authelia=' podman run --rm -v ~/podman/app/authelia/config:/config -v ~/podman/app/authelia/secrets:/secrets docker.io/authelia/authelia authelia'
 ##################################################
 #         aliases games
 alias game='bash -i /media/Nvme_Data/Games/game.sh'
@@ -96,19 +96,19 @@ alias prot='bash -i /media/Nvme_Data/proton/proton-run.sh'
 #alias bottle='flatpak run --unshare=network --command=bottles-cli com.usebottles.bottles --bottle 'Game' --executable'
 #alias rim='firejail --net=none --noprofile /media/Nvme_Data/Games/Rimworld-jc141/files/groot/RimWorldLinux'
 #alias rim='bash /media/Nvme_Data/Games/Rimworld-jc141/start.n.sh'
-alias rim='nohup firejail --net=none --noprofile bottles-cli run -p RimWorld -b 'Game' &>/dev/null &'
+alias rim='nohup firejail --net=none --noprofile bottles-cli run -p RimWorld -b "Game" &>/dev/null &'
 alias rimt='sleep 7s && taskset -pac 0,1,2,3,4,5 $(pidof RimWorldWin64.exe) &>/dev/null &'
 alias rimtt='rim; rimt'
 alias rimm='/media/Nvme_Data/Games/Rimworld-jc141/Rimworld-Mod-download'
 #alias rimpy='cd /media/Nvme_Data/Games/Rimworld-jc141/Rimpy/; firejail --net=none --noprofile /media/Nvme_Data/Games/Rimworld-jc141/Rimpy/RimPy.sh'
-alias rimp='nohup firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' &>/dev/null &'
+alias rimp="nohup firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' &>/dev/null &"
 alias riml='env ENABLE_VKBASALT=1 firejail --net=none --noprofile /media/Nvme_Data/Games/Rimworld-jc141/files/groot/RimWorldLinux'
-alias botcli='nohup firejail --net=none --noprofile bottles-cli run -b 'Game' -e '
+alias botcli="nohup firejail --net=none --noprofile bottles-cli run -b 'Game' -e "
 #alias grim='flatpak run --unshare=network --command=bottles-cli com.usebottles.bottles run -p GrimDawn -b 'Game''
 #alias grims='cd /media/Nvme_Data/Games/Grim\ Dawn/GD_stash/ && java -jar GDStash.jar'
 #alias grima='/usr/bin/wine start /unix /media/Nvme_Data/Games/Grim\ Dawn/AssetManager.exe' !@#$%^&*(_+-=)
 alias LE="nohup firejail --net=none --noprofile bottles-cli run -p 'Last Epoch' -b 'Game' &>/dev/null &"
-alias valheim='nohup firejail --net=none --noprofile bottles-cli run -p 'valheim' -b 'Game' &>/dev/null &'
+alias valheim="nohup firejail --net=none --noprofile bottles-cli run -p 'valheim' -b 'Game' &>/dev/null &"
 #alias rimt='sleep 7s && taskset -pac 0,1,2,3,4,5 $(pidof RimWorldWin64.exe) &>/dev/null'
 ##################################################
 #### systems and app
@@ -394,9 +394,18 @@ function authereg () {
 
 	# DIGEST=$(printf "%s" "$2" | podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password - | sed -e 's|Digest: ||g')
 	DIGEST=$(podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password "$2" | sed -e 's|Digest: ||g')
-	echo "  $1:\n    displayname: $3\n    password: $DIGEST\n    email: $4\n" >> /home/momo/momopod/app/authelia/config/users_database.yml
+	echo "  $1:\n    displayname: $3\n    password: $DIGEST\n    email: $4\n    groups:\n      - users\n    disabled: false\n" >> /home/momo/momopod/app/authelia/config/users_database.yml
 }
 
+function authertest () {
+	if [ "$#" -ne 4 ]; then echo "Usage: authereg <user> '<password>' <display name> <email>" >&2; return; fi
+
+	# DIGEST=$(printf "%s" "$2" | podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password - | sed -e 's|Digest: ||g')
+	DIGEST=$(podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password "$2" | sed -e 's|Digest: ||g')
+	echo '$2'
+	echo "run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password "$2" | sed -e 's|Digest: ||g'"
+	echo "  $1:\n    displayname: $3\n    password: $DIGEST\n    email: $4\n    groups:\n      - users\n    disabled: false\n"
+}
 
 ##########################################################################
 #        END HERE
