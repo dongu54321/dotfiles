@@ -391,24 +391,13 @@ $APP.momoin.duckdns.org:80 {
 
 function authereg () {
 	if [ "$#" -ne 4 ]; then echo "Usage: authereg <user> '<password>' <display name> <email>" >&2; return; fi
-
 	# DIGEST=$(printf "%s" "$2" | podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password - | sed -e 's|Digest: ||g')
 	DIGEST=$(podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password "$2" | sed -e 's|Digest: ||g')
 	echo "  $1:\n    displayname: $3\n    password: $DIGEST\n    email: $4\n    groups:\n      - users\n    disabled: false\n" >> /home/momo/momopod/app/authelia/config/users_database.yml
 }
 
-function authertest () {
-	if [ "$#" -ne 4 ]; then echo "Usage: authereg <user> '<password>' <display name> <email>" >&2; return; fi
-
-	# DIGEST=$(printf "%s" "$2" | podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password - | sed -e 's|Digest: ||g')
-	DIGEST=$(podman run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password "$2" | sed -e 's|Digest: ||g')
-	echo '$2'
-	echo "run --rm docker.io/authelia/authelia authelia crypto hash generate argon2 --password "$2" | sed -e 's|Digest: ||g'"
-	echo "  $1:\n    displayname: $3\n    password: $DIGEST\n    email: $4\n    groups:\n      - users\n    disabled: false\n"
-}
-
 ##########################################################################
-#        END HERE
+#        END HERE DO NOT WRITE FUNCTIONS ALIAS BELOW
 function help-me-me() {
 	echo ' HELP MYSELF FUNCTION
 ex <file>       :       Extract file
