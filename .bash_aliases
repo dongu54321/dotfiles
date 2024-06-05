@@ -50,7 +50,7 @@ alias paclear='sudo pacman -Scc'
 alias pacupdate='sudo pacman -Sy'
 alias pacupgrade='sudo pacman -Syu'
 ##################################################
-#         ssh aliases
+#           ssh aliases                          #
 ##################################################
 ###         podman aliases
 alias _pod='/home/vugia/podman/_run.sh'
@@ -59,6 +59,9 @@ alias pocomdry='podman-compose --dry-run --verbose up'
 alias pocomdrypod='podman-compose --dry-run --verbose --in-pod up'
 alias pocomup='podman-compose down; podman-compose up -d'
 alias pocom='podman-compose'
+function pocomupdate () {
+	find ~/podman/app -mindepth 2 -maxdepth 2 -type f -iname compose.yaml -exec sh -c 'podman-compose -f "$1" pull; podman-compose -f "$1" down; podman-compose -f "$1" up -d' - {}  \;
+	}
 alias polog='podman logs -f --tail 20'
 alias popsname="podman ps --format '{{.Names}}'"
 alias popsport="podman ps --format '{{.Names}} :  {{.Ports}}'"
