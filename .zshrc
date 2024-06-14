@@ -2,10 +2,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# if [[ -f "/opt/homebrew/bin/brew" ]] then
+#   eval "$(/opt/homebrew/bin/brew shellenv)"
+# fi
+
 # tmux tmp
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   mkdir -p $HOME/.tmux/plugins/tpm
@@ -17,8 +17,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 # Source/Load zinit
@@ -36,17 +36,22 @@ zinit light Aloxaf/fzf-tab
 # Add in snippets
 #zinit snippet OMZP::git
 # zinit snippet OMZP::podman
-zinit snippet OMZP::z
+#zinit snippet OMZP::z
 zinit snippet OMZP::common-aliases
 zinit snippet OMZP::cp
 zinit snippet OMZP::rsync
 #zinit snippet OMZP::
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
-
+if [ -f /bin/apt-get ]; then
+  zinit snippet OMZP::z
+  zinit snippet OMZP::debian
+elif [ -f /bin/pacman ]; then
+  zinit snippet OMZP::archlinux
+fi
+[[ ! -f "${fpath[1]}/_podman" ]] || podman completion -f "${fpath[1]}/_podman" zsh
 # Load completions
 autoload -Uz compinit;compinit
-[[ ! -f "${fpath[1]}/_podman" ]] || podman completion -f "${fpath[1]}/_podman" zsh
 zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -84,9 +89,10 @@ if [ -f ~/.bash_aliases ]; then
 fi
 #Tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte.sh
 fi
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
-export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authereg*)"
+# eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
+export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authereg*|*password*)"

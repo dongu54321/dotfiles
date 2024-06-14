@@ -6,7 +6,7 @@ alias alig='alias | grep'
 alias helpme='help-me-me | grep'
 
 #alias help-me='help-me-me'
-alias _workspace='wmctrl -r firefox -t 0;wmctrl -r tilix -t 1;wmctrl -r codium -t 2;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4'
+alias _workspace='wmctrl -r firefox -t 0;wmctrl -r xfce4-terminal -t 1;wmctrl -r tilix -t 1;wmctrl -r codium -t 2;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias _bashrc='micro /home/vugia/.bashrc'
@@ -94,24 +94,24 @@ alias postat='podman stats'
 alias authelia=' podman run --rm -v ~/podman/app/authelia/config:/config -v ~/podman/app/authelia/secrets:/secrets docker.io/authelia/authelia authelia'
 ##################################################
 #         aliases games
-alias game='bash -i /media/Nvme_Data/Games/game.sh'
-alias prot='bash -i /media/Nvme_Data/proton/proton-run.sh'
-#alias bottle='flatpak run --unshare=network --command=bottles-cli com.usebottles.bottles --bottle 'Game' --executable'
+alias game='bash -i ~/GAMES/proton/game.sh'
+alias prot='bash -i ~/GAMES/proton/proton-run.sh'
+#alias bottle='flatpak run --unshare=network --command=bottles-cli com.usebottles.bottles --bottle 'Game2' --executable'
 #alias rim='firejail --net=none --noprofile /media/Nvme_Data/Games/Rimworld-jc141/files/groot/RimWorldLinux'
 #alias rim='bash /media/Nvme_Data/Games/Rimworld-jc141/start.n.sh'
-alias rim='nohup firejail --net=none --noprofile bottles-cli run -p RimWorld -b "Game" &>/dev/null &'
+alias rim="nohup firejail --net=none --noprofile bottles-cli run -p RimWorld -b 'Game2' &>/dev/null &"
 alias rimt='sleep 7s && taskset -pac 0,1,2,3,4,5 $(pidof RimWorldWin64.exe) &>/dev/null &'
 alias rimtt='rim; rimt'
-alias rimm='/media/Nvme_Data/Games/Rimworld-jc141/Rimworld-Mod-download'
+alias rimm='~/GAMES/Games/Rimworld-jc141/Rimworld-Mod-download'
 #alias rimpy='cd /media/Nvme_Data/Games/Rimworld-jc141/Rimpy/; firejail --net=none --noprofile /media/Nvme_Data/Games/Rimworld-jc141/Rimpy/RimPy.sh'
-alias rimp="nohup firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' &>/dev/null &"
-alias riml='env ENABLE_VKBASALT=1 firejail --net=none --noprofile /media/Nvme_Data/Games/Rimworld-jc141/files/groot/RimWorldLinux'
-alias botcli="nohup firejail --net=none --noprofile bottles-cli run -b 'Game' -e "
-#alias grim='flatpak run --unshare=network --command=bottles-cli com.usebottles.bottles run -p GrimDawn -b 'Game''
+alias rimp="nohup firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game2' &>/dev/null &"
+alias riml='env ENABLE_VKBASALT=1 firejail --net=none --noprofile ~/GAMES/Rimworld-jc141/files/groot/RimWorldLinux'
+alias botcli="nohup firejail --net=none --noprofile bottles-cli run -b 'Game2' -e "
+#alias grim='flatpak run --unshare=network --command=bottles-cli com.usebottles.bottles run -p GrimDawn -b 'Game2''
 #alias grims='cd /media/Nvme_Data/Games/Grim\ Dawn/GD_stash/ && java -jar GDStash.jar'
 #alias grima='/usr/bin/wine start /unix /media/Nvme_Data/Games/Grim\ Dawn/AssetManager.exe' !@#$%^&*(_+-=)
-alias LE="nohup firejail --net=none --noprofile bottles-cli run -p 'Last Epoch' -b 'Game' &>/dev/null &"
-alias valheim="nohup firejail --net=none --noprofile bottles-cli run -p 'valheim' -b 'Game' &>/dev/null &"
+alias LE="nohup firejail --net=none --noprofile bottles-cli run -p 'Last Epoch' -b 'Game2' &>/dev/null &"
+alias valheim="nohup firejail --net=none --noprofile bottles-cli run -p 'valheim' -b 'Game2' &>/dev/null &"
 #alias rimt='sleep 7s && taskset -pac 0,1,2,3,4,5 $(pidof RimWorldWin64.exe) &>/dev/null'
 ##################################################
 #### systems and app
@@ -134,7 +134,6 @@ alias _disnow='systemctl --user disable --now'
 alias _journal='journalctl --user -xeu'
 alias _history='history -c && echo clear > ~/.bash_history'
 #alias _functl='typeset -F | grep '
-
 
 alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
 alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
@@ -161,6 +160,7 @@ export EDITOR=micro
 export PATH=$HOME/.local/bin/:$PATH
 export PATH=/home/vugia/scripts/bin/:$PATH
 export PATH=$HOME/Applications/:$PATH
+export PATH=$HOME/.local/share/RimSort/instances/Default/steamcmd/:$PATH
 # export HISTIGNORE='*6789*'
 # export HISTORY_IGNORE="(*6789*|cd|pwd|exit)"
 export HISTORY_IGNORE="(*6789*|exit|hash)"
@@ -195,6 +195,22 @@ ex ()
 function ufwdel(){
 	# ufwdel 14 12 11 10 2
 	for i in $1 $2 $3 $4;do yes|ufw delete "$i";done
+}
+
+mp3 () {
+    yt-dlp --ignore-errors -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 -o '%(title)s.%(ext)s' "$1"
+}
+
+mp3p () {
+    yt-dlp --ignore-errors --sleep-interval 30 -i -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 -o '%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s' "$1"
+}
+
+dlv () {
+    yt-dlp --ignore-errors -o '%(title)s.%(ext)s' "$1"
+}
+
+dlp () {
+    yt-dlp --yes-playlist --ignore-errors --sleep-interval 30 -o '%(playlist)s/%(title)s.%(ext)s' "$1"
 }
 
 function podmansystemd() {
@@ -405,10 +421,10 @@ function help-me-me() {
 	echo ' HELP MYSELF FUNCTION
 ex <file>       :       Extract file
 _cache-tag <folder>  : tag cache to folder 4 tar --exclude-caches-all
-mp3 <url> :     youtube-dlp mp3
-mp3p <playlist url> :    youtube-dlp mp3 playlist
-dlv <url> :     youtube-dlp video
-dlvp <playlist url> :   youtube-dlp video playlist
+mp3 <url> :     yt-dlpp mp3
+mp3p <playlist url> :    yt-dlpp mp3 playlist
+dlv <url> :     yt-dlpp video
+dlvp <playlist url> :   yt-dlpp video playlist
 _ff   : convert all mp4 files to smaller files size
 ufwdel 14 12 11 10 4  :  delete ufw firewall multiple rules big to small number
 podmansystemd <container>               : generate podman systemd service file
@@ -433,6 +449,18 @@ dotfile : push dotfiles to github
 ohshbaseinstall : install zsh base plugin themes
 dotfetch: update dotfiles on clone repo
 caddyproxy <App-name> <localhost:port>  ex: caddyproxy baby 127.0.0.1:1900
+
+export LLDAP_HTTPURL='https://lldap.momoruru.duckdns.org'
+eval $(lldap-cli -D admin -w 'yourlldapaminpassword' login)
+
+### lldap Add user
+lldap-cli user add jsmith john.smith@example.com -d "John Smith" -p hunterpassword
+### lldap Change password
+lldap-cli user update set john.smith@example.com password hunter2password
+### lldap  Group create
+lldap-cli group add "jellyfin-users"
+### lldap Add to group
+lldap-cli user group add jsmith "jellyfin-users"
 '
 }
 
