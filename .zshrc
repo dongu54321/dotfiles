@@ -94,5 +94,9 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 # eval "$(zoxide init --cmd cd zsh)"
-eval "$(zoxide init zsh)"
+if [ -f /bin/apt-get ]; then
+  echo ''
+elif [ -f /bin/pacman ]; then
+  eval "$(zoxide init zsh)"
+fi
 export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authereg*|*password*)"
