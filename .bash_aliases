@@ -160,10 +160,10 @@ alias zshrc_reload='source ~/.zshrc'
 alias tmuxx='tmux new-session \; split-window -h \; split-window -v \; attach'
 
 export EDITOR=micro
-export PATH=$HOME/.local/bin/:$PATH
-export PATH=/home/vugia/scripts/bin/:$PATH
-export PATH=$HOME/Applications/:$PATH
-export PATH=$HOME/.local/share/RimSort/instances/Default/steamcmd/:$PATH
+export PATH=$HOME/.local/bin:$PATH
+export PATH=/home/vugia/scripts/bin:$PATH
+export PATH=$HOME/Applications:$PATH
+export PATH=$HOME/.local/share/RimSort/instances/Default/steamcmd:$PATH
 # export HISTIGNORE='*6789*'
 # export HISTORY_IGNORE="(*6789*|cd|pwd|exit)"
 export HISTORY_IGNORE="(*6789*|exit|hash)"

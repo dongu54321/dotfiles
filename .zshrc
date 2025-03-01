@@ -35,7 +35,6 @@ zinit light Aloxaf/fzf-tab
 
 # Add in snippets
 #zinit snippet OMZP::git
-# zinit snippet OMZP::podman
 #zinit snippet OMZP::z
 zinit snippet OMZP::common-aliases
 zinit snippet OMZP::cp
@@ -96,6 +95,11 @@ eval "$(fzf --zsh)"
 # eval "$(zoxide init --cmd cd zsh)"
 if [ -f /bin/apt-get ]; then
   echo ''
+  if [ "$(zoxide -V)" ]; then
+    echo "zoxide installed"
+  else
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+  fi
 elif [ -f /bin/pacman ]; then
   eval "$(zoxide init zsh)"
 fi
