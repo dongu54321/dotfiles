@@ -43,7 +43,7 @@ zinit snippet OMZP::rsync
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
 if [ -f /bin/apt-get ]; then
-  zinit snippet OMZP::z
+  #zinit snippet OMZP::z
   zinit snippet OMZP::debian
 elif [ -f /bin/pacman ]; then
   zinit snippet OMZP::archlinux
@@ -96,7 +96,8 @@ eval "$(fzf --zsh)"
 if [ -f /bin/apt-get ]; then
   echo ''
   if [ "$(zoxide -V)" ]; then
-    echo "zoxide installed"
+    #echo "zoxide installed"
+    eval "$(zoxide init zsh)"
   else
     curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
   fi
