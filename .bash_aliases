@@ -6,6 +6,7 @@ alias alig='alias | grep'
 alias helpme='help-me-me | grep'
 
 #alias help-me='help-me-me'
+
 alias _xfix='xfdesktop -Q && xfdesktop -e > /tmp/xf.log 2>&1 & ; xfwm4 --replace'
 alias _workspace='wmctrl -r firefox -t 0;wmctrl -r xfce4-terminal -t 1;wmctrl -r tilix -t 1;wmctrl -r codium -t 2;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4'
 alias df='df -h'                          # human-readable sizes
@@ -15,6 +16,7 @@ alias _clip='mousepad /home/vugia/clip.txt'
 alias _aria2c='aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all >/dev/null 2>&1 &'
 alias _vmware='sudo modprobe -a vmw_vmci vmmon'
 alias _clear='find ~/.cache/ -type f -atime +7 -delete;sudo pamac clean --keep 1;sudo pamac remove -o;sudo pacman -R $(pacman -Qtdq);'
+alias _pac-cache='sudo paccache -rk1; sudo paccache -ruk0'
 #alias _pulse='systemctl restart --user pulseaudio'
 alias _logs='sudo journalctl --since "5 minutes ago"'
 alias _history='history -c && echo clear > ~/.bash_history && echo clear > ~/.zhistory'
@@ -405,6 +407,7 @@ function caddyproxy () {
 		echo "$APP.momoin.duckdns.org {
 	encode zstd
 	#import duckdns
+	#import secure *
 	reverse_proxy $ADDRESS
 }
 

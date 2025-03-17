@@ -40,7 +40,6 @@ zinit snippet OMZP::common-aliases
 zinit snippet OMZP::cp
 zinit snippet OMZP::rsync
 #zinit snippet OMZP::
-zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
 if [ -f /bin/apt-get ]; then
   #zinit snippet OMZP::z
@@ -91,7 +90,8 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
 fi
 # Shell integrations
-eval "$(fzf --zsh)"
+#eval "$(fzf --zsh)"
+source <(fzf --zsh)
 # eval "$(zoxide init --cmd cd zsh)"
 if [ -f /bin/apt-get ]; then
   echo ''
