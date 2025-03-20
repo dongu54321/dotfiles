@@ -61,7 +61,10 @@ alias docker='podman'
 alias pocomdry='podman-compose --dry-run --verbose up'
 alias pocomdrypod='podman-compose --dry-run --verbose --in-pod up'
 alias pocomup='podman-compose down; podman-compose up -d'
+alias pcup='podman-compose down; podman-compose up -d'
 alias pocom='podman-compose'
+alias pc='podman-compose'
+
 function pocomupdate () {
 	find ~/podman/app -mindepth 2 -maxdepth 2 -type f -iname compose.yaml -exec sh -c 'podman-compose -f "$1" pull; podman-compose -f "$1" down; podman-compose -f "$1" up -d' - {}  \;
 	}
@@ -152,7 +155,7 @@ alias ls='ls --color=auto'
 alias lsa='ls -lah'
 alias md='mkdir -p'
 alias c='clear'
-alias d='zoxide'
+# alias d='zoxide'
 #alias rim='firejail --net=none --noprofile bottles-cli run -p RimWorld -b 'Game' -- %u'
 # alias rimpy='firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' -- %u'
 alias alie='vscodium ~/.zshrc ~/.bash_aliases'
@@ -199,7 +202,7 @@ ex ()
 }
 function ufwdel(){
 	# ufwdel 14 12 11 10 2
-	for i in $1 $2 $3 $4;do yes|ufw delete "$i";done
+	for i in $1 $2 $3 $4;do yes| sudo ufw delete "$i";done
 }
 
 mp3 () {
@@ -361,13 +364,6 @@ function dotfile () {
 	git push
 }
 
-function ohzshbaseinstall () {
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-	git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins/zsh-completions
-}
-
 function rustdeskd () {
 	cd $HOME || exit
 	if [ ! -f  $HOME/rustdesk.AppImage ]; then
@@ -386,7 +382,7 @@ function rustdeskd () {
 }
 
 function rustdeskup () {
-	cd $HOME || exit
+	cd "$HOME" || exit
 	LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
 	release_url=$(curl -Ls -o /dev/null -w "%{url_effective}" $LATEST_RELEASE_URL)
 	version=${release_url##*/}

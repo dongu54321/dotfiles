@@ -105,3 +105,9 @@ elif [ -f /bin/pacman ]; then
   eval "$(zoxide init zsh)"
 fi
 export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authereg*|*password*)"
+
+function downloadzen () {
+  curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+  sudo apt install fzf/testing
+  # sudo apt install zoxide/testing
+}
