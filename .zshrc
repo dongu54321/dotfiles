@@ -2,10 +2,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# if [[ -f "/opt/homebrew/bin/brew" ]] then
-#   eval "$(/opt/homebrew/bin/brew shellenv)"
-# fi
-
 # tmux tmp
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   mkdir -p $HOME/.tmux/plugins/tpm
@@ -84,6 +80,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Aliases
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
+fi
+if [ -f ~/.debian_aliases ]; then
+    source ~/.debian_aliases
 fi
 #Tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then

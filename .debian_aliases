@@ -1,0 +1,1 @@
+alias autheliaa='podman run --rm -v ~/momopod/app/authelia/config:/config docker.io/authelia/authelia authelia'
