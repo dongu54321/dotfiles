@@ -98,7 +98,7 @@ alias posear='podman search'
 alias posec='podman secret'
 alias postat='podman stats'
 alias authelia=' podman run --rm -v ~/podman/app/authelia/config:/config -v ~/podman/app/authelia/secrets:/secrets docker.io/authelia/authelia authelia'
-alias autheliad=' podman run --rm -v ~/momopod/app/authelia/config:/config docker.io/authelia/authelia authelia'
+alias autheliad=' podman run --rm -v ~/momopod/app/authelia/config:/config -v ~/momopod/app/authelia/secrets:/secretsdocker.io/authelia/authelia authelia'
 ##################################################
 #         aliases games
 alias game='bash -i ~/GAMES/proton/game.sh'
