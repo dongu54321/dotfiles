@@ -8,7 +8,7 @@ alias helpme='help-me-me | grep'
 #alias help-me='help-me-me'
 
 alias _xfix='xfdesktop -Q && xfdesktop -e > /tmp/xf.log 2>&1 & ; xfwm4 --replace'
-alias _workspace='wmctrl -r firefox -t 0;wmctrl -r xfce4-terminal -t 1;wmctrl -r tilix -t 1;wmctrl -r codium -t 2;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4'
+alias _workspace='wmctrl -r firefox -t 0;wmctrl -r xfce4-terminal -t 2;wmctrl -r tilix -t 2;wmctrl -r codium -t 1;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 alias _bashrc='micro /home/vugia/.bashrc'
