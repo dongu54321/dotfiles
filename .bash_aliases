@@ -366,8 +366,8 @@ function dotfile () {
 	git commit -a -m "$(date '+%Y-%m-%d %H:%M')"
 	git push
 }
-
-function rustdeskd () {
+# shellcheck disable=SC2086
+function rustdeskapp () {
 	cd $HOME || exit
 	if [ ! -f  $HOME/rustdesk.AppImage ]; then
 		LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
@@ -384,17 +384,17 @@ function rustdeskd () {
 	fi
 }
 
-function rustdeskup () {
+function rustdeskupgrade () {
 	cd "$HOME" || exit
 	LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
 	release_url=$(curl -Ls -o /dev/null -w "%{url_effective}" $LATEST_RELEASE_URL)
 	version=${release_url##*/}
-	download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.AppImage
-	download_file=./rustdesk.AppImage
+	download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.deb
+	# download_url=https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-x86_64.deb
+	download_file=./rustdesk.deb
 	echo "Downloading $download_url"
 	wget -q --show-progress $download_url -O $download_file
-	chmod +x rustdesk.AppImage
-	nohup ./rustdesk.AppImage &>/dev/null &
+	sudo apt install -fy "./rustdesk-$version.deb"
 }
 
 function caddyproxy () {
