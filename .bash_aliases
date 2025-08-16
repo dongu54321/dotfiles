@@ -4,7 +4,7 @@
 # fi
 alias alig='alias | grep'
 alias helpme='help-me-me | grep'
-
+alias gpt='tgpt --provider pollinations'
 #alias help-me='help-me-me'
 
 alias _xfix='xfdesktop -Q && xfdesktop -e > /tmp/xf.log 2>&1 & ; xfwm4 --replace'
@@ -55,6 +55,7 @@ alias pacupdate='sudo pacman -Sy'
 alias pacupgrade='sudo pacman -Syu'
 ##################################################
 #           ssh aliases                          #
+
 ##################################################
 ###         podman aliases
 alias _pod='/home/vugia/podman/_run.sh'
@@ -65,6 +66,9 @@ alias pocomup='podman-compose down; podman-compose up -d'
 alias pcup='podman-compose down; podman-compose up -d'
 alias pocom='podman-compose'
 alias pc='podman-compose'
+alias podlet='podman run ghcr.io/containers/podlet'
+alias pcup='podman compose up -d --force-recreate'
+alias pcpull='podman-compose pull && podman-compose down && podman-compose up -d'
 
 function pocomupdate () {
 	find ~/podman/app -mindepth 2 -maxdepth 2 -type f -iname compose -exec sh -c 'podman-compose -f "$1" pull; podman-compose -f "$1" down; podman-compose -f "$1" up -d' - {}  \;
@@ -73,7 +77,7 @@ alias polog='podman logs -f --tail 30'
 alias popsname="podman ps --format '{{.Names}}'"
 alias popsport="podman ps --format '{{.Names}} :  {{.Ports}}'"
 alias pops='podman ps --format "{{.Names}}   :  {{.Status}}  : {{.State}} : {{.RunningFor}} {{.Command}}"'
-alias pogensys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 5 --separator "" --files'
+alias pogensys='podman generate systemd --new --container-prefix "" --new --name --no-header --restart-sec 10 --separator "" --files'
 alias caddyreload='podman exec caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile'
 alias popo='podman port'
 alias popu='podman pull'
@@ -206,6 +210,21 @@ ex ()
 function ufwdel(){
 	# ufwdel 14 12 11 10 2
 	for i in $1 $2 $3 $4;do yes| sudo ufw delete "$i";done
+}
+
+ufw_allow_port_ip() {
+	local PORT="$1"
+	local IP_ADDRESS="$2"
+
+	if [ -z "$PORT" ] || [ -z "$IP_ADDRESS" ]; then
+		echo "Usage: ufw_allow_port_ip <PORT> <IP_ADDRESS>"
+		return 1
+	fi
+
+	sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
+	sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto udp
+
+	echo "Rules added for port $PORT from IP $IP_ADDRESS for TCP/UDP."
 }
 
 mp3 () {
@@ -366,8 +385,8 @@ function dotfile () {
 	git commit -a -m "$(date '+%Y-%m-%d %H:%M')"
 	git push
 }
-# shellcheck disable=SC2086
-function rustdeskapp () {
+
+function rustdeskd () {
 	cd $HOME || exit
 	if [ ! -f  $HOME/rustdesk.AppImage ]; then
 		LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
@@ -384,17 +403,17 @@ function rustdeskapp () {
 	fi
 }
 
-function rustdeskupgrade () {
+function rustdeskup () {
 	cd "$HOME" || exit
 	LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
 	release_url=$(curl -Ls -o /dev/null -w "%{url_effective}" $LATEST_RELEASE_URL)
 	version=${release_url##*/}
-	download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.deb
-	# download_url=https://github.com/rustdesk/rustdesk/releases/download/1.3.9/rustdesk-1.3.9-x86_64.deb
-	download_file=./rustdesk.deb
+	download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.AppImage
+	download_file=./rustdesk.AppImage
 	echo "Downloading $download_url"
 	wget -q --show-progress $download_url -O $download_file
-	sudo apt install -fy "./rustdesk-$version.deb"
+	chmod +x rustdesk.AppImage
+	nohup ./rustdesk.AppImage &>/dev/null &
 }
 
 function caddyproxy () {
@@ -436,6 +455,7 @@ dlv <url> :     yt-dlpp video
 dlvp <playlist url> :   yt-dlpp video playlist
 _ff   : convert all mp4 files to smaller files size
 ufwdel 14 12 11 10 4  :  delete ufw firewall multiple rules big to small number
+ufw_allow_port_ip <PORT> <IP_ADDRESS>
 podmansystemd <container>               : generate podman systemd service file
 rimdown <mod-id> :      rimworld download mod
 rimdownnew: download all new mods from clip.txx
