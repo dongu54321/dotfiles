@@ -1,1 +1,4 @@
 .config/micro/buffers/history
+.git
+README.md
+.gitignore
