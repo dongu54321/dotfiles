@@ -53,6 +53,7 @@ alias paclean='sudo pacman -Sc'
 alias paclear='sudo pacman -Scc'
 alias pacupdate='sudo pacman -Sy'
 alias pacupgrade='sudo pacman -Syu'
+alias yarm='yay -Rns'
 ##################################################
 #           ssh aliases                          #
 
@@ -138,10 +139,14 @@ alias wav2flac='soundconverter -b ./*.wav -f flac -o ./ && rm *.wav'
 #alias flacall='soundconverter -b -r ./**/ -f flac -o ./ && rm ./**/*.wav && soundconverter -b -r ./**/**/ -f flac -o ./ && rm ./**/**/*.wav'
 #alias _service='systemctl --user'
 alias sys-user='systemctl --user'
+alias service='systemctl --user'
 alias _daemon='systemctl --user daemon-reload'
 alias _restart='systemctl --user restart'
+alias restartd='systemctl --user restart'
 alias _start='systemctl --user start'
+alias startd='systemctl --user start'
 alias _stop='systemctl --user stop'
+alias stopd='systemctl --user stop'
 alias _status='systemctl --user status'
 alias _ennow='systemctl --user enable --now'
 alias _disnow='systemctl --user disable --now'
@@ -167,6 +172,7 @@ alias c='clear'
 # alias rimpy='firejail --net=none --noprofile bottles-cli run -p RimPy -b 'Game' -- %u'
 alias alie='vscodium ~/.zshrc ~/.bash_aliases'
 alias code='vscodium'
+alias codi='$HOME/.vscodium-server/bin/2ae20ed17e7533b35fc012f4ad1a156fd763afb2/bin/remote-cli/codium'
 #alias bashrc_reload='source ~/.bashrc'
 alias zshrc_reload='source ~/.zshrc'
 alias tmuxx='tmux new-session \; split-window -h \; split-window -v \; attach'
@@ -327,6 +333,13 @@ function tarscp_to_remote_xz() {
     tar -C "$1" -Jcf - ./ | ssh "$2" "tar -C $3 -Jxf -"
 }
 
+tar_backup(){
+    FILENAME=$1-$(date '+%Y-%m-%d')
+    echo creating backup $FILENAME.tar.zst.gpg
+    tar -I 'zstd -T2 -7' -cf - --exclude-caches --exclude-backups \
+        --exclude='*cache*' --exclude='*Cache*' --exclude='*tmp*' $1 | gpg -o- -c --batch \
+        --passphrase "MoMo6789\!@#" | split -d -b 2000m - $FILENAME.tar.zst.gpg.
+}
 #########################################
 #			setfacl
 function _acl() {
@@ -461,6 +474,7 @@ rimdown <mod-id> :      rimworld download mod
 rimdownnew: download all new mods from clip.txx
 rimupdate-shutdown:  update mods and shutdown
 steamdown <app-id> <mod-id> :           download steam workshop
+tar_backup {Folder}
 tarscp_from_remote {remote_host} {remote_dir_path} {local_dir_path}
 tarscp_to_remote {local_dir_path} {remote_host} {remote_dir_path}
 tarscp_from_remote_xz {remote_host} {remote_dir_path} {local_dir_path}
