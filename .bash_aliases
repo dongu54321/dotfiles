@@ -176,7 +176,9 @@ alias codi='$HOME/.vscodium-server/bin/2ae20ed17e7533b35fc012f4ad1a156fd763afb2/
 #alias bashrc_reload='source ~/.bashrc'
 alias zshrc_reload='source ~/.zshrc'
 alias tmuxx='tmux new-session \; split-window -h \; split-window -v \; attach'
-
+alias tmux-6='tmux new-session \; split-window -h \; split-window -v -p 66 \; split-window -v \; select-pane -t 0 \; split-window -v -p 66 \; split-window -v \;'
+alias tmux-2v='tmux new-session \; split-window -v \;'
+alias tmux-2h='tmux new-session \; split-window -h \;'
 export EDITOR=micro
 export PATH=$HOME/.local/bin:$PATH
 export PATH=/home/vugia/scripts/bin:$PATH
