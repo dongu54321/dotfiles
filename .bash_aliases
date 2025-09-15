@@ -222,18 +222,19 @@ function ufwdel(){
 }
 
 ufw_allow_port_ip() {
-	local PORT="$1"
-	local IP_ADDRESS="$2"
+    local PORT="$1"
+    shift  # Shift arguments so "$@" contains only IP addresses
 
-	if [ -z "$PORT" ] || [ -z "$IP_ADDRESS" ]; then
-		echo "Usage: ufw_allow_port_ip <PORT> <IP_ADDRESS>"
-		return 1
-	fi
+    if [ -z "$PORT" ] || [ "$#" -eq 0 ]; then
+        echo "Usage: ufw_allow_port_ip <PORT> <IP_ADDRESS1> [IP_ADDRESS2] [...]"
+        return 1
+    fi
 
-	sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
-	sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto udp
-
-	echo "Rules added for port $PORT from IP $IP_ADDRESS for TCP/UDP."
+    for IP_ADDRESS in "$@"; do
+        sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
+        sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto udp
+        echo "Rules added for port $PORT from IP $IP_ADDRESS for TCP/UDP."
+    done
 }
 
 mp3 () {
