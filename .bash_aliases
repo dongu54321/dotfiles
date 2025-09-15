@@ -223,17 +223,63 @@ function ufwdel(){
 
 ufw_allow_port_ip() {
     local PORT="$1"
-    shift  # Shift arguments so "$@" contains only IP addresses
+    local PROTOCOL="$2"
+    shift 2  # Shift so "$@" now contains only IP addresses
 
-    if [ -z "$PORT" ] || [ "$#" -eq 0 ]; then
-        echo "Usage: ufw_allow_port_ip <PORT> <IP_ADDRESS1> [IP_ADDRESS2] [...]"
+    if [ -z "$PORT" ] || [ -z "$PROTOCOL" ] || [ "$#" -eq 0 ]; then
+        echo "Usage: ufw_allow_port_ip <PORT> <tcp|udp|both> <IP_ADDRESS1> [IP_ADDRESS2] [IP_ADDRESSn...]"
         return 1
     fi
 
     for IP_ADDRESS in "$@"; do
-        sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
-        sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto udp
-        echo "Rules added for port $PORT from IP $IP_ADDRESS for TCP/UDP."
+        case "$PROTOCOL" in
+            tcp)
+                sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
+                ;;
+            udp)
+                sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto udp
+                ;;
+            both)
+                sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
+                sudo ufw allow from "$IP_ADDRESS" to any port "$PORT" proto udp
+                ;;
+            *)
+                echo "Invalid protocol: $PROTOCOL. Use 'tcp', 'udp', or 'both'."
+                return 1
+                ;;
+        esac
+        echo "Rules added for port $PORT from IP $IP_ADDRESS for $PROTOCOL."
+    done
+}
+
+ufw_delete_port_ip() {
+    local PORT="$1"
+    local PROTOCOL="$2"
+    shift 2  # Shift so "$@" now contains only IP addresses
+
+    if [ -z "$PORT" ] || [ -z "$PROTOCOL" ] || [ "$#" -eq 0 ]; then
+        echo "Usage: ufw_delete_port_ip <PORT> <tcp|udp|both> <IP_ADDRESS1> [IP_ADDRESS2] [IP_ADDRESSn...]"
+        return 1
+    fi
+
+    for IP_ADDRESS in "$@"; do
+        case "$PROTOCOL" in
+            tcp)
+                sudo ufw delete allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
+                ;;
+            udp)
+                sudo ufw delete allow from "$IP_ADDRESS" to any port "$PORT" proto udp
+                ;;
+            both)
+                sudo ufw delete allow from "$IP_ADDRESS" to any port "$PORT" proto tcp
+                sudo ufw delete allow from "$IP_ADDRESS" to any port "$PORT" proto udp
+                ;;
+            *)
+                echo "Invalid protocol: $PROTOCOL. Use 'tcp', 'udp', or 'both'."
+                return 1
+                ;;
+        esac
+        echo "Rules deleted for port $PORT from IP $IP_ADDRESS for $PROTOCOL."
     done
 }
 
