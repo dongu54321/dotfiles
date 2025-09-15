@@ -16,7 +16,7 @@ alias _bashrc='micro /home/vugia/.bashrc'
 alias _clip='mousepad /home/vugia/clip.txt'
 alias _aria2c='aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all >/dev/null 2>&1 &'
 alias _vmware='sudo modprobe -a vmw_vmci vmmon'
-alias _clear='find ~/.cache/ -type f -atime +7 -delete;sudo pamac clean --keep 1;sudo pamac remove -o;sudo pacman -R $(pacman -Qtdq);'
+alias _clear='find ~/.cache/ -type f -atime +7 -delete;paccache -rk1;sudo pacman -R $(pacman -Qtdq);'
 alias _pac-cache='sudo paccache -rk1; sudo paccache -ruk0'
 #alias _pulse='systemctl restart --user pulseaudio'
 alias _logs='sudo journalctl --since "5 minutes ago"'
@@ -41,11 +41,16 @@ alias funcl_dis='bluetoothctl -- disconnect 00:00:00:AA:15:26'
 alias bluehelp='bluetoothctl -- help'
 
 alias phone-remote='scrcpy --video-codec=h265 --max-size=2000 --max-fps=75 --turn-screen-off --power-off-on-close --no-audio -K &>/dev/null &'
+alias cromite-operavpn='cromite --proxy-server="http://momoin.duckdns.org:18880"'
+alias cromite-protonvpn='cromite --proxy-server="socks5://momoin.duckdns.org:18888"'
+alias cromite-warpvpn='cromite --proxy-server="socks5://momoin.duckdns.org:18886"'
+alias brave-warpvpn='brave --user-data-dir="/home/vugia/.config/brave/ProxyWarp" --proxy-server="socks5://momoin.duckdns.org:18888"'
+alias brave-protonvpn='/usr/bin/brave --user-data-dir=/home/vugia/.config/brave/protonvpn --proxy-server=socks5://momoin.duckdns.org:18888'
+alias brave-operavpn='/usr/bin/brave --user-data-dir=/home/vugia/.config/brave/operavpn --proxy-server=http://momoin.duckdns.org:18880'
 #################################################
 ###       PACMAN
 alias pacinstall='sudo pacman -S'
 alias pacin='sudo pacman -S'
-alias pacadd='sudo pacman -S'
 alias pacrm='sudo pacman -R'
 alias pacrms='sudo pacman -Rs'
 alias pacremove='sudo pacman -R'
@@ -141,7 +146,9 @@ alias wav2flac='soundconverter -b ./*.wav -f flac -o ./ && rm *.wav'
 #alias _service='systemctl --user'
 alias sys-user='systemctl --user'
 alias service='systemctl --user'
+alias serviced='systemctl --user'
 alias _daemon='systemctl --user daemon-reload'
+alias daemond='systemctl --user daemon-reload'
 alias _restart='systemctl --user restart'
 alias restartd='systemctl --user restart'
 alias _start='systemctl --user start'
@@ -152,7 +159,8 @@ alias _status='systemctl --user status'
 alias _ennow='systemctl --user enable --now'
 alias _disnow='systemctl --user disable --now'
 alias _journal='journalctl --user -xeu'
-alias _history='history -c && echo clear > ~/.bash_history'
+alias journald='journalctl --user -xeu'
+# alias _history='history -c && echo clear > ~/.bash_history'
 #alias _functl='typeset -F | grep '
 
 alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
@@ -182,8 +190,9 @@ alias tmux-2v='tmux new-session \; split-window -v \;'
 alias tmux-2h='tmux new-session \; split-window -h \;'
 export EDITOR=micro
 export PATH=$HOME/.local/bin:$PATH
-export PATH=/home/vugia/scripts/bin:$PATH
+export PATH=$HOME/scripts/bin:$PATH
 export PATH=$HOME/Applications:$PATH
+export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/share/RimSort/instances/Default/steamcmd:$PATH
 # export HISTIGNORE='*6789*'
 # export HISTORY_IGNORE="(*6789*|cd|pwd|exit)"
