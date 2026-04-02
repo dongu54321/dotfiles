@@ -62,6 +62,7 @@ alias pacupgrade='sudo pacman -Syu'
 alias yarm='yay -Rns'
 ##################################################
 #           ssh aliases                          #
+alias rsync-ssh-cp='rsync -av --progress'
 
 ##################################################
 ###         podman aliases
@@ -133,6 +134,9 @@ alias botcli="nohup firejail --net=none --noprofile bottles-cli run -b 'Game2' -
 alias LE="nohup firejail --net=none --noprofile bottles-cli run -p 'Last Epoch' -b 'Game2' &>/dev/null &"
 alias valheim="nohup firejail --net=none --noprofile bottles-cli run -p 'valheim' -b 'Game2' &>/dev/null &"
 #alias rimt='sleep 7s && taskset -pac 0,1,2,3,4,5 $(pidof RimWorldWin64.exe) &>/dev/null'
+alias pob="bottles-cli run -p 'Path of Building' -b 'Game2' &>/dev/null &"
+alias poe="bottles-cli run -p PathOfExile -b 'Game2' &>/dev/null &"
+alias ffpoe="firefox -p POE"
 ##################################################
 #### systems and app
 export RMM_PATH="$HOME/Downloads/Rimworld-jc141/files/game-root/Mods"
@@ -414,8 +418,29 @@ function search-replace-all () {
 	if [ "$#" -ne 2 ]; then echo "Usage: search-replace-all <search text> <replacetext>" >&2; return; fi
 	grep -RiIl "$1" | xargs sed -i "s|$1|$2|g"
 }
+search_and_replace() {
+  if [ $# -ne 2 ]; then
+    echo "Usage: search_and_replace <search_string> <replace_string>"
+    return 1
+  fi
 
+  local search="$1"
+  local replace="$2"
 
+  # Loop over all files (regular files) in current directory
+  for file in *; do
+    if [ -f "$file" ]; then
+      # Use sed to do in-place replace, handle different sed versions
+      # For GNU sed:
+      if sed --version >/dev/null 2>&1; then
+        sed -i "s/${search//\//\\/}/${replace//\//\\/}/g" "$file"
+      else
+        # For macOS/BSD sed
+        sed -i "" "s/${search//\//\\/}/${replace//\//\\/}/g" "$file"
+      fi
+    fi
+  done
+}
 #########################################
 #			nebula
 
@@ -487,7 +512,17 @@ function rustdeskup () {
 	chmod +x rustdesk.AppImage
 	nohup ./rustdesk.AppImage &>/dev/null &
 }
-
+function rustdeskinstall () {
+	cd "$HOME" || exit
+	LATEST_RELEASE_URL=https://github.com/rustdesk/rustdesk/releases/latest
+	release_url=$(curl -Ls -o /dev/null -w "%{url_effective}" $LATEST_RELEASE_URL)
+	version=${release_url##*/}
+	download_url=https://github.com/rustdesk/rustdesk/releases/download/$version/rustdesk-$version-x86_64.deb
+	download_file=./rustdesk.deb
+	echo "Downloading $download_url"
+	wget -q --show-progress $download_url -O $download_file
+	sudo apt install -fy ./rustdesk.deb
+}
 function caddyproxy () {
 	if [ "$#" -ne 2 ]; then echo "Usage: caddyproxy <app> <localhost:port>" >&2; return; fi
 	local APP=$1
