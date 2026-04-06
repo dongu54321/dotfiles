@@ -2,3 +2,5 @@
 .git
 README.md
 .gitignore
+.gitconfig
+.env

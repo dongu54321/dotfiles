@@ -174,6 +174,7 @@ alias uresta='systemctl --user restart'
 alias usta='systemctl --user start'
 alias usto='systemctl --user stop'
 alias ustat='systemctl --user status'
+alias ucat='systemctl --user cat'
 alias uennow='systemctl --user enable --now'
 alias udisnow='systemctl --user disable --now'
 alias urestartall='restart_container_services'
@@ -625,3 +626,4 @@ restart_container_services() {
         systemctl --user restart "$svc"
     done
 }
+alias mux='tmuxinator'
