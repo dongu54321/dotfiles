@@ -110,6 +110,8 @@ alias poxit='podman exec --interactive --tty'
 alias posear='podman search'
 alias posec='podman secret'
 alias postat='podman stats'
+alias postat-cpu='docker stats --no-stream --format "table {{.Name}}\t{{.Container}}\t{{.MemUsage}}" | sort -k 3 -h '
+alias postat-ram='docker stats --no-stream --format "table {{.Name}}\t{{.Container}}\t{{.MemUsage}}" | sort -k 4 -h '
 alias authelia=' podman run --rm -v ~/podman/app/authelia/config:/config -v ~/podman/app/authelia/secrets:/secrets docker.io/authelia/authelia authelia'
 alias autheliad=' podman run --rm -v ~/momopod/app/authelia/config:/config -v ~/momopod/app/authelia/secrets:/secrets docker.io/authelia/authelia authelia'
 ##################################################
@@ -148,7 +150,7 @@ alias download_gecko='wget https://github.com/mozilla/geckodriver/releases/downl
 alias wav2flac='soundconverter -b ./*.wav -f flac -o ./ && rm *.wav'
 #alias flacall='soundconverter -b -r ./**/ -f flac -o ./ && rm ./**/*.wav && soundconverter -b -r ./**/**/ -f flac -o ./ && rm ./**/**/*.wav'
 #alias _service='systemctl --user'
-alias sys-user='systemctl --user'
+alias user='systemctl --user'
 alias service='systemctl --user'
 alias serviced='systemctl --user'
 alias _daemon='systemctl --user daemon-reload'
@@ -164,6 +166,17 @@ alias _ennow='systemctl --user enable --now'
 alias _disnow='systemctl --user disable --now'
 alias _journal='journalctl --user -xeu'
 alias journald='journalctl --user -xeu'
+
+
+alias udae='systemctl --user daemon-reload'
+alias udare='systemctl --user daemon-reload'
+alias uresta='systemctl --user restart'
+alias usta='systemctl --user start'
+alias usto='systemctl --user stop'
+alias ustat='systemctl --user status'
+alias uennow='systemctl --user enable --now'
+alias udisnow='systemctl --user disable --now'
+alias urestartall='restart_container_services'
 # alias _history='history -c && echo clear > ~/.bash_history'
 #alias _functl='typeset -F | grep '
 
@@ -593,8 +606,22 @@ lldap-cli user update set john.smith@example.com password hunter2password
 lldap-cli group add "jellyfin-users"
 ### lldap Add to group
 lldap-cli user group add jsmith "jellyfin-users"
+restart_container_services
 '
 }
 
 alias screenoff='xset -display :0.0 dpms force off; read ans; xset -display :0.0 dpms force on'
 export "MICRO_TRUECOLOR=1"
+
+restart_container_services() {
+    local services=()
+    while IFS= read -r -d '' file; do
+        local name
+        name=$(basename "$file" .container)
+        services+=("$name")
+    done < <(find . -type f -name "*.container" -print0)
+    for svc in "${services[@]}"; do
+        echo "Restarting service: $svc"
+        systemctl --user restart "$svc"
+    done
+}

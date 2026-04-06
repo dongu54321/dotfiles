@@ -59,7 +59,7 @@ bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
 # History
-HISTSIZE=7777
+HISTSIZE=17777
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
@@ -82,8 +82,11 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
-if [ -f ~/.debian_aliases ]; then
-    source ~/.debian_aliases
+#debian alias
+if [ -f /bin/apt-get ]; then
+  if [ -f ~/.debian_aliases ]; then
+      source ~/.debian_aliases
+  fi
 fi
 #Tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
@@ -104,7 +107,7 @@ if [ -f /bin/apt-get ]; then
 elif [ -f /bin/pacman ]; then
   eval "$(zoxide init zsh)"
 fi
-export HISTORY_IGNORE="(*6789*|*password*|*secret*|*hash*|*authereg*|*password*)"
+export HISTORY_IGNORE="(*168*|*6789*|*password*|*secret*|*hash*|*authereg*|*password*)"
 
 function downloadzen () {
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
