@@ -1,6 +1,7 @@
-.config/micro/buffers/history
-.git
-README.md
-.gitignore
-.gitconfig
-.env
+\.config/micro/buffers/history
+^/README.*
+^/LICENSE.*
+\.gitconfig
+\.env
+\.git
+\.gitignore
