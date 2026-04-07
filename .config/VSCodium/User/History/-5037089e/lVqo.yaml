@@ -1,0 +1,23 @@
+#---------------------------------------------------------------------#
+#     Jellyfin .     #
+#---------------------------------------------------------------------#
+services:
+  homarr:
+    container_name: jellyfin
+    image: lscr.io/linuxserver/jellyfin
+    restart: always
+    networks:
+      - momonet
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - ./configs:/configs
+      - ./servarr:/servarr
+    # ports:
+    #   - '7575:7575'
+
+networks:
+  momonet:
+    external: true

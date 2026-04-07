@@ -1,0 +1,11 @@
+[Unit]
+Description=Weekly script to maintain systems
+# Requires=qbit-tracker-add.service
+
+[Timer]
+OnCalendar=weekly
+RandomizedDelaySec=120
+Persistent=true
+
+[Install]
+WantedBy=timers.target

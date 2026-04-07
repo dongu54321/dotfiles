@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName = "Mech_Logistic"]/statBases/CaravanRidingSpeedFactor</xpath>
+		<value>
+			<CaravanRidingSpeedFactor>1.5</CaravanRidingSpeedFactor>
+		</value>
+	</Operation>
+	<!-- Seperate operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName = "Mech_Logistic"]/statBases/BandwidthCost</xpath>
+		<value>
+			<BandwidthCost>1</BandwidthCost>
+		</value>
+	</Operation>
+	<!-- Seperate operation -->
+</Patch>

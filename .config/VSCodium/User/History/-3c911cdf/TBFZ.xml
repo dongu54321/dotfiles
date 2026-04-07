@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<!-- Change tree layer to pawn so trees hide pawns, item and buildings -->
+
+    <!-- <Operation Class="PatchOperationAdd">
+         <xpath>Defs/ThingDef[defName="Plant_TreeAnima" or defName="Plant_TreeBamboo" or defName="Plant_TreeBirch" or defName="Plant_TreeCecropia" or defName="Plant_TreeCocoa" or defName="Plant_TreeCypress" or defName="Plant_TreeDrago" or defName="Plant_TreeGauranlen" or defName="Plant_TreeGrayPine" or defName="Plant_TreeMaple" or defName="Plant_TreeOak" or defName="Plant_TreePalm" or defName="Plant_TreePine" or defName="Plant_TreePolux" or defName="Plant_TreePoplar" or efName="Plant_TreeTeak" or defName="Plant_TreeWillow" or defName="BurnedTree" or defName="Plant_Witchwood" or defName="Plant_RatPalm"]</xpath>		 
+		    <value>
+                <altitudeLayer>Pawn</altitudeLayer>
+			</value>
+    </Operation> -->
+	
+	<!-- Change size of trees scale -->
+	
+	<Operation Class= "PatchOperationSequence">
+		<operations>
+		
+	<!-- Core Trees -->
+		
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreePalm"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~3.0</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeCecropia"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~3.9</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeBamboo"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeBirch"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~4.5</visualSizeRange>
+				</value>
+			</li>	
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeDrago"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~4.3</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeMaple"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~5.2</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeOak"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~4.2</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationAdd" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreePoplar"]/plant[not(visualSizeRange)]</xpath>
+				<value>
+					<visualSizeRange>1.5~4.5</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeCocoa"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.9</visualSizeRange>
+				</value>
+			</li>	
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeCypress"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.2</visualSizeRange>
+				</value>
+			</li>
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeTeak"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.1</visualSizeRange>
+				</value>
+			</li>	
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreeWillow"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.1</visualSizeRange>
+				</value>
+			</li>	
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld">
+				<xpath>Defs/ThingDef[defName="Plant_TreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.3</visualSizeRange>
+				</value>
+			</li>
+
+	<!-- Royalty trees -->
+	
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld.royalty">
+				<xpath>Defs/ThingDef[defName="Plant_TreeAnima"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.8</visualSizeRange>
+				</value>
+			</li>
+			
+	<!-- Ideology trees -->
+				
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld.ideology">
+				<xpath>Defs/ThingDef[defName="Plant_TreeGauranlen"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.8</visualSizeRange>
+				</value>
+			</li>
+			
+	<!-- Biotech trees -->
+				
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld.biotech">
+				<xpath>Defs/ThingDef[defName="Plant_TreeGrayPine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.5</visualSizeRange>
+				</value>
+			</li>	
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld.biotech">
+				<xpath>Defs/ThingDef[defName="Plant_TreePolux"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>		
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld.biotech">
+				<xpath>Defs/ThingDef[defName="Plant_Witchwood"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>	
+			<li Class= "PatchOperationReplace" MayRequire="ludeon.rimworld.biotech">
+				<xpath>Defs/ThingDef[defName="Plant_RatPalm"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.6</visualSizeRange>
+				</value>
+			</li>					
+		</operations>		
+	</Operation>	
+			
+</Patch>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- Reduce Cost -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/AlienRace.ThingDef_AlienRace[defName = "Kurin_Race"]/alienRace/generalSettings/alienPartGenerator/customDrawSize</xpath>
+				<value>
+					<customDrawSize>(1.3, 1.3)</customDrawSize>
+				</value>
+			</li>
+		</operations>
+	</Operation> -->
+
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationReplace" MayRequire="seioch.kurin.har"> <!-- Only runs if Kurin HAR Edition is active -->
+				<xpath>Defs/AlienRace.ThingDef_AlienRace[defName = "Kurin_Race"]/alienRace/generalSettings/alienPartGenerator/customDrawSize</xpath>
+				<value>
+					<customDrawSize>(1.3, 1.3)</customDrawSize>
+				</value>
+			</li>
+			
+		</operations>
+	</Operation>
+</Patch>

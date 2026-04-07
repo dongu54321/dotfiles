@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<!-- unfinished Painting-->
+	<ThingDef ParentName="UnfinishedBase">
+		<defName>AV_UnfinishedPainting</defName>
+		<label>unfinished painting</label>
+		<description>An unfinished painting.</description>
+		<statBases>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Building/AV_WallArt/Painting_UIIcon</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<stuffCategories Inherit="false" />
+	</ThingDef>
+	
+ 	<!-- wall paintings -->
+	<ThingDef ParentName="ArtBuildingBase">
+		<defName>AV_WallArt</defName>
+		<label>painting</label>
+		<description>An artistic painting on a wooden frame.</description>
+		<rotatable>true</rotatable>
+		<minifiedDef>MinifiedThing</minifiedDef>
+		<thingSetMakerTags><li>RewardStandardLowFreq</li></thingSetMakerTags>
+		<thingCategories>
+			<li>BuildingsArt</li>
+		</thingCategories>
+		<statBases>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Mass>1</Mass>
+			<Beauty>40</Beauty>
+			<WorkToMake>18000</WorkToMake>
+			<StyleDominance MayRequire="Ludeon.RimWorld.Ideology">10</StyleDominance>
+			<SellPriceFactor>1.10</SellPriceFactor>
+		</statBases>
+		<recipeMaker>
+			<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+			<workSkill>Artistic</workSkill>
+			<unfinishedThingDef>AV_UnfinishedPainting</unfinishedThingDef>
+			<effectWorking>Sculpt</effectWorking>
+			<soundWorking>Recipe_Brewing</soundWorking> <!-- Recipe_Sculpt  -->
+			<recipeUsers>
+				<li>TableSculpting</li>
+			</recipeUsers>
+		</recipeMaker>
+		<costList>
+			<WoodLog>5</WoodLog>
+			<Cloth>30</Cloth>
+			<Dye>2</Dye>
+		</costList>
+		<graphicData>
+			<texPath>Things/Building/AV_WallArt/Painting</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawOffsetNorth>(0,0,0.9)</drawOffsetNorth>
+			<drawOffsetSouth>(0,0,-0.9)</drawOffsetSouth>
+			<drawOffsetWest>(-0.9,0,0)</drawOffsetWest>
+			<drawOffsetEast>(0.9,0,0)</drawOffsetEast>
+			<damageData>
+				<enabled>false</enabled>
+			</damageData>
+		</graphicData>
+		<tradeTags>
+			<li>Art</li>
+		</tradeTags>
+		<uiIconPath>Things/Building/AV_WallArt/Painting_UIIcon</uiIconPath>	<!-- new -->
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<overrideMinifiedRot>North</overrideMinifiedRot>	<!-- new -->
+		<minifiedDrawOffset>(0, 0, 0.2)</minifiedDrawOffset>	<!-- new -->
+		<building>
+			<isEdifice>false</isEdifice>
+			<isAttachment>true</isAttachment>
+			<paintable>true</paintable>
+		</building>
+		<placeWorkers>
+			<li>Placeworker_AttachedToWall</li>
+			<li>PlaceWorker_MeditationOffsetBuildingsNear</li>
+		</placeWorkers>	
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li>
+				<compClass>CompColorable</compClass>
+			</li>
+			<li Class="AV_WallPaintings.CompProperties_Painted"/>
+			<li Class="CompProperties_Art">
+				<nameMaker>NamerArtSculpture</nameMaker>
+				<descriptionMaker>ArtDescription_WallPainting</descriptionMaker>
+				<canBeEnjoyedAsArt>true</canBeEnjoyedAsArt>
+			</li>
+		</comps>
+		<clearBuildingArea>true</clearBuildingArea>
+		<defaultPlacingRot>South</defaultPlacingRot>				
+		<leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+		<placingDraggableDimensions>0</placingDraggableDimensions>
+		<selectable>true</selectable>
+		<neverMultiSelect>false</neverMultiSelect>
+		<designationHotKey>Misc2</designationHotKey>
+	</ThingDef>
+
+	<!-- art description -->
+	<RulePackDef>
+		<defName>ArtDescription_WallPainting</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>physical_description_root->This [painting] [depicts] [image]. [desc_sentence_group]</li>
+				<li>physical_description_root->This [painting] bears a [depiction] of [image]. [desc_sentence_group]</li>
+				<li>physical_description_root->On this [painting] is a [depiction] of [image]. [desc_sentence_group]</li>
+				<li>painting->painting</li>
+				<li>painting->work</li>
+				<li>painting->piece</li>
+				<li>painting->picture</li>
+				<li>painting->illustration</li>
+				<li>painting->image</li>
+				<li>painting->sketch</li> 
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+
+
+</Defs>

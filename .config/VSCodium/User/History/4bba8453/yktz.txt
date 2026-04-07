@@ -1,0 +1,3 @@
+requests
+bs4
+# vinorm pip install git+https://github.com/AiEmStylix/Vinorm

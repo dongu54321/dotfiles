@@ -1,0 +1,5 @@
+[Unit]
+Description="Run curl ntfy to send alert"
+
+[Service]
+ExecStart=/usr/bin/curl -H "Title: Passwd Changed " -H "Tags: warning,skull" -H "Priority: low" -d "Attention Act Immediately" ntfy.sh/momoin_vip

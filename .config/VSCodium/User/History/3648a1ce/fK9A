@@ -1,0 +1,45 @@
+# {
+# 	# do not attempt to install certs on the docker container
+# 	skip_install_trust
+# }
+# (localTLS) {
+# 	tls internal {
+# 		on_demand
+# 	}
+# }
+
+(localHostOnly) {
+	@localHostOnly remote_ip 127.0.0.1
+}
+
+(localSubnets) {
+	@localSubnets remote_ip private_ranges
+}
+
+# :443 {
+# 	import localTLS
+# 	respond "Hello, https world!"
+# }
+
+:80 {
+	respond "Hello, world!"
+}
+
+# (duckdns) {
+# 	header / Strict-Transport-Security "max-age=15552000;"
+# 	tls /data/ssl/fullchain.pem /data/ssl/privkey.pem
+# }
+
+# (duckdns) {
+# 	header / Strict-Transport-Security "max-age=15552000;"
+#     tls {
+#         dns duckdns 6fec108e-f354-412d-8ed6-ae99e40e9209
+#     }
+# }
+
+import /etc/caddy/conf.d/*
+
+# https://*.momoin.duckdns.org {
+# 	tls /data/ssl/fullchain.pem /data/ssl/privkey.pem
+# 	import *.caddyfile
+# }

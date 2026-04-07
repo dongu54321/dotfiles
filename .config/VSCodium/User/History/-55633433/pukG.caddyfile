@@ -1,0 +1,7 @@
+youtube.moinin.duckdns.org {
+	#import duckdns
+	reverse_proxy 127.0.0.1:3016
+	log {
+		output discard
+	}
+}

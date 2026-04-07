@@ -1,0 +1,10 @@
+help me build a web ai chat app using python flask and pollinations lib. the web should have a beautiful scifi theme, responsive design. The web chat is capable of generate both text and image with an option to switch between. I want to have a Options to change ai role. an button to download entire conversation. It should support code preview and a copy button below code snippet to easily copy code. add an options to create new chat on left side and save old conversation below that as a list. An options to change models to
+<option value="mistral">Mistral</option>
+                    <option value="openai">OpenAI GPT-4.1 Nano</option>
+                    <option value="openai-large">OpenAI GPT-4.1</option>
+                    <option value="gpt-5-nano">OpenAI GPT-5 Nano</option>
+                    <option value="llamascout">Llama 4 Scout 17</option>
+                    <option value="qwen-coder">Qwen 2.5 Coder 32B</option>
+                    <option value="nova-fast">Amazon Nova Micro (Bedrock)</option>
+                    <option value="deepseek-reasoning">DeepSeek R1 0528 (Vertex AI)</option>
+                    <option value="glm">GLM-4 9B Chat (Intelligence.io)</option>

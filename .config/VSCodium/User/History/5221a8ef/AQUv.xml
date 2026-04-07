@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="AFBase_MechFox">
+    <defName>AF_FireFox</defName>
+    <label>fire fox</label>
+    <!-- 机械焰狐 -->
+    <description>A medium mechanoid shaped like a fox. Designed to deal with enemy attacks in dangerous environments.
+    \nCompared to the spirituel fox, the fire fox is not only equipped with more powerful plasteel teeth, but also has a contact arc emitter integrated in its jaw, which can break through the energy compensation mechanism of the mechanoids with just one attack. That's enough to shut down a super-heavy mechanoid.
+    \nTo give the machine battlefield resilience, the robot even has two additional subcore -- designed to judge its surroundings and predict enemy movements. It is also equipped with an efficient "space tensor field shield" and "tail ejector", which simulates a fiery tail to effectively deter enemies.
+    \nIn addition, it can also carry items with simple algorithms and automatic buckles on its back, or chew down some trees.
+    \n\n&lt;color=#808080&gt;It'll even try to be intimate! A mechanical fox five feet long!&lt;/color&gt;
+    \n&lt;color=#808080&gt; — - — Amli·Aras&lt;/color&gt;</description>
+    <!-- 一只大型的、外形酷似狐狸的仿生机械体，被设计用来在危险环境下处理敌袭。
+    \n比起机械灵狐，机械焰狐不但装备了更强大的玻璃钢利齿，其下颚还集成了接触式电弧发射器，可以仅凭一次攻击便突破机械族的能量补偿机制，使重型的杀人机械强制停机。
+    \n为了赋予机体更强的战场应变能力，机械焰狐甚至拥有两只额外的次生核心——专用于判断四周情况和预测敌人动作。更配备了高效率的空间张量场护盾与尾部喷射器，后者模拟出的烈焰尾巴能够有效威慑敌人。
+    \n除此之外，它还能通过简单的算法与背部的自动卡扣来搬运一些物品，或是啃倒一些树木。 -->
+    <!-- 它甚至会撒娇！一只五英尺长、会撒娇的机械大狐狸！ -->
+    <descriptionHyperlinks>
+        <HediffDef>AFEP_FireFox</HediffDef>
+    </descriptionHyperlinks>
+    <statBases>
+        <MarketValue>4240</MarketValue>
+        <MoveSpeed>6.16</MoveSpeed>
+        <ComfyTemperatureMin>-200</ComfyTemperatureMin>
+        <ComfyTemperatureMax>120</ComfyTemperatureMax>
+        <ArmorRating_Sharp>0.80</ArmorRating_Sharp>
+        <ArmorRating_Blunt>0.35</ArmorRating_Blunt>
+        <ArmorRating_Heat>2.00</ArmorRating_Heat>
+        <!-- The following is the content of Biotech -->
+        <BandwidthCost>3</BandwidthCost>
+        <ControlTakingTime>8</ControlTakingTime>
+        <MechEnergyLossPerHP>0.10</MechEnergyLossPerHP>
+        <WastepacksPerRecharge>3</WastepacksPerRecharge>
+        <!-- And some performance tweaks. -->
+        <MeleeDodgeChance>20</MeleeDodgeChance>
+        <EnergyShieldRechargeRate>1</EnergyShieldRechargeRate>
+    </statBases>
+    <butcherProducts>
+        <Steel>50</Steel>
+        <Plasteel>40</Plasteel>
+        <ComponentIndustrial>2</ComponentIndustrial>
+    </butcherProducts>
+    <race>
+        <body>AFBody_FireFox</body>
+        <!-- AFBody_SpirituelFox -->
+        <mechWeightClass>Medium</mechWeightClass>
+        <!-- Medium: Consume 3 bandwidth. -->
+        <baseBodySize>1.20</baseBodySize>
+        <baseHealthScale>4.0</baseHealthScale>
+        <!-- Big fox. -->
+        <mechEnabledWorkTypes>
+            <li>Hauling</li>
+            <li>PlantCutting</li>
+        </mechEnabledWorkTypes>
+    </race>
+    <tools>
+        <li>
+            <label>Plasteel Teeth</label>
+            <!-- 利齿 -->
+            <capacities>
+                <li>Cut</li>
+            </capacities>
+            <power>31</power>
+            <cooldownTime>1.5</cooldownTime>
+            <armorPenetration>0.55</armorPenetration>
+            <chanceFactor>1.0</chanceFactor>
+            <extraMeleeDamages>
+                <li>
+                    <def>EMP</def>
+                    <amount>72</amount>
+                </li>
+            </extraMeleeDamages>
+            <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+            <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        </li>
+    </tools>
+    <comps>
+        <li Class="AFAS_MechFox.Comp_FireFoxShield" />
+    </comps>
+    <damageMultipliers>
+        <li>
+            <damageDef>Bomb</damageDef>
+            <multiplier>0.25</multiplier>
+        </li>
+        <li>
+            <damageDef>BombSuper</damageDef>
+            <multiplier>0.05</multiplier>
+        </li>
+        <li>
+            <damageDef>Flame</damageDef>
+            <multiplier>0.00</multiplier>
+        </li>
+    </damageMultipliers>
+    <uiIconPath>AFUI/FireFox</uiIconPath>
+    <uiIconScale>2</uiIconScale>
+</ThingDef>
+
+</Defs>

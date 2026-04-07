@@ -1,0 +1,379 @@
+#---------------------------------------------------------------------#
+#     Homarr - A simple, yet powerful dashboard for your server.     #
+#---------------------------------------------------------------------#
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:0.15.3
+    restart: always
+    networks:
+      - momonet
+    environment:
+      - AUTH_OIDC_URI=https://auth.momoruru.duckdns.org
+      - AUTH_PROVIDER=oidc
+    volumes:
+      - ./configs:/app/data/configs
+      - ./icons:/app/public/icons
+      - ./data:/data
+    # ports:
+    #   - '7575:7575'
+
+networks:
+  momonet:
+    external: true
+
+
+
+
+version: "3.8"
+#Libreddit: 127.0.0.1:50080
+#invidious: 127.0.0.1:50003
+#changedetection.io: 127.0.0.1:50000
+#homepage; 127.0.0.1:50300
+#Jellyfin: 127.0.0.1:58096
+####Trilium: 127.0.0.1:58080
+#Jackett: 127.0.0.1:9117
+# deluge 127.0.0.1:8112:8112
+# deluge inbound- 127.0.0.1:6881:6881
+#Radarr: 127.0.0.1:7878:7878
+#Sonarr 127.0.0.1:8989
+#bazarr: 127.0.0.1:6767
+#Prowlarr 127.0.0.1:9696:9696
+#Neko 127.0.0.1:8080:8080
+services:
+  # docker run -d -p 127.0.0.1:8000:8000 -v /var/run/docker.sock:/var/run/docker.sock -v ~/docker/appdata/yacht:/config --name yacht selfhostedpro/yacht
+  # yacht:
+  #   container_name: yacht
+  #   restart: unless-stopped
+  #   ports:
+  #     - "127.0.0.1:8000:8000"
+  #   volumes:
+  #     - ./appdata/yacht:/config
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   image: selfhostedpro/yacht
+
+  invidious:
+    #image: quay.io/invidious/invidious:latest
+    image: quay.io/invidious/invidious:75c4c0b349cfa7bb9904824b268bc930911399da-arm64
+    container_name: invidious
+    restart: always
+    ports:
+      - "127.0.0.1:50003:3000"
+    environment:
+      # Please read the following file for a comprehensive list of all available
+      # configuration options and their associated syntax:
+      # https://github.com/iv-org/invidious/blob/master/config/config.example.yml
+      INVIDIOUS_CONFIG: |
+        db:
+          dbname: invidious
+          user: kemal
+          password: kemal
+          host: invidious-db
+          port: 5432
+        check_tables: true
+        # external_port:
+        domain: youtube.momo.nohost.me
+        https_only: true
+        banner: "MoMo so CUTE!"
+        hmac_key: "CHANGE_ME!!configuration options and their associated syntax"
+        default_user_preferences:
+          locale: en-US
+          region: VN
+          captions: ["Vietnamese", "English", "English (auto-generated)"]
+          default_home: Trending
+          autoplay: true
+          #quality: dash
+          #quality_dash: 1080p
+          #save_player_pos: true
+        # statistics_enabled: false
+    healthcheck:
+      test: wget -nv --tries=1 --spider http://invidious:3000/api/v1/comments/jNQXAC9IVRw || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 2
+    depends_on:
+      - invidious-db
+
+  invidious-db:
+    image: docker.io/library/postgres:14
+    restart: always
+    container_name: invidious-db
+    volumes:
+      - ./appdata/postgresdata:/var/lib/postgresql/data
+      - ./appdata/invidious/config/sql:/config/sql
+      - ./appdata/invidious/docker/init-invidious-db.sh:/docker-entrypoint-initdb.d/init-invidious-db.sh
+    environment:
+      POSTGRES_DB: invidious
+      POSTGRES_USER: kemal
+      POSTGRES_PASSWORD: kemal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+
+  #Libreddit: 127.0.0.1:50080
+  libreddit:
+    container_name: libreddit
+    image: 'spikecodes/libreddit:arm'
+    restart: always
+    ports:
+      - '127.0.0.1:50080:8080'
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "--tries=1", "libreddit:8080/settings"]
+      interval: 5m
+      timeout: 3s
+      retries: 2
+  #Changedetection.io
+  # changedetection.io:
+  #   container_name: changedetection.io
+  #   hostname: changedetection
+  #   restart: always
+  #   ports:
+  #     - '127.0.0.1:50000:5000'
+  #   volumes:
+  #     - ./appdata/changedetection-data:/datastore
+  #   image: linuxserver/changedetection.io
+  #   environment:
+  #     - PUID=1007
+  #     - PGID=1007
+  #     - TZ=Asia/Bangkok
+
+  # playwright-chrome:
+  #   hostname: playwright-chrome
+  #   image: browserless/chrome
+  #   restart: unless-stopped
+  #   environment:
+  #     - SCREEN_WIDTH=1920
+  #     - SCREEN_HEIGHT=1024
+  #     - SCREEN_DEPTH=16
+  #     - ENABLE_DEBUGGER=false
+  #     - PREBOOT_CHROME=true
+  #     - CONNECTION_TIMEOUT=300000
+  #     - MAX_CONCURRENT_SESSIONS=10
+  #     - CHROME_REFRESH_TIME=600000
+  #     - DEFAULT_BLOCK_ADS=true
+  #     - DEFAULT_STEALTH=true
+  #   volumes:
+  #     - ./appdata/changedetection-data:/datastore
+
+  # changedetection:
+  #   image: ghcr.io/dgtlmoon/changedetection.io
+  #   container_name: changedetection
+  #   hostname: changedetection
+  #   restart: unless-stopped
+  #   environment:
+  #     - PLAYWRIGHT_DRIVER_URL=ws://playwright-chrome:3000/?stealth=1&--disable-web-security=true
+  #     - BASE_URL=https://changes.momo.nohost.me
+  #   ports:
+  #     - 127.0.0.1:50000:5000
+
+
+  #Homepage
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    restart: always
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+    ports:
+      - "127.0.0.1:50300:3000"
+    volumes:
+      - ./appdata/homepage:/app/config
+      # - /var/run/docker.sock:/var/run/docker.sock
+#Jellyfin Media Server
+  jellyfin:
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    image: lscr.io/linuxserver/jellyfin #https://docs.linuxserver.io/images/docker-jellyfin
+    container_name: jellyfin
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+      # - JELLYFIN_PublishedServerUrl=192.168.0.5 #optional
+    volumes:
+      - ~/media/library:/config
+      - ~/media/media:/media/media
+      - ~/media/torrents/iphone:/media/torrents/iphone
+      # - ~/media/movies:/data/movies
+      # - ~/media/Animes:/data/Animes
+      # - ~/media/IphoneProMax:/data/IphoneProMax
+    ports:
+      - "127.0.0.1:58096:8096"
+      # - 8920:8920 #optional 
+      # - 7359:7359/udp #optional
+      # - 1900:1900/udp #optional
+  #Jacket-
+  jackett:
+    image: lscr.io/linuxserver/jackett
+    container_name: jackett
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+      # - AUTO_UPDATE=true #optional
+      # - RUN_OPTS=<run options here> #optional
+    volumes:
+      - ./appdata/jacket:/config
+      - ~/media/blackhole:/media/blackhole
+    ports:
+      - 127.0.0.1:9117:9117
+    restart: unless-stopped
+#Duluge Torrents
+  deluge:
+    image: lscr.io/linuxserver/deluge
+    container_name: deluge
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+      - DELUGE_LOGLEVEL=error #optional
+    volumes:
+      - ./appdata/deluge/config:/config
+      - ~/media/torrents:/media/torrents
+      - ~/media/torrents/iphone:/media/torrents/iphone
+    ports:
+      - 127.0.0.1:8112:8112
+      - 127.0.0.1:6881:6881
+      - 127.0.0.1:6881:6881/udp
+    restart: unless-stopped
+  #Radarr - Movies
+  radarr:
+    image: lscr.io/linuxserver/radarr
+    container_name: radarr
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./appdata/radarr/config:/config
+      - ~/media:/media
+    ports:
+      - 127.0.0.1:7878:7878
+    restart: unless-stopped
+  #Bazarr - Subtitles  
+  bazarr:
+    image: lscr.io/linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./appdata/bazarr/config:/config
+      - ~/media/media:/media/media
+    ports:
+      - 127.0.0.1:6767:6767
+    restart: unless-stopped
+  #Sonarr - Series Managment
+  sonarr:
+    container_name: sonarr
+    image: linuxserver/sonarr:latest
+    restart: unless-stopped
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./appdata/sonarr/config:/config
+      - ~/media:/media
+    ports:
+      - 127.0.0.1:8989:8989
+  #Prowlarr - Indexers fo arrr
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1007
+      - PGID=1007
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./appdata/prolarr/config:/config
+    ports:
+      - 127.0.0.1:9696:9696
+    restart: unless-stopped
+  #Neko - Virtual Browser
+  # neko:
+  #   image: "m1k1o/neko:arm-firefox"
+  #   restart: "unless-stopped"
+  #   shm_size: "2gb"
+  #   ports:
+  #     - "127.0.0.1:8080:8080"
+  #     - "52000-52100:52000-52100/udp"
+  #   environment:
+  #     NEKO_SCREEN: 1920x1080@30
+  #     NEKO_PASSWORD: neko
+  #     NEKO_PASSWORD_ADMIN: admin
+  #     NEKO_EPR: 52000-52100
+  #     NEKO_ICELITE: 1
+# volumes:
+  # postgresdata:
+  # changedetection-data:
+  whoogle-search:
+    image: benbusby/whoogle-search:latest
+    container_name: whoogle-search
+    restart: always
+    pids_limit: 50
+    mem_limit: 256mb
+    memswap_limit: 256mb
+    # user debian-tor from tor package
+    #user: whoogle
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /config/:size=10M,uid=927,gid=927,mode=1700
+      - /var/lib/tor/:size=15M,uid=927,gid=927,mode=1700
+      - /run/tor/:size=1M,uid=927,gid=927,mode=1700
+    environment: # Uncomment to configure environment variables
+      # Basic auth configuration, uncomment to enable
+      #- WHOOGLE_USER=<auth username>
+      #- WHOOGLE_PASS=<auth password>
+      # Proxy configuration, uncomment to enable
+      #- WHOOGLE_PROXY_USER=<proxy username>
+      #- WHOOGLE_PROXY_PASS=<proxy password>
+      #- WHOOGLE_PROXY_TYPE=<proxy type (http|https|socks4|socks5)
+      #- WHOOGLE_PROXY_LOC=<proxy host/ip>
+      # Site alternative configurations, uncomment to enable
+      # Note: If not set, the feature will still be available
+      # with default values.
+      #- WHOOGLE_ALT_TW=farside.link/nitter
+      - WHOOGLE_ALT_YT=youtube.momo.nohost.me
+      #- WHOOGLE_ALT_IG=farside.link/bibliogram/u
+      - WHOOGLE_ALT_RD=libreddit.momo.nohost.me
+      #- WHOOGLE_ALT_MD=farside.link/scribe
+      #- WHOOGLE_ALT_TL=farside.link/lingva
+      #- WHOOGLE_ALT_IMG=farside.link/rimgo
+      #- WHOOGLE_ALT_WIKI=farside.link/wikiless
+      #- WHOOGLE_ALT_IMDB=farside.link/libremdb
+      #- WHOOGLE_ALT_QUORA=farside.link/quetre
+    #env_file: # Alternatively, load variables from whoogle.env
+      #- whoogle.env
+      - WHOOGLE_CONFIG_COUNTRY=US
+    ports:
+      - 127.0.0.1:50001:5000
+
+  trilium:
+    container_name: trilium
+    image: zadam/trilium
+    restart: always
+    environment:
+      - TRILIUM_DATA_DIR=/home/node/trilium-data
+    ports:
+      - "127.0.0.1:58080:8080"
+    volumes:
+      - ./appdata/trilium:/home/node/trilium-data
+  i2p - Proxy server
+  i2p:
+    image: divax/i2p:current
+    #network_mode: host
+    volumes:
+      - ./appdata//i2pconfig:/i2p/.i2p
+      - ./appdata/i2ptorrents:/i2psnark
+    ports:
+      - 127.0.0.1:4444:4444
+      - 127.0.0.1:4445:4445
+      - 127.0.0.1:7070:7070
+      #curl --proxy "http://127.0.0.1:4444" "http://httpbin.org/ip"

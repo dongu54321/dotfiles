@@ -1,0 +1,7 @@
+youtube.momoin.duckdns.org {
+	import duckdns
+	reverse_proxy invidious:3000
+  	log {
+		output discard
+  	}
+}

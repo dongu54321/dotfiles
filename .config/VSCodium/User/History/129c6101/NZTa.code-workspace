@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../etc/caddy/conf.d"
+		},
+		{
+			"path": "../podman"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../scripts"
+		}
+	],
+	"settings": {}
+}

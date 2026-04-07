@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+
+
+			<!-- Increase feul-->
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_handy_lantern"]/comps/li[@Class="Handy_Lantern.HL_CompProperties_LanternLight"]/fuelMax</xpath>
+                <fuelMax>3</fuelMax>
+			</li>
+
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_handy_lantern_retro"]/comps/li[@Class="Handy_Lantern.HL_CompProperties_LanternLight"]/fuelMax</xpath>
+                <fuelMax>3</fuelMax>
+			</li>            
+            
+
+			<!-- Change Layer-->
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_handy_lantern"]/apparel/bodyPartGroups</xpath>
+				<value>
+					<li>Legs</li>
+				</value>
+			</li>
+
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_handy_lantern_retro"]/apparel/bodyPartGroups</xpath>
+				<value>
+					<li>Legs</li>
+				</value>
+			</li>
+
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Shining_bread_crumbs"]/comps/li[@Class="CompProperties_Glower"]/glowRadius</xpath>
+				<value>
+					<li>Legs</li>
+				</value>
+			</li>
+
+
+            
+		</operations>
+	</Operation>
+	
+</Patch>

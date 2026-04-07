@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>[XXX]Patch:Faster Pack Animal</name>
+	<author>Vu</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+	<packageId>Vu.fasterpackanimal</packageId>
+<description>My personal Patch Makes pack Animal 1.5x faster</description>
+</ModMetaData>

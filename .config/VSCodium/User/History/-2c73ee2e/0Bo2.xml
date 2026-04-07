@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--This is for ReGrowth series.  It will conflict with other mods changing certain plant defs.-->
+
+<Patch>
+
+	<!-- Change tree layer to pawn so trees hide pawns, item and buildings -->
+
+	<!-- 	<Operation Class= "PatchOperationSequence">
+	
+		<operations>	
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.desertexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_JoshuaTree"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+	
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.aspenforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeAspenRed"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.aspenforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeAspenYellow"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.boilingforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeBoilingBirch"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.boilingforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_BoilingTreePine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.boilingforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_SpikedBoilingTreePine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.borealforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_OrangeTreePine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.borealforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_BlueTreePine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.borealforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_LargeTreePine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.swampexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeWhiteWillow"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.temperateforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeCornish"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.tropicalexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeDwarfPalm"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.tropicalexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TallPalmTree"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.tundraexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Tree_TundraTreePine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.wastelands">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeToxipine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.wastelands">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeSplitpine"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+			
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.wastelands">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeToxiTeak"]</xpath>
+				<value>
+					<altitudeLayer>Pawn</altitudeLayer>
+				</value>
+			</li>
+		</operations>
+    </Operation> -->
+
+	<!-- Change size of trees scale -->
+
+	<Operation Class= "PatchOperationSequence">
+		<operations>
+
+			<!-- Arid Trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.desertexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_JoshuaTree"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.3</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Aspen Trees -->
+
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.aspenforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeAspenRed"]/plant</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.aspenforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeAspenYellow"]/plant</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Boiling Trees -->
+
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.boilingforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeBoilingBirch"]/plant</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.boilingforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_BoilingTreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.3</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.boilingforest">
+				<xpath>Defs/ThingDef[defName="RG_Plant_SpikedBoilingTreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.3</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Boreal	Trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.borealforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_BlueTreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.9</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.borealforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_LargeTreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.5</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.borealforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_OrangeTreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.9</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Swamp Trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.swampexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeWhiteWillow"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.2</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Temperate Trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.temperateforestexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeCornish"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.5</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Tropical Trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.tropicalexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TallPalmTree"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.2</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationAdd" MayRequire="regrowth.botr.tropicalexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeDwarfPalm"]/plant</xpath>
+				<value>
+					<visualSizeRange>1.5~2.8</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Tundra trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.tundraexpansion">
+				<xpath>Defs/ThingDef[defName="RG_Tree_TundraTreePine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.5</visualSizeRange>
+				</value>
+			</li>
+
+			<!-- Wasteland trees -->
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.wastelands">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeSplitpine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.0</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.wastelands">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeToxipine"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~4.0</visualSizeRange>
+				</value>
+			</li>
+
+			<li Class= "PatchOperationReplace" MayRequire="regrowth.botr.wastelands">
+				<xpath>Defs/ThingDef[defName="RG_Plant_TreeToxiTeak"]/plant/visualSizeRange</xpath>
+				<value>
+					<visualSizeRange>1.5~3.1</visualSizeRange>
+				</value>
+			</li>
+
+		</operations>
+	</Operation>
+
+</Patch>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Weapons Expanded</li>
+		</mods>
+
+	<match Class="PatchOperationSequence">
+		<success>Always</success>
+            <!-- Hammer -->
+			<operations>
+				<li Class="PatchOperationReplace">
+                    <!-- <xpath>/Defs/ThingDef[defName="VWE_MeleeWeapon_Hammer"]/subSounds/li/grains/li[clipFolderPath="Weapon/SniperRifle"]/clipFolderPath</xpath> -->
+                    <xpath>/Defs/ThingDef[defName="VWE_MeleeWeapon_Hammer"]/equippedStatOffsets</xpath>
+                    <value>
+						<equippedStatOffsets> <!-- much stuff to choose from or to use it all -->
+                            <ConstructionSpeed>0.21</ConstructionSpeed> <!-- 0.15 to 0.33 max, balanced -->
+                            <ConstructSuccessChance>0.11</ConstructSuccessChance>
+                            <GeneralLaborSpeed>0.05</GeneralLaborSpeed>
+                        </equippedStatOffsets>
+                    </value>
+                  </li>
+			</operations>
+
+            <operations>
+				<li Class="PatchOperationReplace">
+                    <!-- <xpath>/Defs/ThingDef[defName="VWE_MeleeWeapon_Hammer"]/subSounds/li/grains/li[clipFolderPath="Weapon/SniperRifle"]/clipFolderPath</xpath> -->
+                    <xpath>/Defs/ThingDef[defName="VWE_MeleeWeapon_Hammer"]/equippedStatOffsets</xpath>
+                    <value>
+						<equippedStatOffsets> <!-- much stuff to choose from or to use it all -->
+                            <ConstructionSpeed>0.21</ConstructionSpeed> <!-- 0.15 to 0.33 max, balanced -->
+                            <ConstructSuccessChance>0.11</ConstructSuccessChance>
+                            <GeneralLaborSpeed>0.05</GeneralLaborSpeed>
+                        </equippedStatOffsets>
+                    </value>
+                  </li>
+			</operations>
+
+            VWE_MeleeWeapon_Axe
+		</match>
+	</Operation>
+
+</Patch>

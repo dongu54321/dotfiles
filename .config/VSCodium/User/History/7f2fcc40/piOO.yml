@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  authelia:
+    image: docker.io/authelia/authelia
+    volumes:
+      - ~/momopod/appdata/authelia/config:/config
+    ports:
+      - 9091:9091
+    restart: unless-stopped
+    healthcheck:
+      disable: true
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    depends_on:
+      - redis
+  redis:
+    image: docker.io/redis:alpine
+    volumes:
+      - ~/momopod/appdata/authelia/redis:/data
+    expose:
+      - 6379
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+
+

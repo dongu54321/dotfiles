@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+
+	<!-- Grass -->
+		
+			<li Class="PatchOperationAttributeSet">
+				<xpath>/Defs/ThingDef[defName = "GardenBox"]</xpath>
+				<attribute>ParentName</attribute>
+                <value>FurnitureBase</value>
+			</li>
+	<!-- Tall Grass -->
+			
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "GardenBox"]/costStuffCount</xpath>
+				<value>
+					<costStuffCount>5</costStuffCount>
+				</value>
+			</li>
+			
+		</operations>
+	</Operation>
+	
+</Patch>

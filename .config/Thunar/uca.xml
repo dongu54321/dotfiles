@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>emblem-symbolic-link</icon>
+	<name>Create syslink</name>
+	<submenu></submenu>
+	<unique-id>1692705486929900-1</unique-id>
+	<command>ln -Ts %f %n&quot; (symlink)&quot;</command>
+	<description>Create a syslink</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+</action>
+<action>
+	<icon>Terminal</icon>
+	<name>Terminal</name>
+	<submenu></submenu>
+	<unique-id>1367866030392833-1</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description></description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>stock_folder</icon>
+	<name>Thunar Root</name>
+	<submenu></submenu>
+	<unique-id>1367866030392883-2</unique-id>
+	<command>pkexec thunar %f</command>
+	<description>Thunar Root</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>system-search</icon>
+	<name>Search</name>
+	<submenu></submenu>
+	<unique-id>1367866030392913-3</unique-id>
+	<command>catfish %f</command>
+	<description>find files and folders</description>
+	<range></range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon></icon>
+	<name>Create hardlink</name>
+	<submenu></submenu>
+	<unique-id>1698370068821592-1</unique-id>
+	<command>ln %f %n&quot; (hardlink)&quot;</command>
+	<description>Create hardlink</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+</action>
+</actions>

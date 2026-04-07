@@ -1,0 +1,219 @@
+
+theme: dark
+#default_2fa_method: totp
+
+server:
+  address: tcp://0.0.0.0:9091/
+
+log:
+  level: debug
+
+totp:
+  issuer: momoruru.duckdns.org #EX: example.com
+  period: 60
+  skew: 1
+webauthn:
+  disable: false
+  timeout: 60s
+  attestation_conveyance_preference: indirect
+  user_verification: preferred
+authentication_backend:
+  password_reset:
+    disable: false
+  ldap:
+    implementation: custom
+    timeout: 5s
+    start_tls: false
+    attributes:
+      username: uid
+      display_name: displayName
+      group_name: cn
+      mail: mail
+    additional_users_dn: ou=people
+    users_filter: "(&({username_attribute}={input})(objectClass=person))"
+    additional_groups_dn: ou=groups
+    groups_filter: "(member={dn})"
+  # file:
+  #   path: /config/users_database.yml
+  #   password:
+  #     algorithm: argon2id
+  #     iterations: 1
+  #     salt_length: 16
+  #     parallelism: 8
+  #     memory: 64
+password_policy:
+  standard:
+    enabled: false
+    min_length: 8
+    max_length: 0
+    require_uppercase: true
+    require_lowercase: true
+    require_number: true
+    require_special: false
+
+access_control:
+  default_policy: one_factor
+  rules:
+      # Rules applied to everyone
+    - domain:
+        -  "auth.momoruru.duckdns.org" #Ex: auth.example.com
+      policy: bypass
+    - domain:
+        - "homa.momoruru.duckdns.org" #Ex: search.example.com - Single factor stuff. Only need a Password to authenticate.
+        - "deemix.momoruru.duckdns.org"
+      policy: one_factor
+    - domain:
+        - "cockpit.momoruru.duckdns.org" #Ex: tv.example.com - Two factor auth. Need a password as well as a OTP to authenticate.
+        - "tvc.momoruru.duckdns.org"
+      policy: two_factor
+    - domain:
+        - "radarr.momoruru.duckdns.org"
+        - "prowlarr.momoruru.duckdns.org"
+        - "sonarr.momoruru.duckdns.org"
+        - "qbit.momoruru.duckdns.org"
+      policy: one_factor
+      subject:
+        - "group:admins"  # access restriction based on groups
+session:
+  cookies:
+    - name: 'authelia_session'
+      domain: 'momoruru.duckdns.org'
+      authelia_url: 'https://auth.momoruru.duckdns.org'
+      default_redirection_url: 'https://homa.momoruru.duckdns.org'
+      same_site: 'lax'
+      inactivity: '5 minutes'
+      expiration: '1 hour'
+      remember_me: '1 month'
+#   redis:
+#     host: redis
+#     port: 6379
+regulation:
+  max_retries: 5
+  find_time: 10m
+  ban_time: 60m
+storage:
+  local:
+    path: /config/db.sqlite3
+notifier:
+  disable_startup_check: true
+  filesystem:
+    filename: /config/notification.txt
+
+identity_providers:
+  oidc:
+    #hmac_secret: 'this_is_a_secret_abc123abc123abc'
+    # jwks:
+    #   - key: |
+    #     -----BEGIN PRIVATE KEY-----
+    #     -----END PRIVATE KEY-----
+    enable_client_debug_messages: false
+    minimum_parameter_entropy: 8
+    enforce_pkce: 'public_clients_only'
+    enable_pkce_plain_challenge: false
+    enable_jwt_access_token_stateless_introspection: false
+    discovery_signed_response_alg: 'none'
+    discovery_signed_response_key_id: ''
+    require_pushed_authorization_requests: false
+    lifespans:
+      access_token: '1h'
+      authorize_code: '1m'
+      id_token: '1h'
+      refresh_token: '90m'
+    cors:
+      endpoints:
+        - 'authorization'
+        - 'token'
+        - 'revocation'
+        - 'introspection'
+        - 'userinfo'
+      allowed_origins:
+        - 'https://momoruru.duckdns.org'
+      allowed_origins_from_client_redirect_uris: false
+
+    clients:
+      - client_id: 'homarr'
+        client_name: 'Homarr'
+        client_secret: '$pbkdf2-sha512$310000$FVKuw/XMpT24KipkPv/xjA$VgSCpmUeBHOTRL7R4iQ/5KzrqADwNO.5RzGYvbKjWwxvDicBGmNVfKZ42TA3b/OqUFxQbco9zjWYuafw7SXEZQ'  # The digest of 'insecure_secret'.
+        public: false
+        authorization_policy: 'one_factor'
+        redirect_uris:
+          - 'https://homa.momoruru.duckdns.org/api/auth/callback/oidc'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'groups'
+          - 'email'
+        userinfo_signed_response_alg: 'none'
+        token_endpoint_auth_method: 'client_secret_basic'
+
+# identity_providers:
+#   oidc:
+#     jwks:
+#       -  key: |
+#           -----BEGIN RSA PRIVATE KEY-----
+#           MIIJPgIBADANBgkqhkiG9w0BAQEFAASCCSgwggkkAgEAAoICAQCvNJgSC73f3rek
+#           cGiKAt43coBFRGzpE7KgrqUQYOXTckif6oIzvu2F+yEGDMlHAjlyjt7qpeHL5835
+#           yZBSyLJFPzLXwnU9t1rQHx6cl4CIQ8GA0tc5TJDixfJb3ly3k8GOF4PoGFsx1NbM
+#           VywsHDR7BrGnhVD65lLo3FIHTRkSiUM501p0KCFljiy6LdviQqJxyk8o9TAfB3/n
+#           Y5nZZQjBrrZRn2OCYh1aacWBWVVN0xK+HOL0nWUiZH11FrLYjt4K48jNfATqnGNe
+#           nQtCKFFBD0gVRDjHkVTO2W/EusmftrET3Wc6TO3cl495WRef7kKonjVjKqvIZIzD
+#           mxgvDZk72DaBDV7xKDA26UW208/bHBWNsxomXNrNdplnKaFcvKaOLqekGaURq9vf
+#           Htt+iXH6OE2A/X1QAMFtU9Zcw1rV09qgPNFLq1Fkztpbb68W9xVsKAFvoK0WgP/Z
+#           zBuJ9M5tE0tcDt/wn4gR28paYopOVpKUuqMPqvgMvPok54556tO3mvG5xcbPB//v
+#           YTNj1p+8B2phiu3tTPiBmfEqKGLztupQeu/e3oC4X8PwPk4eAtF2S8A9uhxLhRmR
+#           H5xCe7/mZS/Xe6xZqCkvX5BywV2JLNlL0Y5Rwq5lZ0OJ3U+R2kZbUx4DX8iG2Owh
+#           qAC9mq6RMHiOvXSlOFAxV8JHqV+YNwIDAQABAoIB/26HP2gjACW62x9hypFGPem8
+#           0i7ge9SOGKJFitxKRLKf5jD8QCdky3M6ehrW9iNVw+gBOZ/OBiQcmFR8VA/ljJEi
+#           zXBPvKayhRfGigk/ilZsaCZc3GnJY52sQriyDsvA6to4+33v35gQLXG7jKJHKNRz
+#           5J9J+0xNAQDl/NmeSbLn5QEV1Hpy1p66knzhcVXLs68Vcdrk0vbARHA05Vm/40ZM
+#           cbgMVTprqxjeoTp4oNf30Fse3g5zPNn1iy/SogD8IBe+m28GThOzlPybFf8mcBwb
+#           B95iq286v8W+ZkQ1kfyvxAZEJlshLO18r4ZeLgk2xdaZ+BQXV0eUJzk/HoKQkZmj
+#           tDyiLWonkQvy7iF5IMH9PElMjtwgYVm2h0X2Y2vsa+tq2rjSKtEJYt48dravwGF5
+#           OapR5R2V2gHf2HgH46WkG/Rxre6KvGdat9/Lx4uNwIq6LlnyTTjJFjGB7rsDOs5U
+#           Qm2xK27pgaVcKwWTiMusP0xLZNKqBVcES39mGZVDF+/Wt7J+RiMQ6xon6lowiR2n
+#           ruhARSmGN0vVzfuugkYCVXMN97PKd19BmuP+t7YOMzng6/3HqMNHOqP6WrQ2WDrH
+#           d6SY2bxEYsakbtAaMFk1aeogl7lWXZ/Uq0aVXpse7eX1mhdgz9dRe27DqHP7p7Y+
+#           cJiHndZ3Z+RFgnRvss0CggEBAN9wWVCpcbzoB62DWLsoJLqMfNHSetgx6/0e4eyd
+#           bWwo6aWwLB7DlpJEqTceTXn9d89Tn3W5GL0OLzjwATTt9ohUeNKsZVd46cc8Y7SZ
+#           pko4OpX94EBrfnTQv4vHhKvTYKiuwySctmGV52UnpVsicnK5XvnfGmnX+hGYyUdR
+#           R1/hGYVa/milqw9FltA66DoytOhkXAN+rqvO+30XYWuJgC3FGAOe7evJMU7dXFIV
+#           FnCM01PDD/NKaMKxLzCZCuUJcO/yHt0M1HKgRQpjPrIxm5ucF1e8cSk7LwMMkA87
+#           5Jnay2MEdj9GMI59O8jL1mmkA1fjH2y/LgfwPG6nOZu/h9UCggEBAMi81ycMmqH/
+#           vd8QtKO8vuneOgnynPWd0kSRhtaEg9K4iqKv6p/pMEZyHFlX0oGj9PnZKmAK21uH
+#           gR2Cvgfp0PsRfoNLI8wM4FXjWfyfmVxX4+5kIQGyqiN42FGQq8/H0axKjeVaA2zN
+#           nZkCy6BIW/U3kmrdIlbFtqv1i6pjRP2XKBlOjQ+A1cK+1ayuwsacGQxSAnaCZ2Bd
+#           U06fbAddFsbLudT4jw1lonQCFb7f71yDmIphP6+YwMctEY5TxVpmgFuREH4jWjlO
+#           Mmlz0CPGjp8W92IIAf+Moql+7k8JErc/8M7Pww2kEexlyCf6s3NyEl1+tFEqLu7/
+#           fPOQyfpcUdsCggEAKeQHar8J6u/ZmKdaeGRTVoJGWJRMocHiS6eBlfoB7NhSzdSU
+#           wQPMdAnZa9MLlYZ28vDroYedYryJD/S3VTQUF4U2zdCyg07RDaB91PtFmP6nxT0+
+#           0PUWVVJZxxwV/Jz5r0Zsoa2b5/nR0z42mzp/GJE2hERW0GdEpA3wFqXfatNqFH11
+#           2yrMQmW6m7mflmGxVyyRr7oNh3qb3d0HT8EMvggIs40VcDJdQzrvNxhrB5jvefHF
+#           SMi3kWDkxwi6aSx29xV+wdTI8+CmcQcgVwpD8U23dqSG1sMY0kqFq8V/23SQ0zSf
+#           8sb3DY/fKItG3LF6SvzzBFFnkOdyfRBvFYs4LQKB/2qj56jXCU8GjdfzCAP0QXf8
+#           ltiyCrBxJ0NGDFvqCh3n676BtiM9vmeuN2E/RpWYhIw20kwzeFUnp3AGBO4vSNYY
+#           dR1KzbmZHZSDM0sBfneQOYZrqx07zScLC+BI+v1nKfxdnwQ4zZj/ormmwoZj6nZb
+#           D222DIgMgP7Zc1kRY5VUt/i5wjZ6OxU6TElwjgj05FmnN6e9ny2SZq9eAgXnbjIu
+#           CIsbgOOdGrCGawb78C01u9PH1g1zGPa2+pyh5DYiPg5nAlwAa+4FnMJoxCo9UYcy
+#           rDloB6e7Dq78v509NLQlQ8ialwSoJN1xNOQIS00JTLhel2yG/Gf7UmYShTp70QKC
+#           AQBNO4vPHvudQtGnGjub1lRvdLLLTYpMfXYkgTwsmb9iqXW0l/qGkP2vodHduU/L
+#           R4lw46Yz9PDJALXP/4m3EATSkdN8ykTvcLySlaeyiRIbPLs+pyhLCc6l0wOy2ssA
+#           7hEz3xemfuwqe946YDIVU1aI9Fxe+2Wb/bUwQ1EbJjMgYioexCqNkYPmkW8nC2J3
+#           QsbzlUvOEQdOsUD6VJ4vT3eyJLysmGrtXvJ0afLMf9yEe6I8rQ3/P+nRK6zASOPf
+#           udGOQG6ICdf5iJP4AVLIJnAk9wb6Gsvz62x/sySibzVALAUpXYgjjS+HN26NBoEh
+#           bdvvsHvIqGTTce9ntYKB/aAe
+#           -----END RSA PRIVATE KEY-----
+#         algorithm: 'RS256'
+#     lifespans:
+#       access_token: 30d
+#       refresh_token: 30d
+#     cors:
+#       endpoints:
+#         - authorization
+#         - token
+#         - revocation
+#         - introspection
+#         - userinfo
+
+
+
+

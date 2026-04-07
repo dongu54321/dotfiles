@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Patch: Bigger CarryAll</name>
+  <author>Vu</author>
+	<supportedVersions>
+		<li>1.4</li>
+	</supportedVersions>
+	<packageId>Vu.biggercarryall</packageId>
+<description>Makes Carryall Bigger</description>
+</ModMetaData>

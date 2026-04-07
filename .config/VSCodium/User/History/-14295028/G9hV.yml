@@ -1,0 +1,36 @@
+services:
+  warp:
+    image: docker.io/caomingjun/warp
+    container_name: warp
+    restart: always
+    devices:
+      - /dev/net/tun
+    ports:
+      - 1080:1080
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+      # - "127.0.0.1:8888:8080"
+      # - "127.0.0.1:7900:7900"
+      # - "127.0.0.1:8866:80"
+      # - "5006:5006"
+    environment:
+      - WARP_SLEEP=2
+      # - WARP_LICENSE_KEY= # optional
+      # - WARP_ENABLE_NAT=1 # enable nat
+      # - GOST_ARGS=-L=socks5+wss+http+tls://:1080?udp=true
+      - GOST_ARGS=-L=socks5+wss+http+tls+udp://:1080
+
+    cap_add:
+      # Docker already have them, these are for podman users
+      - MKNOD
+      - AUDIT_WRITE
+      - NET_ADMIN
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./warpconf:/var/lib/cloudflare-warp
+x-podman:
+    in_pod: false
+    # pod_args: ["--infra=false", "--share=", "--cpus=1"]

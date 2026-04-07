@@ -1,0 +1,29 @@
+#---------------------------------------------------------------------#
+#                         Jellyfin 8096                               #
+#---------------------------------------------------------------------#
+services:
+  homarr:
+    container_name: jellyfin
+    image: lscr.io/linuxserver/jellyfin
+    restart: always
+    NoNewPrivileges: true
+    networks:
+      - momonet
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - ./config:/config
+      - ./servarr:/servarr
+    # ports:
+    #   - '7575:7575'
+    x-podman:
+      uidmaps:
+        - 1000:0:1
+        - 0:1:1000
+        - 1001:1001:64536
+
+networks:
+  momonet:
+    external: true

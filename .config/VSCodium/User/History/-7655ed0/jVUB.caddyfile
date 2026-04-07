@@ -1,0 +1,6 @@
+homa.moinin.duckdns.org {
+	encode zstd gzip
+	#import secure *
+	#import duckdns
+	reverse_proxy 127.0.0.1:7575
+}

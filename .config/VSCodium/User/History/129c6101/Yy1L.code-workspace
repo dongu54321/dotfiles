@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../podman"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../scripts"
+		}
+	],
+	"settings": {}
+}

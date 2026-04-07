@@ -1,0 +1,16 @@
+Jan 18, 2025 9:23:00 AM org.eclipse.lemminx.XMLLanguageServer initialize
+INFO: Initializing XML Language server
+LemMinX Server info:
+ - Version : 0.29.0
+ - Java : /usr/lib/jvm/java-23-openjdk
+ - VM Version : 23.0.1
+ - Git acacf75 - [maven-release-plugin] prepare release 0.29.0
+Jan 19, 2025 9:26:06 PM org.eclipse.lemminx.XMLLanguageServer initialize
+INFO: Initializing XML Language server
+LemMinX Server info:
+ - Version : 0.29.0
+ - Java : /usr/lib/jvm/java-23-openjdk
+ - VM Version : 23.0.1
+ - Git acacf75 - [maven-release-plugin] prepare release 0.29.0
+Jan 19, 2025 9:26:06 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3

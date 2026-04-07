@@ -1,0 +1,24 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: 'container:warp'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/Ho_Chi_Minh
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+      - DOCKER_MODS=ghcr.io/vuetorrent/vuetorrent-lsio-mod:latest
+    volumes:
+      - /home/vugia/podman/app/qbittorrent/config:/config
+      - /home/vugia/Downloads/DOWNLOAD/:/downloads #optional
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    x-podman:
+      uidmaps:
+        - "1000:0:1"
+        - "0:1:1000"

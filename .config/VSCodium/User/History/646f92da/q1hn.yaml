@@ -1,0 +1,20 @@
+services:
+  caddy:
+    image: docker.io/caddy:latest
+    container_name: caddy
+    restart: always
+    networks:
+      - momonet
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    ports:
+      - "80:80"
+      - "443:443"
+      - "[::]:443:443"
+    volumes:
+      - $HOME/podman/app/caddy/caddy-etc:/etc/caddy
+      - $HOME/podman/app/caddy/data:/data
+      - $HOME/podman/app/caddy/config:/config
+networks:
+  momonet:
+    external: true

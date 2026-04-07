@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+    <!-- Battle Axe -->
+    <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+        <defName>CAT_MonoOdachi_Folked</defName>    <!-- unique -->
+        <label>mono odachi</label>
+        <description>A long and thin blade infused with mechanites that maintain a mono-molecular cutting edge. The thin blade is rumoured to be forged of plasteel folded a thousand times.</description>
+        <graphicData>
+            <texPath>Things/Items/Equipment/WeaponMelee/MonoOdachi</texPath>
+            <graphicClass>Graphic_Single</graphicClass>
+            <drawSize>1.3</drawSize>
+        </graphicData>
+        <techLevel>Neolithic</techLevel>
+        <weaponTags>
+            <li>MedievalMeleeAdvanced</li>
+        </weaponTags>
+        <costStuffCount>100</costStuffCount>
+        <statBases>
+            <WorkToMake>18000</WorkToMake>
+            <Mass>2.6</Mass>
+        </statBases>
+        <equippedAngleOffset>-25</equippedAngleOffset>
+        <stuffCategories>
+            <li>Metallic</li>
+        </stuffCategories>
+        <tools>
+            <li>
+                <label>handle</label>
+                <capacities>
+                    <li>Poke</li>
+                </capacities>
+                <power>6</power>
+                <cooldownTime>2</cooldownTime>
+            </li>
+            <li>
+                <label>point</label>
+                <capacities>
+                <li>Stab</li>
+                </capacities>
+                <power>15</power>
+                <cooldownTime>1.0</cooldownTime>
+                <armorPenetration>0.15</armorPenetration>
+            </li>
+            <li>
+                <label>blade</label>
+                <capacities>
+                    <li>Cut</li>
+                </capacities>
+                <power>23</power>
+                <armorPenetration>0.15</armorPenetration>            <!-- More with a thorn at the backside only -->
+                <cooldownTime>2.6</cooldownTime>
+            </li>
+        </tools>
+        <recipeMaker>
+            <recipeUsers>
+                <li>FueledSmithy</li>
+                <li>ElectricSmithy</li>
+            </recipeUsers>
+            <researchPrerequisite>LongBlades</researchPrerequisite>
+            <skillRequirements>
+                <Crafting>5</Crafting>
+            </skillRequirements>
+        </recipeMaker>
+    </ThingDef>
+
+</Defs>

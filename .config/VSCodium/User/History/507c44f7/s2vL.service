@@ -1,0 +1,45 @@
+# caddy.service
+
+[Unit]
+Description=Podman caddy.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=%t/containers
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=always
+RestartSec=10
+TimeoutStopSec=70
+ExecPreStart=/usr/bin/mkdir -p /home/dragon/momopod/appdata/caddy/{etc-caddy,site,caddy_data,caddy_config}
+ExecStart=/usr/bin/podman run \
+	--cidfile=%t/%n.ctr-id \
+	--cgroups=no-conmon \
+	--rm \
+	--sdnotify=conmon \
+	--replace \
+	-d \
+	--network=host \
+	--name caddy \
+	--label io.containers.autoupdate=registry \
+	-p 80:80 \
+	-p 443:443 \
+	-p 443:443/udp \
+	-v /home/dragon/momopod/appdata/caddy/etc-caddy:/etc/caddy:rw \
+	-v /etc/localtime:/etc/localtime:ro \
+	-v /home/dragon/momopod/appdata/caddy/site:/srv:rw \
+	-v /home/dragon/momopod/appdata/caddy/caddy_data:/data:rw \
+	-v /home/dragon/momopod/appdata/caddy/caddy_config:/config:rw docker.io/library/caddy
+ExecStop=/usr/bin/podman stop \
+	--ignore -t 10 \
+	--cidfile=%t/%n.ctr-id
+ExecStopPost=/usr/bin/podman rm \
+	-f \
+	--ignore -t 10 \
+	--cidfile=%t/%n.ctr-id
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target

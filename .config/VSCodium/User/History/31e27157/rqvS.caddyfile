@@ -1,0 +1,82 @@
+jellyfin.moinin.com:80 {
+	encode gzip
+	import localTLS
+	reverse_proxy http://127.0.0.1:8096
+}
+
+qbit.moinin.com:80 {
+	import localTLS
+	import secure *
+	reverse_proxy http://127.0.0.1:8080
+}
+
+deemix.moinin.com:80 {
+	#encode zstd gzip
+	import localTLS
+	import secure *
+	reverse_proxy http://127.0.0.1:6595
+}
+
+# jackett.moinin.com:80 {
+# 	encode zstd gzip
+# 	import localTLS
+# 	reverse_proxy http://127.0.0.1:9117
+# }
+
+# deluge.moinin.com:80 {
+# 	encode gzip
+# 	import localTLS
+# 	reverse_proxy http://127.0.0.1:8112
+# }
+
+radarr.moinin.com:80 {
+	encode zstd gzip
+	import localTLS
+	import secure *
+	reverse_proxy http://127.0.0.1:7878
+}
+
+bazarr.moinin.com:80 {
+	encode zstd gzip
+	import localTLS
+	import secure *
+	reverse_proxy http://127.0.0.1:6767
+}
+
+sonarr.moinin.com:80 {
+	encode zstd gzip
+	import localTLS
+	import secure *
+	reverse_proxy http://127.0.0.1:8989
+}
+
+prowlarr.moinin.com:80 {
+	encode zstd gzip
+	import localTLS
+	reverse_proxy http://127.0.0.1:9696
+}
+
+# whisparr.moinin.com:80 {
+# 	import localTLS
+# 	reverse_proxy http://127.0.0.1:6969
+# }
+
+
+lidarr.moinin.com:80 {
+	encode zstd gzip
+	import localTLS
+	import secure *
+	reverse_proxy http://127.0.0.1:8686
+}
+
+# navi.moinin.com:80 {
+# 	encode zstd gzip
+# 	import localTLS
+# 	reverse_proxy navidrome:4533
+# }
+
+# lidarr2.moinin.com:80 {
+# 	#encode zstd gzip
+# 	import localTLS
+# 	reverse_proxy http://lidarr2:8686
+# }

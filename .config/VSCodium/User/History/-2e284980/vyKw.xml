@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]/defaultBaseValue</xpath>
+		<value>
+			<defaultBaseValue>2</defaultBaseValue>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/StatDef[defName="SubcoreEncodingSpeed"]/defaultBaseValue</xpath>
+		<value>
+			<defaultBaseValue>2</defaultBaseValue>
+		</value>
+	</Operation>
+</Patch>

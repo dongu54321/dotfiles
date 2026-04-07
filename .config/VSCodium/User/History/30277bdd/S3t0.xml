@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<!--drawsize-->
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+		defName="Gun_Revolver" or
+		defName="Gun_Autopistol"]/graphicData</xpath>
+		<value>
+			<drawSize>1.4</drawSize>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+		defName="Gun_LMG" or
+		defName="Gun_BoltActionRifle" or
+		defName="Gun_SniperRifle"]/graphicData</xpath>
+		<value>
+			<drawSize>1.7</drawSize>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+		defName="Gun_AssaultRifle" or
+		defName="Gun_Minigun" or
+		defName="Gun_HeavySMG" or
+		defName="Gun_MachinePistol" or
+		defName="Gun_ChainShotgun" or
+		defName="Gun_ChargeRifle"]/graphicData</xpath>
+		<value>
+			<drawSize>1.7</drawSize>
+		</value>
+	</Operation>	
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+		defName="Gun_PumpShotgun"]/graphicData</xpath>
+		<value>
+			<drawSize>1.7</drawSize>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/ThingDef[
+		defName="Gun_SmokeLauncher" or
+		defName="Gun_IncendiaryLauncher" or
+		defName="Gun_EmpLauncher"]/graphicData</xpath>
+		<value>
+			<drawSize>1.5</drawSize>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Biotech</li>
+		</mods>
+		<match Class="PatchOperationAdd">
+				<xpath>Defs/ThingDef[
+          defName="Gun_ToxbombLauncher"]/graphicData</xpath>
+		<value>
+			<drawSize>0.93</drawSize>
+		</value>
+		</match>
+	</Operation>
+
+
+</Patch>

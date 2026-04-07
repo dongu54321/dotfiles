@@ -1,0 +1,7 @@
+jellyfin.momoruru.duckdns.org {
+	reverse_proxy jellyfin:8096
+}
+
+jellyfin.momoruru.duckdns.org:80 {
+	redir jellyfin.momoruru.duckdns.org:443
+}

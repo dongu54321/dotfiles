@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]/building/turretBurstCooldownTime</xpath>
+		<value>
+			<turretBurstCooldownTime>1</turretBurstCooldownTime>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="VFES_Turret_HMGComplex"]/building/turretBurstWarmupTime</xpath>
+		<value>
+			<turretBurstWarmupTime>1</turretBurstWarmupTime>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="VFES_Gun_HMGComplex"]/statBases/RangedWeapon_Cooldown</xpath>
+		<value>
+			<RangedWeapon_Cooldown>1</RangedWeapon_Cooldown>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="VFES_Gun_HMGComplex"]/verbs/li/warmupTime</xpath>
+		<value>
+			<warmupTime>1</warmupTime>
+		</value>
+	</Operation>
+
+	<!-- Seperate patch operation -->
+</Patch>

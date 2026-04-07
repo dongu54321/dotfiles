@@ -1,0 +1,7 @@
+homa.momoruru.duckdns.org {
+	reverse_proxy homarr:7575
+}
+
+homa.momoruru.duckdns.org:80 {
+	redir homa.momoruru.duckdns.org:443
+}

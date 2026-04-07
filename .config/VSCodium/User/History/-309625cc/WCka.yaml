@@ -1,0 +1,67 @@
+name: My Config
+version: 1.0.0
+schema: v1
+models:
+  - name: Qwen/Qwen3.5-397B-A17B
+    provider: openai
+    model: Qwen/Qwen3.5-397B-A17B
+    useLegacyCompletionsEndpoint: false
+    apiBase: https://ai.momoin.duckdns.org/api/DeepInfra
+    apiKey: ru25243cga25ds8mo16e409d8c17
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: zai-org/GLM-5
+    provider: openai
+    model: zai-org/GLM-5
+    useLegacyCompletionsEndpoint: false
+    apiBase: https://ai.momoin.duckdns.org/api/DeepInfra
+    apiKey: ru25243cga25ds8mo16e409d8c17
+    capabilities:
+      - tool_use
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: gemini-flash-lite-latest
+    provider: openai
+    model: gemini-flash-lite-latest
+    apiBase: https://g4f.space/api/gemini-v1beta
+    apiKey: g4f_u_mmdnut_d336a442b7f643b4b0ace461d47fb1e93fcf5fd069652eaa_b2a811fe
+    useLegacyCompletionsEndpoint: false
+    roles:
+      - chat
+      - edit
+      - apply
+  - name: "Qwen: Qwen3 Coder 480B A35B (free)"
+    provider: openrouter
+    model: qwen/qwen3-coder:free
+    apiKey: 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
+    roles:
+      - chat
+      - edit
+      - apply
+chatOptions:
+  baseSystemMessage: You are an expert coder. Only write concise answers. clear
+    code examples and explanations
+rules:
+  - Give concise responses
+prompts:
+  - name: test
+    description: Unit test a function
+    prompt: >
+      Please write a complete suite of unit tests for this function. You should
+      use the Jest testing framework.
+
+      The tests should cover all possible edge cases and should be as thorough
+      as possible.
+
+      You should also include a description of each test case.
+context:
+  - provider: file
+  - provider: code
+  - provider: diff
+  - provider: http
+  - provider: docs
+  - provider: codebase

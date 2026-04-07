@@ -1,0 +1,15 @@
+users:
+    momoin:
+        password: $argon2id$v=19$m=65536,t=3,p=4$TU6Ho47HPygz6OJTawCN3A$sf2HohTT4bQj1tbO1vYLTJjrWCTocDUV7o1Pt7RW5zY
+        displayname: momoin
+        email: vuchien166@proton.me
+        groups:
+            - admins
+        disabled: false
+    vugia:
+        password: $argon2id$v=19$m=65536,t=3,p=4$7EzPorFocpb4c4PneSvg/Q$cmnn8eIUHakMOVkbHWPRzCnRlSxOko62NOPd8EBvXLY
+        displayname: Vu Chien
+        email: vuchien166@proton.me
+        groups:
+            - admins
+        disabled: false

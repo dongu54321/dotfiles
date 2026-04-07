@@ -1,0 +1,20 @@
+# User file database https://www.authelia.com/reference/guides/passwords/#yaml-format
+# Generate passwords https://www.authelia.com/reference/guides/passwords/#passwords
+# podman run --rm -it docker.io/authelia/authelia:latest authelia crypto hash generate argon2 --password
+users:
+  momoin: #username for user 1. change to whatever you'd like
+    displayname: momoin #whatever you want the display name to be
+    password: $argon2id$v=19$m=65536,t=3,p=4$TU6Ho47HPygz6OJTawCN3A$sf2HohTT4bQj1tbO1vYLTJjrWCTocDUV7o1Pt7RW5zY #generated at https://argon2.online/
+    email: vuchien166@proton.me #whatever your email address is
+    groups:
+      - admins
+  vugia:
+    displayname: Vu Chien #whatever you want the display name to be
+    password: $argon2id$v=19$m=65536,t=3,p=4$7EzPorFocpb4c4PneSvg/Q$cmnn8eIUHakMOVkbHWPRzCnRlSxOko62NOPd8EBvXLY
+    email: vuchien166@proton.me #whatever your email address is
+
+  #user2: #Use the above details as a template. Uncomment to use. Add as many users as necessary.
+    #displayname: User2
+    #password: hashedpasswordhere #generated at https://argon2.online/ OR docker run authelia/authelia:latest authelia crypto hash generate argon2 --password 'TYPEPASSWORDHERE'
+    #email: user2@email.com
+

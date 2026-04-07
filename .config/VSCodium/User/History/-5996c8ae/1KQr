@@ -1,0 +1,46 @@
+#!/bin/bash
+function nebula_add_host(){
+	# nebula_add_host $hostname $nebulaip $group lan-IP
+    cd  ~/scripts/nebula || exit
+    #if [ "$#" -ne 4 ]; then echo "Usage: nebula_add_host hostname nebulaip group lan-IP" >&2; return; fi
+    hostname=$1
+    nebulaip=$2
+	group=$3
+	lanip=$4
+	echo "$hostname $nebulaip $group $lanip"
+
+	if [ -d "cert/$group/$hostname" ]; then
+		echo "WARM cert exist skipping !"
+	else
+		nebula-cert sign -name "$hostname" -ip "$nebulaip/12" -groups "$group"
+		mkdir -p "cert/$group/$hostname"
+
+		cp ca.crt "cert/$group/$hostname"
+		cp config.yaml "cert/$group/$hostname"
+		cp nebula.service "cert/$group/$hostname"
+		mv "$hostname".crt "cert/$group/$hostname"/host.crt
+		mv "$hostname".key "cert/$group/$hostname"/host.key
+	fi
+	cp install.sh "cert/$group/$hostname"
+
+	FILE=$HOME/.ssh/$group.pub
+	keys=$HOME/.ssh/$group
+	if [ -f "$FILE" ]; then
+		ssh-copy-id -i "$FILE" dragon@$lanip
+	else
+		ssh-keygen -b 4096 -f $HOME/.ssh/$group q -P ""
+		ssh-copy-id -i "$FILE" dragon@$lanip
+	fi
+
+	#ssh -i "$HOME/.ssh/$group" dragon@"$lanip"
+# 	echo "Host $hostname
+#     HostName $nebulaip
+#     User dragon
+#     Port 2216
+# 	IdentityFile /home/vugia/.ssh/$group
+# " >> ~/.ssh/config
+
+	#export HISTIGNORE='*6789*'
+	scp -r -i "$keys" "$HOME/scripts/nebula/cert/$group/$hostname" dragon@"$lanip":/home/dragon/
+	echo Dragon6789\^\&\*\( | ssh -tt -i "$keys" dragon@$lanip "cd ~/$hostname && bash ~/$hostname/install.sh"
+}

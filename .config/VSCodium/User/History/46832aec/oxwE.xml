@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- <Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Plant_Haygrass"]/statBases/Nutrition</xpath>
+		<value>
+			<Nutrition>0.55</Nutrition>
+		</value>
+	</Operation> -->
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName = "Plant_Haygrass"]/plant/growDays</xpath>
+		<value>
+			<growDays>3</growDays>
+		</value>
+	</Operation>
+
+	
+</Patch>

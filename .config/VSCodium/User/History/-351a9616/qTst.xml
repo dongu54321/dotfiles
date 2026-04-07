@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+<!-- Horse -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Horse"]/statBases/CaravanRidingSpeedFactor</xpath>
+    <value>
+      <CaravanRidingSpeedFactor>3.2</CaravanRidingSpeedFactor>
+    </value>
+  </Operation>
+<!-- Donkey -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Donkey"]/statBases/CaravanRidingSpeedFactor</xpath>
+    <value>
+      <CaravanRidingSpeedFactor>1.95</CaravanRidingSpeedFactor>
+    </value>
+  </Operation>
+<!-- Dromedary  -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Dromedary"]/statBases/CaravanRidingSpeedFactor</xpath>
+    <value>
+      <CaravanRidingSpeedFactor>1.95</CaravanRidingSpeedFactor>
+    </value>
+  </Operation>
+<!-- Elephant -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Elephant"]/statBases/CaravanRidingSpeedFactor</xpath>
+    <value>
+      <CaravanRidingSpeedFactor>1.95</CaravanRidingSpeedFactor>
+    </value>
+  </Operation>
+<!-- Thrumbo -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Horse"]/statBases/CaravanRidingSpeedFactor</xpath>
+    <value>
+      <CaravanRidingSpeedFactor>3.2</CaravanRidingSpeedFactor>
+    </value>
+  </Operation>
+</Patch>

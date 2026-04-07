@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="AFBase_MechFox">
+    <defName>AF_SpirituelFox</defName>
+    <label>spirituel fox</label>
+    <!-- 机械灵狐 -->
+    <description>A light mechanoid shaped like a fox. Their mouths are fitted with sharp plasteel teeth that can easily cut through a leather windbreaker. They can also cut flesh or cut plants, but such tiny blades do little against metal armor.
+    \nDespite being only the size of a medium-sized dog, the spirituel fox can carry items with simple algorithms and automatic buckles on its back.
+    \n\n&lt;color=#808080&gt;It's so cute! Does it bite? Can I touch it?&lt;/color&gt;
+    \n&lt;color=#808080&gt; — - — Amli·Aras&lt;/color&gt;</description>
+    <!-- 一只小型的、外形酷似狐狸的仿生机械体。它的嘴部装有玻璃钢利齿，可以轻松地割开皮质风衣、切削血肉或是割除植物，但如此细小的刀片在面对金属装甲时作用甚微。
+    \n尽管只有中型犬的体型，机械灵狐还是能通过简单的算法与背部的自动卡扣来搬运一些物品。 -->
+    <!-- 真可爱！会咬人吗？可以摸嘛？ -->
+    <descriptionHyperlinks>
+        <HediffDef>AFEP_SpirituelFox</HediffDef>
+    </descriptionHyperlinks>
+    <statBases>
+        <MarketValue>1120</MarketValue>
+        <MoveSpeed>6.16</MoveSpeed>
+        <ComfyTemperatureMin>-200</ComfyTemperatureMin>
+        <ComfyTemperatureMax>80</ComfyTemperatureMax>
+        <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
+        <ArmorRating_Blunt>0.15</ArmorRating_Blunt>
+        <ArmorRating_Heat>2.00</ArmorRating_Heat>
+        <!-- The following is the content of Biotech -->
+        <BandwidthCost>1</BandwidthCost>
+        <ControlTakingTime>4</ControlTakingTime>
+        <MechEnergyLossPerHP>0.10</MechEnergyLossPerHP>
+        <WastepacksPerRecharge>1</WastepacksPerRecharge>
+        <!-- And some performance tweaks. -->
+        <MeleeDodgeChance>40</MeleeDodgeChance>
+    </statBases>
+    <butcherProducts>
+        <Steel>20</Steel>
+        <Plasteel>10</Plasteel>
+    </butcherProducts>
+    <race>
+        <body>AFBody_SpirituelFox</body>
+        <!-- AFBody_SpirituelFox -->
+        <mechWeightClass>Light</mechWeightClass>
+        <!-- Light: Consume 1 bandwidth. -->
+        <baseBodySize>0.40</baseBodySize>
+        <baseHealthScale>0.8</baseHealthScale>
+        <!-- Small fox. -->
+        <mechEnabledWorkTypes>
+            <li>Hauling</li>
+            <li>PlantCutting</li>
+        </mechEnabledWorkTypes>
+    </race>
+    <tools>
+        <li>
+            <label>Plasteel Teeth</label>
+            <!-- 利齿 -->
+            <capacities>
+                <li>Cut</li>
+            </capacities>
+            <power>10</power>
+            <cooldownTime>0.9</cooldownTime>
+            <armorPenetration>0.18</armorPenetration>
+            <chanceFactor>1.0</chanceFactor>
+            <extraMeleeDamages>
+                <li>
+                    <def>EMP</def>
+                    <amount>24</amount>
+                </li>
+            </extraMeleeDamages>
+            <linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
+            <ensureLinkedBodyPartsGroupAlwaysUsable>true</ensureLinkedBodyPartsGroupAlwaysUsable>
+        </li>
+    </tools>
+    <damageMultipliers>
+        <li>
+            <damageDef>Bomb</damageDef>
+            <multiplier>0.50</multiplier>
+        </li>
+        <li>
+            <damageDef>BombSuper</damageDef>
+            <multiplier>0.10</multiplier>
+        </li>
+        <li>
+            <damageDef>Flame</damageDef>
+            <multiplier>0.00</multiplier>
+        </li>
+    </damageMultipliers>
+    <uiIconPath>AFUI/SpirituelFox</uiIconPath>
+    <uiIconScale>2</uiIconScale>
+</ThingDef>
+
+</Defs>

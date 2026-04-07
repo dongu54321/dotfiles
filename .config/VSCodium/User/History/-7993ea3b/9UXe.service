@@ -1,0 +1,43 @@
+# jellyfin.service
+
+[Unit]
+Description=Podman jellyfin.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=%t/containers
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=always
+RestartSec=10
+TimeoutStopSec=70
+ExecStart=/usr/bin/podman run \
+	--cidfile=%t/%n.ctr-id \
+	--cgroups=no-conmon \
+	--rm \
+	--sdnotify=conmon \
+	--replace \
+	--name=jellyfin \
+	-d \
+	--security-opt no-new-privileges:true \
+	-e PUID=0 \
+	-e PGID=0 \
+	-e TZ=Asia/Ho_Chi_Minh \
+	-v /home/vugia/momopod/servarr/jellyfin/config:/config \
+	-v /media/HDD/servarr/media:/servarr/media \
+	-v /media/HDD/servarr/torrents/jav:/servarr/torrents/jav \
+	-v /media/HDD/servarr/user:/servarr/user \
+	-p 127.0.0.1:8096:8096 lscr.io/linuxserver/jellyfin
+ExecStop=/usr/bin/podman stop \
+	--ignore -t 10 \
+	--cidfile=%t/%n.ctr-id
+ExecStopPost=/usr/bin/podman rm \
+	-f \
+	--ignore -t 10 \
+	--cidfile=%t/%n.ctr-id
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=default.target

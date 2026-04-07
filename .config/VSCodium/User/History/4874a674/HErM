@@ -1,0 +1,6 @@
+// Download RimWorld Mods
+//
+@ShutdownOnFailedCommand 0
+@NoPromptForPassword 1
+force_install_dir /home/vugia/GAMES/Games/workshop/
+login anonymous

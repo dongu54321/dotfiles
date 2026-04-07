@@ -1,0 +1,51 @@
+#!/bin/bash
+#export PATH="$PATH:/media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd"
+rimdown() {
+	/media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh \
+		+force_install_dir /media/Nvme_Data/Games/workshop/ +login anonymous +workshop_download_item 294100 "$1" +quit
+	}
+
+rimdown-script() {
+	/media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +runscript "$1" +quit
+	}
+
+export -f rimdown
+PS3='Please enter your choice: '
+options=( "Download All Mods" "Edit Mods List" "Download New Mods" "unlinks" "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        # "sysLinks Mods folder")
+        #   cd /media/Nvme_Data/Games/RimWorld/ && rm -rf Mods
+        #   ln -s /media/Nvme_Data/Games/workshop/steamapps/workshop/content/294100/ Mods
+        #     ;;
+        "Download All Mods")
+            gawk -i inplace '!a[$0]++' /media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/rimmod
+            /media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +runscript rimmod +quit
+            #cd /media/Nvme_Data/Games/Rimworld-jc141/
+            #parallel -j 5 git clone {} < rimmods
+            #ln -sf /media/Nvme_Data/Games/workshop/steamapps/workshop/content/294100/* /media/Nvme_Data/Games/Rimworld-jc141/files/groot/Mods/
+            #ln -sf /media/Nvme_Data/Games/workshop/steamapps/workshop/content/294100/* /media/Nvme_Data/Games/RimWorld/Mods/
+            /bin/rm -r -f /home/vugia/Steam/logs/*
+            /bin/rm -rf //media/Nvme_Data/Games/workshop/steamapps/workshop/appworkshop_294100.acf
+            break
+        ;;
+        "Edit Mods List")
+            mousepad /media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/rimmod /home/vugia/clip.txt
+        ;;
+        "Download New Mods")
+            /media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +runscript rimmodnew +quit
+            #ln -sf /media/Nvme_Data/Games/workshop/steamapps/workshop/content/294100/* /media/Nvme_Data/Games/Rimworld-jc141/files/groot/Mods/
+            #ln -sf /media/Nvme_Data/Games/workshop/steamapps/workshop/content/294100/* /media/Nvme_Data/Games/RimWorld/Mods/
+            /bin/rm -rf /home/vugia/Steam/logs/*
+            break
+        ;;
+        "Quit")
+            break
+            ;;
+        "unlinks")
+            unlink /media/Nvme_Data/Games/Rimworld-jc141/files/groot/Mods/
+        ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done

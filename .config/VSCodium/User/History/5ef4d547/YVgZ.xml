@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Bigger Carryall</name>
+  <author>Nepenthe</author>
+  <url>n/a</url>
+  <supportedVersions>
+	<li>1.4</li>
+  </supportedVersions>
+  <packageId>vu.biggercarryall</packageId>
+  <description>This mod increase the size of carryall</description>
+	<loadAfter>
+		<li>Nephlite.Carryalls</li>
+	</loadAfter>
+</ModMetaData>

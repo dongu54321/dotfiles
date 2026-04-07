@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <!-- Day -->
+    <!-- City Ruins - Rays of Light -->
+    <SongDef>
+        <clipPath>Songs/Relax/City_Ruins_Rays_of_Light</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Day</allowedTimeOfDay>
+    </SongDef>
+    <!-- City Ruins - Shade -->
+    <SongDef>
+        <clipPath>Songs/Relax/City_Ruins_Shade</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Day</allowedTimeOfDay>
+    </SongDef>    
+    
+    <!-- Faltering Prayer - Dawn Breeze -->
+    <SongDef>
+        <clipPath>Songs/Relax/Faltering_Prayer_Dawn_Breeze</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Day</allowedTimeOfDay>
+    </SongDef>
+    
+    <!-- Forest Kingdom -->
+    <SongDef>
+        <clipPath>Songs/Relax/Forest_Kingdom</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Day</allowedTimeOfDay>
+    </SongDef>
+    
+    <!-- Memories of Dust -->
+    <SongDef>
+        <clipPath>Songs/Relax/Memories_of_Dust</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Day</allowedTimeOfDay>
+    </SongDef>    
+    
+    <!-- Night -->
+    <!-- Amusement Park -->
+    <SongDef>
+        <clipPath>Songs/Relax/Amusement_Park</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Night</allowedTimeOfDay>
+    </SongDef>
+    
+    <!-- Faltering Prayer - Starry Sky -->
+    <SongDef>
+        <clipPath>Songs/Relax/Faltering_Prayer_Starry_Sky</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Night</allowedTimeOfDay>
+    </SongDef>
+    
+    <!-- Pascal -->
+    <SongDef>
+        <clipPath>Songs/Relax/Pascal</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Night</allowedTimeOfDay>
+    </SongDef>
+    
+    <!-- Peaceful Sleep -->
+    <SongDef>
+        <clipPath>Songs/Relax/Peaceful_Sleep</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Night</allowedTimeOfDay>
+    </SongDef>
+    
+    <!-- Voice of no Return -->
+    <SongDef>
+        <clipPath>Songs/Relax/Voice_of_no_Return</clipPath>
+        <volume>0.65</volume>
+        <allowedTimeOfDay>Night</allowedTimeOfDay>
+    </SongDef>
+    
+        
+    <!-- Any time of day -->
+    <!-- Alien Manifestation -->
+    <SongDef>
+        <clipPath>Songs/Relax/Alien_Manifestation</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+
+    <!-- Copied City -->
+    <SongDef>
+        <clipPath>Songs/Relax/Copied_City</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Crumbling Lies - Front -->
+    <SongDef>
+        <clipPath>Songs/Relax/Crumbling_Lies_Front</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Song of the Ancients - Atonement -->
+    <SongDef>
+        <clipPath>Songs/Relax/Song_of_the_Ancients_Atonement</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- The Sound of the End -->
+    <SongDef>
+        <clipPath>Songs/Relax/The_Sound_of_the_End</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Vague Hope - Cold Rain -->
+    <SongDef>
+        <clipPath>Songs/Relax/Vague_Hope_Cold_Rain</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Vague Hope - Spring Rain -->
+    <SongDef>
+        <clipPath>Songs/Relax/Vague_Hope_Spring_Rain</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Weight of the World the End of YoRHa -->
+    <SongDef>
+        <clipPath>Songs/Relax/Weight_of_the_World_the_End_of_YoRHa</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Wretched Weaponry -->
+    <SongDef>
+        <clipPath>Songs/Relax/Wretched_Weaponry</clipPath>
+        <volume>0.65</volume>
+    </SongDef>
+    
+    <!-- Weight of the World English Version -->
+    <SongDef>
+        <clipPath>Songs/Relax/Weight_of_the_World_English_Version</clipPath>
+        <volume>0.65</volume>
+        <allowedSeasons>
+        <li>Spring</li>
+        <li>Fall</li>
+        <li>PermanentSummer</li>
+        </allowedSeasons>
+    </SongDef>
+    
+    <!-- Weight of the World Japanese Version -->
+    <SongDef>
+        <clipPath>Songs/Relax/Weight_of_the_World_Japanese_Version</clipPath>
+        <volume>0.65</volume>
+        <allowedSeasons>
+        <li>Winter</li>
+        <li>Summer</li>
+        <li>PermanentSummer</li>
+        </allowedSeasons>
+    </SongDef>
+    
+</Defs>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+			<!-- Reduce Cost -->
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/AlienRace.ThingDef_AlienRace[defName = "Kurin_Race"]/alienRace/generalSettings/alienPartGenerator/customDrawSize</xpath>
+				<value>
+					<customDrawSize>(1.3, 1.3)</customDrawSize>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationAdd" MayRequire="seioch.kurin.har"> <!-- Only runs if
+				Biotech is active -->
+				<xpath>Defs/ThingDef[defName="MechGestator"]/recipes</xpath>
+				<value>
+					<li>MyCustomMech</li>
+				</value>
+			</li>
+			<li Class="PatchOperationAdd" MayRequire="MyProject.OtherModPackageId"><!-- Only runs if
+				the specific mod is active -->
+				<xpath>Defs/ThingDef[defName="OtherModWorkbench"]/recipes</xpath>
+				<value>
+					<li>MyCustomResource</li>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

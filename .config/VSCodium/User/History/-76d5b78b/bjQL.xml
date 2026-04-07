@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Patch>
+
+	<Operation Class="PatchOperationSequence">
+		<success>Always</success>
+		<operations>
+
+
+			<!-- Increase feul-->
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_handy_lantern"]/comps/li[@Class="Handy_Lantern.HL_CompProperties_LanternLight"]/fuelMax</xpath>
+                <fuelMax>3</fuelMax>
+			</li>
+
+			<!-- Reduce Cost -->
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "GardenBox"]/costStuffCount</xpath>
+				<value>
+					<costStuffCount>20</costStuffCount>
+				</value>
+			</li>
+			<!-- Set Market value -->
+            <li Class="PatchOperationAdd">
+				<xpath>/Defs/ThingDef[defName = "GardenBox"]/statBases</xpath>
+				<value>
+					<MarketValue>5</MarketValue>
+				</value>
+			</li>
+            
+			
+		</operations>
+	</Operation>
+	
+</Patch>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="KG_Builder"]/race/mechFixedSkillLevel</xpath>
+		<value>
+			<mechFixedSkillLevel>15</mechFixedSkillLevel>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="KG_Miner"]/race/mechFixedSkillLevel</xpath>
+		<value>
+			<mechFixedSkillLevel>15</mechFixedSkillLevel>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="KG_Builder"]/race/mechFixedSkillLevel</xpath>
+		<value>
+			<mechFixedSkillLevel>15</mechFixedSkillLevel>
+		</value>
+	</Operation>
+	<!-- Seperate patch operation -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>/Defs/ThingDef[defName="KG_Builder"]/race/mechFixedSkillLevel</xpath>
+		<value>
+			<mechFixedSkillLevel>15</mechFixedSkillLevel>
+		</value>
+	</Operation>
+
+	<!-- Seperate patch operation -->
+</Patch>

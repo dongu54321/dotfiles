@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoBastardSword</defName>
+    <label>mono bastard sword</label>
+    <description>A long blade infused with mechanites that maintain a mono-molecular cutting edge.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>5</equippedAngleOffset>
+    <relicChance>3</relicChance>
+	<statBases>
+	  <MarketValue>2000</MarketValue>
+	  <Mass>3</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/MonoBastardSword</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.0</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+      <MoveSpeed>-0.15</MoveSpeed>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>2.2</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>32</power>
+        <cooldownTime>2.2</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoBusterSword</defName>
+    <label>mono buster blade</label>
+    <description>A colossal crystal-metallic blade infused with mechanites that maintain a mono-molecular cutting edge. This weapon is both heavy and devastating.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>5</equippedAngleOffset>
+    <relicChance>3</relicChance>
+	<statBases>
+	  <MarketValue>2000</MarketValue>
+	  <Mass>20</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/MonoBusterBlade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.3</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+      <MoveSpeed>-1.5</MoveSpeed>
+	  <MeleeHitChance>-5.0</MeleeHitChance>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>50</power>
+        <cooldownTime>4.2</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>50</power>
+        <cooldownTime>4.2</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
+
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoWarSpear</defName>
+    <label>mono warspear</label>
+    <description>A spear with crystal-metallic blade infused with mechanites that maintain a mono-molecular cutting edge. This weapon is designed for ceremonial purposes but still deadly in the right hand.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>15</equippedAngleOffset>
+    <relicChance>3</relicChance>
+	<statBases>
+	  <MarketValue>2000</MarketValue>
+	  <Mass>5</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/Monowarspear</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.3</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+      <MeleeHitChance>3.0</MeleeHitChance>
+	  <MeleeDodgeChance>3.0</MeleeDodgeChance>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>35</power>
+        <cooldownTime>3</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>1.6</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
+
+    <ThingDef ParentName="BaseBullet">
+    <defName>CAT_ChargeShotBlast</defName>
+    <label>charge shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/ChargeLanceShot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	  <drawSize>(6.0, 1.0)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Cut</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <armorPenetrationBase>1.0</armorPenetrationBase>
+      <stoppingPower>2.0</stoppingPower>
+      <speed>80</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoGlaive</defName>
+    <label>mono glaive</label>
+    <description>A glaive with crystal-metallic blade infused with mechanites that maintain a mono-molecular cutting edge. A charge blaster is incorporated into its design turning this weapon into a deadly fusion.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>15</equippedAngleOffset>
+    <relicChance>0</relicChance>
+	<statBases>
+	  <MarketValue>2000</MarketValue>
+	  <Mass>3</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/MonoGlaive</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.3</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+      <MeleeHitChance>3.0</MeleeHitChance>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>45</power>
+        <cooldownTime>3.7</cooldownTime>
+        <armorPenetration>1.2</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>35</power>
+        <cooldownTime>2.9</cooldownTime>
+        <armorPenetration>1.0</armorPenetration>
+      </li>
+    </tools>
+	<verbs>
+		<li>
+		  <verbClass>Verb_Shoot</verbClass>
+		  <hasStandardCommand>true</hasStandardCommand>
+		  <onlyManualCast>True</onlyManualCast>
+		  <defaultProjectile>CAT_ChargeShotBlast</defaultProjectile>
+		  <accuracyTouch>0.55</accuracyTouch>
+		  <accuracyShort>0.84</accuracyShort>
+		  <accuracyMedium>0.75</accuracyMedium>
+		  <accuracyLong>0.55</accuracyLong>
+		  <warmupTime>1.5</warmupTime>
+		  <range>15.9</range>
+		  <defaultCooldownTime>2.5</defaultCooldownTime>
+		  <soundCast>ChargeLance_Fire</soundCast>
+		  <soundCastTail>GunTail_Heavy</soundCastTail>
+		  <muzzleFlashScale>9</muzzleFlashScale>
+		  <label>glaive charge shot</label>
+		</li>
+	</verbs>
+	<comps Inherit="True">
+		<li Class="MVCF.Comps.CompProperties_VerbProps">
+		  <compClass>MVCF.Comps.Comp_VerbProps</compClass>
+			<ConsiderMelee>true</ConsiderMelee>
+			<verbProps>
+				<li>
+				  <label>glaive charge shot</label>
+					<comps>
+						<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+						  <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+						  <cooldownTime>5</cooldownTime>
+						</li>
+					</comps>
+				  <canBeToggled>true</canBeToggled>
+				</li>
+			</verbProps>
+		</li>
+	</comps>
+  </ThingDef>
+  
+    <ThingDef ParentName="BaseBullet">
+    <defName>CAT_WhipClaw</defName>
+    <label>mono whipclaw</label>
+    <graphicData Class="VFECore.GraphicData_Animated">
+      <texPath>Things/Projectile/WhipClaw</texPath>
+	  <ticksPerFrame>3</ticksPerFrame>
+      <graphicClass>VFECore.Graphic_Animated</graphicClass>
+	  <drawSize>(1, 1)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Cut</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <armorPenetrationBase>1.0</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoWhipClaw</defName>
+    <label>mono whipblade</label>
+    <description>An exotic designed whip-like weapon with crystal-metallic blade infused with mechanites that maintain a mono-molecular cutting edge. While unwiedly, it can extend and retract to hit distance target.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>5</equippedAngleOffset>
+    <relicChance>0</relicChance>
+	<statBases>
+	  <MarketValue>2000</MarketValue>
+	  <Mass>3</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/MonoWhipblade</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.0</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+	  <MeleeHitChance>-2.0</MeleeHitChance>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>shaft</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>1.6</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>30</power>
+        <cooldownTime>2.5</cooldownTime>
+        <armorPenetration>1.0</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>20</power>
+        <cooldownTime>1.5</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+    </tools>
+	<verbs>
+		<li>
+		  <verbClass>Verb_Shoot</verbClass>
+		  <hasStandardCommand>true</hasStandardCommand>
+		  <onlyManualCast>True</onlyManualCast>
+		  <defaultProjectile>CAT_WhipClaw</defaultProjectile>
+		  <warmupTime>0.5</warmupTime>
+		  <range>5.9</range>
+		  <accuracyTouch>1</accuracyTouch>
+		  <accuracyShort>1</accuracyShort>
+		  <accuracyMedium>1</accuracyMedium>
+		  <accuracyLong>1</accuracyLong>
+		  <soundCast>Interact_MonoSword</soundCast>
+		  <soundCastTail>GunTail_Heavy</soundCastTail>
+		  <muzzleFlashScale>9</muzzleFlashScale>
+		  <label>extended whipclaw</label>
+		</li>
+	</verbs>
+	<comps Inherit="True">
+	<li Class="MVCF.Comps.CompProperties_VerbProps">
+	  <compClass>MVCF.Comps.Comp_VerbProps</compClass>
+		<ConsiderMelee>true</ConsiderMelee>
+		<verbProps>
+			<li>
+			  <label>extended whipclaw</label>
+			  <canBeToggled>true</canBeToggled>
+			</li>
+		</verbProps>
+	</li>
+	</comps>
+  </ThingDef>
+  
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoOdachi</defName>
+    <label>mono odachi</label>
+    <description>A long and thin blade infused with mechanites that maintain a mono-molecular cutting edge. The thin blade is rumoured to be forged of plasteel folded a thousand times.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>5</equippedAngleOffset>
+    <relicChance>3</relicChance>
+	<statBases>
+	  <MarketValue>2000</MarketValue>
+	  <Mass>4</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/MonoOdachi</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.3</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+      <MoveSpeed>-0.15</MoveSpeed>
+      <MeleeHitChance>5.0</MeleeHitChance>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>30</power>
+        <cooldownTime>2.0</cooldownTime>
+        <armorPenetration>0.9</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>30</power>
+        <cooldownTime>1.8</cooldownTime>
+        <armorPenetration>0.75</armorPenetration>
+      </li>
+    </tools>
+  </ThingDef>
+  
+    <ThingDef ParentName="BaseBullet">
+    <defName>CAT_ChargeLanceRail</defName>
+    <label>charge rail shot</label>
+    <graphicData>
+      <texPath>Things/Projectile/MonoLanceProj/MonoLanceProj</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>TransparentPostLight</shaderType>
+	  <drawSize>(1.0, 1.0)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>Cut</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <armorPenetrationBase>1.0</armorPenetrationBase>
+      <stoppingPower>3.0</stoppingPower>
+      <speed>150</speed>
+    </projectile>
+  </ThingDef>
+  
+  <ThingDef ParentName="MeleeWeaponUltratech">
+    <defName>CAT_MonoChargeLance</defName>
+    <label>mono charge lance</label>
+    <description>A huge crystal-metallic blade infused with mechanites that maintain a mono-molecular cutting edge. This encumbersome weapon is deadly at both close range and far range combat due to a modified charge lance mounted in it.</description>
+    <soundInteract>Interact_MonoSword</soundInteract>
+    <meleeHitSound>MeleeHit_MonoSword</meleeHitSound>
+	<smeltable>false</smeltable>
+    <equippedAngleOffset>5</equippedAngleOffset>
+    <relicChance>3</relicChance>
+	<statBases>
+	  <MarketValue>5000</MarketValue>
+	  <Mass>12</Mass>
+	</statBases>
+    <weaponClasses>
+      <li>Melee</li>
+      <li>MeleePiercer</li>
+    </weaponClasses>
+    <graphicData>
+      <texPath>Things/Items/Equipment/WeaponMelee/MonoChargeLance</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+	  <drawSize>1.3</drawSize>
+    </graphicData>
+	<equippedStatOffsets>
+      <MoveSpeed>-1.5</MoveSpeed>
+	  <MeleeHitChance>-3.0</MeleeHitChance>
+    </equippedStatOffsets>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>12</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>55</power>
+        <cooldownTime>4.3</cooldownTime>
+        <armorPenetration>1.0</armorPenetration>
+      </li>
+      <li>
+        <label>edge</label>
+        <capacities>
+          <li>Cut</li>
+        </capacities>
+        <power>38</power>
+        <cooldownTime>3</cooldownTime>
+        <armorPenetration>1.0</armorPenetration>
+      </li>
+    </tools>
+	<verbs>
+		<li>
+		  <verbClass>Verb_Shoot</verbClass>
+		  <hasStandardCommand>true</hasStandardCommand>
+		  <onlyManualCast>True</onlyManualCast>
+		  <defaultProjectile>CAT_ChargeLanceRail</defaultProjectile>
+		  <accuracyTouch>0.55</accuracyTouch>
+		  <accuracyShort>0.65</accuracyShort>
+		  <accuracyMedium>0.8</accuracyMedium>
+		  <accuracyLong>0.9</accuracyLong>
+		  <warmupTime>3.5</warmupTime>
+		  <range>40.9</range>
+		  <soundCast>ChargeLance_Fire</soundCast>
+		  <soundCastTail>GunTail_Heavy</soundCastTail>
+		  <muzzleFlashScale>9</muzzleFlashScale>
+		  <label>charge rail shot</label>
+		</li>
+	</verbs>
+	<comps Inherit="True">
+	<li Class="MVCF.Comps.CompProperties_VerbProps">
+	  <compClass>MVCF.Comps.Comp_VerbProps</compClass>
+		<ConsiderMelee>true</ConsiderMelee>
+		<verbProps>
+			<li>
+			  <label>charge rail shot</label>
+				<comps>
+					<li Class="MVCF.VerbComps.VerbCompProperties_Cooldown">
+					  <compClass>MVCF.VerbComps.VerbComp_Cooldown</compClass>
+					  <cooldownTime>10</cooldownTime>
+					</li>
+				</comps>
+			  <canBeToggled>true</canBeToggled>
+			</li>
+		</verbProps>
+	</li>
+	</comps>
+  </ThingDef>
+</Defs>

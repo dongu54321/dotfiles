@@ -1,0 +1,31 @@
+# Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+
+Host momo.nohost.me
+    HostName 130.61.33.87
+    User admin
+    IdentityFile /home/vugia/.ssh/momonohost
+    Port 2216
+
+Host momo-dell6430
+    HostName 192.168.1.82
+    User momo
+    Port 22
+Host vugia-dell6430
+    HostName 192.168.1.82
+    User vugia
+    Port 22
+Host linux-mint
+    HostName 172.16.0.3
+    User dragon
+    Port 2216
+
+Host dragon000-ts
+    HostName 100.64.0.6
+    User dragon
+    Port 22
+
+Host dragon000
+    HostName 172.16.0.100
+    User dragon
+    Port 2216
+    IdentityFile /home/vugia/.ssh/dragon

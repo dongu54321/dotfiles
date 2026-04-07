@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard"]/size</xpath>
+    <value>
+      <size>(6,6)</size>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard_Leaving"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard_Incoming"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard_Active"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard_R_Leaving"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation> 
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard_R_Incoming"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation> 
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Standard_R_Active"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>     
+<!-- End Airship standard -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_standard"]/size</xpath>
+    <value>
+      <size>(6,6)</size>
+    </value>
+  </Operation>  
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_standard"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>  
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Standard_Leaving"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Standard_Incoming"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Standard_Active"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Standard_R_Leaving"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation> 
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Standard_R_Incoming"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation> 
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Standard_R_Active"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(10,10)</drawSize>
+    </value>
+  </Operation>  
+  <!-- Enddddddddddd Carryall_Standard-->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI"]/size</xpath>
+    <value>
+      <size>(6,6)</size>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI_Leaving"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI_Incoming"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI_Active"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI_R_Leaving"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation> 
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI_R_Incoming"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation> 
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_GDI_R_Active"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation>  
+<!-- End GDI -->
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Nod"]/size</xpath>
+    <value>
+      <size>(6,6)</size>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Carryall_Nod"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(11,11)</drawSize>
+    </value>
+  </Operation>  
+
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Kirov"]/size</xpath>
+    <value>
+      <size>(6,6)</size>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>Defs/ThingDef[defName="Airship_Kirov"]/graphicData/drawSize</xpath>
+    <value>
+      <drawSize>(12,12)</drawSize>
+    </value>
+  </Operation>  
+
+
+
+</Patch>
