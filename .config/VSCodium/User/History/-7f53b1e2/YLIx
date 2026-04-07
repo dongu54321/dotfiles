@@ -1,7 +1,0 @@
-LLDAP_LDAP_BASE_DN=dc=duckdns,dc=org
-UID=0
-GID=0
-#LLDAP_JWT_SECRET=akjkfuuamdshjgasjsecretsJWT_SECRET
-#LLDAP_LDAP_USER_PASS=ldapAwsfdfklllaoih
-LLDAP_JWT_SECRET_FILE=/secrets/JWT_SECRET
-LLDAP_LDAP_USER_PASS_FILE=/secrets/LDAP_USER_PASS

@@ -1,3 +1,0 @@
-#!/bin/bash
-export PATH="$PATH:/media/Nvme_Data/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd"
-

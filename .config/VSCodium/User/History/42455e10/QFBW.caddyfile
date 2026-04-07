@@ -1,5 +1,0 @@
-navi.moinin.duckdns.org {
-	encode zstd gzip
-	#import duckdns
-	reverse_proxy 127.0.0.1:4533
-}

@@ -1,7 +1,0 @@
----
-# For configuration options and examples, please see:
-# https://github.com/benphelps/homepage/wiki/Settings
-
-providers:
-  openweathermap: bcf2048bc3be154bded8f277f580ba2e
-  weatherapi: weatherapiapikey

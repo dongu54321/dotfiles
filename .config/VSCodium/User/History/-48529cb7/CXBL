@@ -1,9 +1,0 @@
-#!/bin/bash
-function app-install () {
-	cd  ~/momopod/appdata || exit
-	hostname=$1
-	apps=$2
-
-	scp -rC "$apps" "$hostname:/home/dragon/momopod/appdata/"
-	ssh "$hostname" "cd ~/momopod/appdata/$apps && bash up.sh"
-}

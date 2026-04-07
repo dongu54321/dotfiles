@@ -1,5 +1,0 @@
-helium
-selenium
-pyvirtualdisplay
-requests
-bs4

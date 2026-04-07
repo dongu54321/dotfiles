@@ -1,3 +1,0 @@
-auth.moinin.duckdns.org {
-	reverse_proxy app:9091
-}

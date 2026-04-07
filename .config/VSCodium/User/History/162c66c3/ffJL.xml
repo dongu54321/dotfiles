@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<Defs>
-  <ApparelLayerDef>
-    <defName>giuahong</defName>
-    <label>giuahond</label>
-    <drawOrder>320</drawOrder>
-  </ApparelLayerDef>
-</Defs>

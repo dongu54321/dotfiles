@@ -1,4 +1,0 @@
-requests
-bs4
-edge_tts
-# vinorm pip install git+https://github.com/AiEmStylix/Vinorm
