@@ -39,7 +39,6 @@
 "editor.fontWeight": "normal",
 "workbench.colorTheme": "Catppuccin Macchiato",
 "editor.fontSize": 15,
-"editor.fontFamily": "'JetBrains Mono', 'JetBrains Mono', JetBrains Mono",
 "workbench.settings.applyToAllProfiles": [
     "editor.fontFamily"
 ],
@@ -128,5 +127,8 @@
     "file:///home/vugia/.vscode-oss/extensions/continue.continue-1.2.22-linux-x64/config-yaml-schema.json": [
         ".continue/**/*.yaml"
     ]
-}
+},
+"continue.showInlineTip": false,
+"local-sync.backupPath": "/home/vugia/dotfiles",
+"editor.fontFamily": "'FiraMono Nerd Font', 'FiraMono Nerd Font', FiraMono Nerd Font"
 }

@@ -72,6 +72,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt interactivecomments
+export HISTORY_IGNORE="(*168*|*6789*|*password*|*secret*|*hash*|*authereg*|6789|*--key*|*KEY*)"
+
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -90,9 +92,9 @@ if [ -f /bin/apt-get ]; then
   fi
 fi
 #Tilix
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-  source /etc/profile.d/vte.sh
-fi
+# if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#   source /etc/profile.d/vte.sh
+# fi
 # Shell integrations
 #eval "$(fzf --zsh)"
 source <(fzf --zsh)
@@ -108,14 +110,13 @@ if [ -f /bin/apt-get ]; then
 elif [ -f /bin/pacman ]; then
   eval "$(zoxide init zsh)"
 fi
-export HISTORY_IGNORE="(*168*|*6789*|*password*|*secret*|*hash*|*authereg*|*password*)"
 
 function downloadzen () {
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
   sudo apt install fzf/testing
   # sudo apt install zoxide/testing
 }
-tdl --help >/dev/null && source <(tdl completion zsh)
+#tdl --help >/dev/null && source <(tdl completion zsh)
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \

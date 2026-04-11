@@ -5,3 +5,5 @@
 \.env
 \.git
 \.gitignore
+keybindings.json
+extension.json

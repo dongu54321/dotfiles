@@ -384,10 +384,6 @@ function rimupdate-shutdown() {
 	gawk -i inplace '!a[$0]++' $HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/rimmod
 	cd $HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd || exit
     $HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +runscript rimmod +quit
-    #cd $HOME/GAMES/Games/Rimworld-jc141/
-    #parallel -j 5 git clone {} < rimmods
-    #ln -sf $HOME/GAMES/Games/workshop/steamapps/workshop/content/294100/* $HOME/GAMES/Games/Rimworld-jc141/files/groot/Mods/
-    #ln -sf $HOME/GAMES/Games/workshop/steamapps/workshop/content/294100/* $HOME/GAMES/Games/RimWorld/Mods/
     /bin/rm -rf /home/vugia/Steam/logs/*
     xfce4-session-logout --halt --fast
 }

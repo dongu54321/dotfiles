@@ -1,3 +1,5 @@
 .config/micro/buffers
 workspaceStorage
 .config/VSCodium/User/workspaceStorage/
+.continue
+agents
