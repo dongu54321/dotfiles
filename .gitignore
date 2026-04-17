@@ -3,3 +3,6 @@ workspaceStorage
 .config/VSCodium/User/workspaceStorage/
 .continue
 agents
+.nextcloudsync.log
+.sync_*.db
+.sync_*.db-wal

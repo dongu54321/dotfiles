@@ -1,3 +1,29 @@
-11:39:36 AM: Audacity 3.7.7
-11:39:36 AM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.3.100
-11:39:38 AM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.3.100
+10:08:42 AM: Audacity 3.7.7
+10:08:42 AM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.12.100
+10:08:44 AM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.12.100
+10:08:59 AM: Loaded 74 string 3.042969 Kb in size
+10:08:59 AM: Project loaded in 23 ms
+10:10:51 AM: Operation 'Mix and Render' took 0.057000 seconds. Poll was called 2 times and took 0.000001 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:10:51 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:10:51 AM: Operation 'Filter Curve EQ' took 0.048000 seconds. Poll was called 4 times and took 0.000001 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:10:57 AM: Operation 'Filter Curve EQ' took 6.091000 seconds. Poll was called 57 times and took 0.382933 seconds. Yield was called 53 times and took 0.366503 seconds.
+10:10:59 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:10:59 AM: Operation 'Filter Curve EQ' took 0.281000 seconds. Poll was called 8 times and took 0.000005 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:11 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:11 AM: Operation 'Filter Curve EQ' took 0.253000 seconds. Poll was called 8 times and took 0.000004 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:11 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Normalize' took 0.101000 seconds. Poll was called 44 times and took 0.000008 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Compressor' took 0.161000 seconds. Poll was called 7 times and took 0.000004 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Reverb' took 0.209000 seconds. Poll was called 6 times and took 0.000003 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:12 AM: Operation 'Normalize' took 0.119000 seconds. Poll was called 44 times and took 0.000009 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:13 AM: Operation 'Pre-processing' took 0.000000 seconds. Poll was called 0 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:11:13 AM: Operation 'Limiter' took 0.233000 seconds. Poll was called 7 times and took 0.000003 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:12:47 AM: Attempting to load LAME from system search paths
+10:12:47 AM: Loading LAME from libmp3lame.so.0
+10:12:47 AM: Actual LAME path /usr/lib/libmp3lame.so.0.0.0
+10:12:47 AM: LAME library successfully loaded
+10:12:48 AM: Operation 'Export' took 0.218000 seconds. Poll was called 5 times and took 0.000001 seconds. Yield was called 0 times and took 0.000000 seconds.
+10:15:13 AM: Operation 'Progress' took 0.080000 seconds. Poll was called 50 times and took 0.000005 seconds. Yield was called 0 times and took 0.000000 seconds.

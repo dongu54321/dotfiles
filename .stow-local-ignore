@@ -7,3 +7,6 @@
 \.gitignore
 keybindings.json
 extension.json
+.sync_*
+*.log
+
