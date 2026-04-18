@@ -1,4 +1,4 @@
-\.config/micro/buffers/history
+.config/micro/buffers
 ^/README.*
 ^/LICENSE.*
 \.gitconfig
@@ -7,6 +7,6 @@
 \.gitignore
 keybindings.json
 extension.json
-.sync_*
-*.log
-
+^/.sync_*
+\.log
+\.git
