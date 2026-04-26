@@ -19,8 +19,8 @@ normal = { family = "FiraMono Nerd Font", style = "Regular" }
 #padding = '{ x = 170, y = 170 }'
 
 [terminal]
-#shell = { program = "/bin/tmux", args = ["new-session \\;", " split-window -v"] }
-shell = { program = "/bin/zsh", args = ["-c", "tmux new-session \\; split-window -v"] }
+shell = { program = "/bin/tmux", args = ["new-session"] }
+# shell = { program = "/bin/zsh", args = ["-c", "tmux new-session \\; split-window -v"] }
 
 [mouse]
 bindings = [

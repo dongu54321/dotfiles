@@ -10,3 +10,4 @@ extension.json
 ^/.sync_*
 \.log
 \.git
+\.bak

@@ -4,7 +4,7 @@
 # fi
 alias alig='alias | grep'
 alias helpme='help-me-me | grep'
-alias gpt='tgpt --provider pollinations'
+alias gpt='tgpt --provider openai --url https://g4f.dev/ollama/ --model glm-5.1'
 #alias help-me='help-me-me'
 
 alias _xfix='xfdesktop -Q && xfdesktop -e > /tmp/xf.log 2>&1 & ; xfwm4 --replace'
@@ -16,7 +16,7 @@ alias _bashrc='micro /home/vugia/.bashrc'
 alias _clip='mousepad /home/vugia/clip.txt'
 alias _aria2c='aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all >/dev/null 2>&1 &'
 alias _vmware='sudo modprobe -a vmw_vmci vmmon'
-alias _clear='find ~/.cache/ -type f -atime +7 -delete;paccache -rk1;sudo pacman -R $(pacman -Qtdq);'
+# alias _clear='find ~/.cache/ -path yay -prune -o -type f -atime +7 -delete;paccache -rk1;sudo pacman -R $(pacman -Qtdq);'
 alias _pac-cache='sudo paccache -rk1; sudo paccache -ruk0'
 #alias _pulse='systemctl restart --user pulseaudio'
 alias _logs='sudo journalctl --since "5 minutes ago"'
@@ -238,6 +238,7 @@ ex ()
             *.zip)       unzip "$1"     ;;
             *.Z)         uncompress "$1";;
             *.7z)        7z x "$1"      ;;
+            *.iso)        7z x "$1"      ;;
             *)           echo "$1 cannot be extracted via ex()" ;;
         esac
     else
@@ -339,7 +340,7 @@ function podmansystemd() {
 }
 
 function rimdown() {
-	$HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +force_install_dir "/home/vugia/.local/share/RimSort/instances/Default/steam" +login anonymous +workshop_download_item 294100 $1 +exit
+	steamcmd.sh +force_install_dir "/home/vugia/.local/share/RimSort/instances/Default/steam" +login anonymous +workshop_download_item 294100 $1 +exit
 	echo "workshop_download_item 294100 $1 validate" >> ~/clip.txt
 	#ln -sf $HOME/GAMES/Games/workshop/steamapps/workshop/content/294100/* $HOME/GAMES/Games/Rimworld-jc141/files/groot/Mods/
 	#ln -sf $HOME/GAMES/Games/workshop/steamapps/workshop/content/294100/* $HOME/GAMES/Games/RimWorld/Mods/
@@ -350,11 +351,11 @@ function modtitle () {
 }
 
 function rimdownnew() {
-	#$HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +force_install_dir $HOME/GAMES/Games/workshop/ +login anonymous +workshop_download_item 294100 $1 +exit
+	#steamcmd.sh +force_install_dir $HOME/GAMES/Games/workshop/ +login anonymous +workshop_download_item 294100 $1 +exit
 	File=~/clip.txt
     gawk -i inplace '!a[$0]++' ~/clip.txt
 
-	SteamCMD="$HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +force_install_dir $HOME/GAMES/Games/workshop/ +login anonymous "
+	SteamCMD="steamcmd.sh +force_install_dir $HOME/GAMES/Games/workshop/ +login anonymous "
 
 	for line in $(cat $File)
 	do
@@ -377,13 +378,13 @@ function rimdownnew() {
 }
 
 function steamdown(){
-	$HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +force_install_dir $HOME/GAMES/Games/workshop/ +login anonymous +workshop_download_item $1 $2 +exit
+	steamcmd.sh +force_install_dir $HOME/GAMES/Games/workshop/ +login anonymous +workshop_download_item $1 $2 +exit
 }
 
 function rimupdate-shutdown() {
 	gawk -i inplace '!a[$0]++' $HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/rimmod
 	cd $HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd || exit
-    $HOME/GAMES/Games/Rimworld-jc141/SteamModDownloader/scripts/steamcmd/steamcmd.sh +runscript rimmod +quit
+    steamcmd.sh +runscript rimmod +quit
     /bin/rm -rf /home/vugia/Steam/logs/*
     xfce4-session-logout --halt --fast
 }
