@@ -625,3 +625,35 @@ restart_container_services() {
     done
 }
 alias mux='tmuxinator'
+alias ts='switch_tmux_conf'
+# Add this to your ~/.bashrc or ~/.zshrc
+switch_tmux_conf() {
+    local config_num=$1
+    local dotfiles_dir="$HOME/dotfiles"  # Adjust this path if your dotfiles are elsewhere
+    local target_config="$dotfiles_dir/tmux$config_num.conf"
+    local tmuxconf="$HOME/.tmux.conf"
+
+    # Validate input
+    if [[ ! "$config_num" =~ ^[1-3]$ ]]; then
+        echo "Error: Please use 1, 2, or 3"
+        return 1
+    fi
+
+    # Check if config exists
+    if [ ! -f "$target_config" ]; then
+        echo "Error: $target_config does not exist"
+        return 1
+    fi
+
+    # Remove existing config symlink and create new one
+    rm -f "$tmuxconf"
+    ln -s "$target_config" "$tmuxconf"
+
+    # Reload tmux config if running
+    if tmux info >/dev/null 2>&1; then
+        tmux source-file "$tmuxconf"
+        echo "Switched to tmux'$config_num.conf' and reloaded config"
+    else
+        echo "Switched to tmux'$config_num.conf'. Start a new tmux session to use this config"
+    fi
+}
