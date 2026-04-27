@@ -11,3 +11,8 @@ extension.json
 \.log
 \.git
 \.bak
+*.bak
+tmux1.conf
+tmux2.conf
+tmux3.conf
+tropical_island_morning.jpg
