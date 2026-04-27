@@ -11,7 +11,7 @@
 #
 # Example:
 # ignore-selection-foreground-color = false
-
+copy-on-select = true
 # Theme
 #
 # It makes Rio look for the specified theme in the themes folder
@@ -126,8 +126,8 @@ confirm-before-quit = false
 [window]
 width = 1771
 height = 1200
-mode = "windowed"
-opacity = 0.94
+# mode = "windowed"
+opacity = 0.5
 blur = true
 decorations = "enabled"
 
@@ -156,7 +156,7 @@ decorations = "enabled"
 #
 # Example:
 [renderer]
-performance = "high"
+# performance = "high"
 backend = "Vulkan"
 # disable-unfocused-render = false
 # level = 1
@@ -232,10 +232,10 @@ family = "FiraMono Nerd Font Regular Bold Italic"
 style = "Italic"
 weight = 800
 
-[fonts.emoji]
-family = "FiraMono Nerd Font"
-style = "Italic"
-weight = 800
+# [fonts.emoji]
+# family = "FiraMono Nerd Font"
+# style = "Italic"
+# weight = 800
 # Scroll
 #
 # You can change how many lines are scrolled each time by setting this option.
@@ -268,7 +268,7 @@ weight = 800
 #
 # Example:
 [navigation]
-mode = "plain"
+mode = "Tab"
 clickable = true
 hide-if-single = true
 use-current-path = true
@@ -320,7 +320,11 @@ color-automation = [
 # (considering if theme folder does exists and is being used)
 #
 # Example:
-# [colors]
+[colors]
+tabs = '#f5e0dc'  # Inactive tab text and border color
+tabs-active = '#fab387'  # Active tab text color
+bar = '#1b1a1a'
+split = '#292527'
 # background = '#0F0D0E'
 # foreground = '#F9F4DA'
 # cursor = '#F38BA3'
@@ -356,8 +360,8 @@ keys = [
     { key = "6", with = "alt", action = "SelectTab(5)" },
     { key = "\\", with = "alt", action = "SplitRight" },
     { key = "-", with = "alt", action = "SplitDown" },
-    { key = "Left", with = "control", action = "SelectNextSplit" },
-    { key = "Right", with = "control", action = "SelectPrevSplit" },
+    { key = "Left", with = "alt", action = "SelectNextSplit" },
+    { key = "Right", with = "alt", action = "SelectPrevSplit" },
     
 
 ]

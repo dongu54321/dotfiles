@@ -121,7 +121,6 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
 "workbench.sideBar.location": "right",
-"window.commandCenter": false,
 "workbench.layoutControl.enabled": false,
 "yaml.schemas": {
     "file:///home/vugia/.vscode-oss/extensions/continue.continue-1.2.22-linux-x64/config-yaml-schema.json": [
@@ -130,5 +129,7 @@
 },
 "continue.showInlineTip": false,
 "local-sync.backupPath": "/home/vugia/dotfiles",
-"editor.fontFamily": "'FiraMono Nerd Font', 'FiraMono Nerd Font', FiraMono Nerd Font"
+"editor.fontFamily": "'FiraMono Nerd Font', 'FiraMono Nerd Font', FiraMono Nerd Font",
+"window.commandCenter": false,
+"workbench.browser.showInTitleBar": true
 }

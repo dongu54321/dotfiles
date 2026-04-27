@@ -72,7 +72,7 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt interactivecomments
-export HISTORY_IGNORE="(*168*|*6789*|*password*|*secret*|*hash*|*authereg*|6789|*--key*|*KEY*)"
+export HISTORY_IGNORE="(ls|la|ll|*168*|*6789*|*password*|*secret*|*hash*|*authereg*|6789|*--key*|*KEY*)"
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
