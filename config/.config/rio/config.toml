@@ -73,7 +73,7 @@ padding-x = 10
 # Example:
 # use-fork = false
 
-# Confirm before exiting Rio
+ # Confirm before exiting Rio
 # Default is `true`
 #
 confirm-before-quit = false
@@ -124,13 +124,16 @@ confirm-before-quit = false
 #
 # Example:
 [window]
-width = 1771
-height = 1200
+width = 1755
+height = 1295
 # mode = "windowed"
-opacity = 0.5
-blur = true
-decorations = "enabled"
+# opacity = 0.95
+# blur = true
+# decorations = "Buttonless"
 
+[window.background-image]
+path = "/home/vugia/dotfiles/tropic_island_morning.jpg"
+opacity = 0.33
 # Renderer
 #
 # • Performance: Set WGPU rendering performance
@@ -155,9 +158,9 @@ decorations = "enabled"
 # • filters: A list of paths to RetroArch slang shaders. Might not work with OpenGL.
 #
 # Example:
-[renderer]
+# [renderer]
 # performance = "high"
-backend = "Vulkan"
+# backend = "Vulkan"
 # disable-unfocused-render = false
 # level = 1
 # filters = []

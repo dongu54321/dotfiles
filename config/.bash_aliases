@@ -8,10 +8,11 @@ alias gpt='tgpt --provider openai --url https://g4f.dev/ollama/ --model glm-5.1'
 #alias help-me='help-me-me'
 
 alias _xfix='xfdesktop -Q && xfdesktop -e > /tmp/xf.log 2>&1 & ; xfwm4 --replace'
-alias _workspace='wmctrl -r Firefox -t 0;wmctrl -r zsh -t 2;wmctrl -r tilix -t 2;wmctrl -r codium -t 1;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4; wmctrl -r Finamp -t 5; wmctrl -r Nextcloud -t 5; wmctrl -r KeePassXC -t 5'
-
+# alias _workspace='wmctrl -a Firefox -t 0;wmctrl -r zsh -t 2;wmctrl -r tilix -t 2;wmctrl -r codium -t 1;wmctrl -r trilium -t 3;wmctrl -r jellyfinmediaplayer -t 5;wmctrl -r virt-manager -t 4; wmctrl -r qemu_system-x86_64 -t 4; wmctrl -r Finamp -t 5; wmctrl -r Nextcloud -t 5; wmctrl -r KeePassXC -t 5'
+alias _workspace='wmctrl -a Firefox -t 1; wmctrl -a VSCodium -t 2; wmctrl -a Trilium -t 3'
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+alias lstree='find . -print | sed -e "s;[^/]*/;|____;g;s;____|; |;g"'
 alias _bashrc='micro /home/vugia/.bashrc'
 alias _clip='mousepad /home/vugia/clip.txt'
 alias _aria2c='aria2c --enable-rpc --rpc-listen-all --rpc-allow-origin-all >/dev/null 2>&1 &'
@@ -20,7 +21,7 @@ alias _vmware='sudo modprobe -a vmw_vmci vmmon'
 alias _pac-cache='sudo paccache -rk1; sudo paccache -ruk0'
 #alias _pulse='systemctl restart --user pulseaudio'
 alias _logs='sudo journalctl --since "5 minutes ago"'
-alias _history='history -c && echo clear > ~/.bash_history && echo clear > ~/.zhistory'
+# alias _history='history -c && echo clear > ~/.bash_history && echo clear > ~/.zhistory'
 alias offline='firejail --net=none --noprofile'
 alias _gpu='watch -d -n 0.5 nvidia-smi'
 alias _ffupdate='/home/vugia/arkenfox-userjs/updater.sh -u -s -b'
@@ -42,13 +43,16 @@ alias funcl_dis='bluetoothctl -- disconnect 00:00:00:AA:15:26'
 alias bluehelp='bluetoothctl -- help'
 
 alias phone-remote='scrcpy --video-codec=h265 --max-size=2000 --max-fps=75 --turn-screen-off --power-off-on-close --no-audio -K &>/dev/null &'
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#           Browser with vpn proxy
 alias cromite-operavpn='cromite --proxy-server="http://momoin.duckdns.org:18880"'
 alias cromite-protonvpn='cromite --proxy-server="socks5://momoin.duckdns.org:18888"'
 alias cromite-warpvpn='cromite --proxy-server="socks5://momoin.duckdns.org:18886"'
+
 alias brave-warpvpn='brave --user-data-dir="/home/vugia/.config/brave/ProxyWarp" --proxy-server="socks5://momoin.duckdns.org:18888"'
 alias brave-protonvpn='/usr/bin/brave --user-data-dir=/home/vugia/.config/brave/protonvpn --proxy-server=socks5://momoin.duckdns.org:18888'
 alias brave-operavpn='/usr/bin/brave --user-data-dir=/home/vugia/.config/brave/operavpn --proxy-server=http://momoin.duckdns.org:18880'
-#################################################
+#######################################s##########
 ###       PACMAN
 alias pacinstall='sudo pacman -S'
 alias pacin='sudo pacman -S'
@@ -172,6 +176,7 @@ alias journald='journalctl --user -xeu'
 alias udae='systemctl --user daemon-reload'
 alias udare='systemctl --user daemon-reload'
 alias uresta='systemctl --user restart'
+alias ures='systemctl --user restart'
 alias usta='systemctl --user start'
 alias usto='systemctl --user stop'
 alias ustat='systemctl --user status'
@@ -239,7 +244,7 @@ ex ()
             *.zip)       unzip "$1"     ;;
             *.Z)         uncompress "$1";;
             *.7z)        7z x "$1"      ;;
-            *.iso)        7z x "$1"      ;;
+            *.iso)       7z x "$1"      ;;
             *)           echo "$1 cannot be extracted via ex()" ;;
         esac
     else
@@ -393,7 +398,7 @@ function rimupdate-shutdown() {
 
 function tarscp_from_remote() {
     if [ "$#" -ne 3 ]; then echo "Usage: tarscp_from_remote {remote_host} {remote_dir_path} {local_dir_path}" >&2; return; fi
-    ssh "$1" "tar -C $2 -cf - ./" | tar -C "$3" -xf -
+    ssh "$1" "tar -C $2 -c - ./" | tar -C "$3" -xf -
 }
 function tarscp_to_remote() {
     if [ "$#" -ne 3 ]; then echo "Usage: tarscp_to_remote {local_dir_path} {remote_host} {remote_dir_path}" >&2; return; fi
@@ -485,11 +490,16 @@ function flac-con-all(){
 
 function agh-cp-conf () {
 	ssh n9-qemu killall AdGuardHome
-	scp momo-dell6430:/home/momo/momopod/app/adguardhome/conf/AdGuardHome.yaml n9-qemu:/root/AdguardHome
+	scp momo@momoin.duckdns.org:/home/momo/momopod/app/adguardhome/conf/AdGuardHome.yaml n9-qemu:/root/AdguardHome
 	# scp ~/podman/AdGuardHome.yaml n9-qemu:/root/AdguardHome
 	ssh n9-qemu rc-service AdGuardHome start
 }
 function dotfile () {
+	# cd ~/dotfiles || exit
+	git -C ~/dotfiles commit -a -m "$1 $(date '+%Y-%m-%d %H:%M')"
+	git -C ~/dotfiles push
+}
+function dotfile-all () {
 	cd ~/dotfiles || exit
 	git add --all
 	git commit -a -m "$(date '+%Y-%m-%d %H:%M')"
