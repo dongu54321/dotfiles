@@ -1,7 +1,0 @@
-Select:End="0" Mode="Set" RelativeTo="SelectionStart" Start="0"
-CursTrackStart:
-SelectTime:End="1" Start="0"
-Copy:
-CursTrackEnd:
-Paste:
-Silence:Use_Preset="<Current Settings>"

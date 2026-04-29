@@ -1,18 +1,22 @@
-.config/micro/buffers
-^/README.*
-^/LICENSE.*
-\.gitconfig
-\.env
-\.git
-\.gitignore
+# .stow-local-ignore  (stow root)
+# -------------------------------
+# 1️ Files / dirs to skip
+README.*
+LICENSE.*
+.gitconfig
+.env
+.git
+.gitignore
+tmux*.conf
 keybindings.json
 extension.json
-^/.sync_*
-\.log
-\.git
-\.bak
-*.bak
-tmux1.conf
-tmux2.conf
-tmux3.conf
+snippets
+sync_*
+.log
+.tmp
+.bak
+.old
 tropical_island_morning.jpg
+
+# 2️⃣  Directories you never want to stow
+.config/micro/buffers
