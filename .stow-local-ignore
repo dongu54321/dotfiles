@@ -1,22 +1,21 @@
-# .stow-local-ignore  (stow root)
-# -------------------------------
-# 1️ Files / dirs to skip
-README.*
-LICENSE.*
 .gitconfig
 .env
 .git
 .gitignore
-tmux*.conf
-keybindings.json
-extension.json
 snippets
-sync_*
 .log
 .tmp
-.bak
+^*.bak
 .old
-tropical_island_morning.jpg
-
-# 2️⃣  Directories you never want to stow
 .config/micro/buffers
+^README.*
+^LICENSE.*
+^.sync_*
+^tmux1.conf
+^tmux2.conf
+^tmux3.conf
+^tropical_island_morning.jpg
+^settings.json
+^keybindings.json
+^extension.json
+^.nextcloudsync.log

@@ -1,0 +1,8 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "CtrlUnderscore": "lua:comment.comment",
+    "Alt-s": "Save,Quit",
+    "Tab": "Autocomplete|IndentSelection|InsertTab",
+    "Ctrl-g": "command-edit:help ",
+    "Alt-q": "Quit"
+}
