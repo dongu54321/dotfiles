@@ -7,3 +7,4 @@ agents
 .sync_*
 *.db
 *.db-wal
+.sync_8488021ec824.db
