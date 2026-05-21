@@ -1,3 +1,9 @@
-07:58:33 AM: Audacity 3.7.7
-07:58:33 AM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.12.100
-07:58:35 AM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.12.100
+04:06:38 PM: Audacity 3.7.7
+04:06:38 PM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.12.101
+04:06:41 PM: FFmpeg libraries loaded successfully from: /usr/lib/libavformat.so.62.12.101
+04:06:41 PM: File name is /home/vugia/python_app/ref_audio/nu-nhe-nhang-soft.wav
+04:06:41 PM: Mime type is *
+04:06:41 PM: Opening with libsndfile
+04:06:41 PM: Open(/home/vugia/python_app/ref_audio/nu-nhe-nhang-soft.wav) succeeded
+04:06:41 PM: Operation 'Importing WAV (Microsoft)' took 0.017000 seconds. Poll was called 3 times and took 0.000000 seconds. Yield was called 0 times and took 0.000000 seconds.
+04:06:41 PM: Operation 'Music Information Retrieval' took 0.026000 seconds. Poll was called 2048 times and took 0.000064 seconds. Yield was called 0 times and took 0.000000 seconds.

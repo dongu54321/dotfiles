@@ -52,6 +52,8 @@ alias cromite-warpvpn='cromite --proxy-server="socks5://momoin.duckdns.org:18886
 alias brave-warpvpn='brave --user-data-dir="/home/vugia/.config/brave/ProxyWarp" --proxy-server="socks5://momoin.duckdns.org:18888"'
 alias brave-protonvpn='/usr/bin/brave --user-data-dir=/home/vugia/.config/brave/protonvpn --proxy-server=socks5://momoin.duckdns.org:18888'
 alias brave-operavpn='/usr/bin/brave --user-data-dir=/home/vugia/.config/brave/operavpn --proxy-server=http://momoin.duckdns.org:18880'
+
+alias cloak-browser='~/python_app/cloakbrowser/.venv/bin/python ~/python_app/cloakbrowser/temp_profile.py'
 #######################################s##########
 ###       PACMAN
 alias pacinstall='sudo pacman -S'

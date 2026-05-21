@@ -37,7 +37,7 @@
 },
 "terminal.integrated.cursorWidth": 1.2,
 "editor.fontWeight": "normal",
-"workbench.colorTheme": "Catppuccin Macchiato",
+"workbench.colorTheme": "Tokyo Night",
 "editor.fontSize": 15,
 "workbench.settings.applyToAllProfiles": [
     "editor.fontFamily"
@@ -92,7 +92,7 @@
 //         ]
 //     },
 // },
-"workbench.iconTheme": "catppuccin-macchiato",
+"workbench.iconTheme": "catppuccin-mocha",
 "window.customTitleBarVisibility": "auto",
 "remote.autoForwardPortsSource": "hybrid",
 "prettyxml.settings.indentSpaceLength": 2,
@@ -107,7 +107,8 @@
     "ai.momoin.duckdns.org",
     "momoin.duckdns.org",
     "https://ai.momoin.duckdns.org",
-    "https://momoin.duckdns.org"
+    "https://momoin.duckdns.org",
+    "localhost"
 ],
 "terminal.integrated.env.linux": {},
 "terminal.integrated.localEchoExcludePrograms": [
@@ -121,15 +122,14 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
 "workbench.sideBar.location": "right",
-"workbench.layoutControl.enabled": false,
 "yaml.schemas": {
     "file:///home/vugia/.vscode-oss/extensions/continue.continue-1.2.22-linux-x64/config-yaml-schema.json": [
         ".continue/**/*.yaml"
     ]
 },
 "continue.showInlineTip": false,
-"local-sync.backupPath": "/home/vugia/dotfiles",
+"local-sync.backupPath": "/home/vugia/dotfiles/vscodium",
 "editor.fontFamily": "'FiraMono Nerd Font', 'FiraMono Nerd Font', FiraMono Nerd Font",
-"window.commandCenter": false,
-"workbench.browser.showInTitleBar": true
+"workbench.browser.showInTitleBar": true,
+"window.commandCenter": false
 }

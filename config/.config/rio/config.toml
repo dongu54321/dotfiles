@@ -125,7 +125,7 @@ confirm-before-quit = false
 # Example:
 [window]
 width = 1755
-height = 1295
+height = 1271
 # mode = "windowed"
 # opacity = 0.95
 # blur = true
@@ -133,7 +133,7 @@ height = 1295
 
 [window.background-image]
 path = "/home/vugia/dotfiles/tropic_island_morning.jpg"
-opacity = 0.33
+opacity = 0.23
 # Renderer
 #
 # • Performance: Set WGPU rendering performance
@@ -271,15 +271,15 @@ weight = 800
 #
 # Example:
 [navigation]
-mode = "Tab"
+mode = "Plain"
 clickable = true
 hide-if-single = true
 use-current-path = true
 color-automation = [
   { program = "ssh", color = "#222222" },
 
-  { program = "nvim", path = "/home", color = "#FFFF00" },
-  { program = "nvim", color = "#FFFF00" },
+  { program = "micro", path = "/home", color = "#FFFF00" },
+  { program = "micro", color = "#FFFF00" },
   { path = "/home/vugia/.config/rio", color = "#FFFF00" }
 ]
 
@@ -323,11 +323,11 @@ color-automation = [
 # (considering if theme folder does exists and is being used)
 #
 # Example:
-[colors]
-tabs = '#f5e0dc'  # Inactive tab text and border color
-tabs-active = '#fab387'  # Active tab text color
-bar = '#1b1a1a'
-split = '#292527'
+# [colors]
+# tabs = '#f5e0dc'  # Inactive tab text and border color
+# tabs-active = '#fab387'  # Active tab text color
+# bar = '#1b1a1a'
+# split = '#292527'
 # background = '#0F0D0E'
 # foreground = '#F9F4DA'
 # cursor = '#F38BA3'
