@@ -11,7 +11,9 @@ general.import = [
 dimensions = { columns = 49, lines = 53 }
 position = { x = 1950, y = 100}
 decorations = "None"
-opacity = 0.95
+opacity = 0.98
+# startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
+startup_mode = "Maximized"
 [font]
 size = 15
 normal = { family = "FiraMono Nerd Font", style = "Regular" }
@@ -19,7 +21,7 @@ normal = { family = "FiraMono Nerd Font", style = "Regular" }
 #padding = '{ x = 170, y = 170 }'
 
 [terminal]
-shell = { program = "/bin/tmux", args = ["new-session"] }
+# shell = { program = "/bin/tmuxinator", args = ["start", "workspace"] }
 # shell = { program = "/bin/zsh", args = ["-c", "tmux new-session \\; split-window -v"] }
 
 [mouse]

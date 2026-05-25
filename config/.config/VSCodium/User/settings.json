@@ -131,5 +131,6 @@
 "local-sync.backupPath": "/home/vugia/dotfiles/vscodium",
 "editor.fontFamily": "'FiraMono Nerd Font', 'FiraMono Nerd Font', FiraMono Nerd Font",
 "workbench.browser.showInTitleBar": true,
-"window.commandCenter": false
+"window.commandCenter": false,
+"terminal.integrated.tabs.defaultColor": "terminal.ansiMagenta"
 }
