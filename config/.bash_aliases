@@ -227,6 +227,7 @@ export PATH=$HOME/.opencode/bin:$PATH
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 export EDITOR=micro
 export MC_SKIN=nicedark
+export AGENT_BROWSER_EXECUTABLE_PATH=~/.cloakbrowser/chromium-146.0.7680.177.5/chrome
 
 ####################################################################
 ###             Functions            ###
@@ -238,7 +239,7 @@ ex ()
             *.tar.bz2)   tar xjf "$1"   ;;
             *.tar.gz)    tar xzf "$1"   ;;
             *.bz2)       bunzip2 "$1"   ;;
-            *.rar)       unrar x "$1"     ;;
+            *.rar)       unrar x "$1"   ;;
             *.gz)        gunzip "$1"    ;;
             *.tar)       tar xf "$1"    ;;
             *.tbz2)      tar xjf "$1"   ;;

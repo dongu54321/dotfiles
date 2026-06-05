@@ -1,0 +1,66 @@
+# /home/vugia/.config/tmuxinator/workspace.yml
+
+name: work
+root: ~/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+# startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+# startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+# attach: false
+
+windows:
+  - momoin:
+      # 3 panes 
+      # layout: c268,196x54,0,0{143x54,0,0,1,4x54,144,0,12,47x54,149,0,4}
+      panes:
+        - ssh momoin
+  - pc8700:
+      layout: aa58,196x54,0,0{143x54,0,0,2,4x54,144,0,7,47x54,149,0[47x27,149,0,5,47x26,149,28,6]}
+      panes:
+        -
+        -
+        -
+        -
+  - 3:
+      layout: c04d,196x54,0,0{71x54,0,0,3,71x54,72,0,11,4x54,144,0,8,47x54,149,0,9}
+      panes:
+        -
+        -
+        -
+        -
