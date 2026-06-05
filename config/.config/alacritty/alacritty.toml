@@ -11,7 +11,7 @@ general.import = [
 dimensions = { columns = 49, lines = 53 }
 position = { x = 1950, y = 100}
 decorations = "None"
-opacity = 0.98
+opacity = 0.9
 # startup_mode = "Windowed" | "Maximized" | "Fullscreen" | "SimpleFullscreen"
 startup_mode = "Maximized"
 [font]
